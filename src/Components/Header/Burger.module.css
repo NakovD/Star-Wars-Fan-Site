@@ -1,0 +1,114 @@
+#container {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+#burger {
+    cursor: pointer;
+    opacity: 0;
+    animation: fadein 0.2s ease 1s forwards;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+#burger .bun, #burger .filling {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    height: 10%;
+    width: 70%;
+    transform-origin: 50% 50%;
+    transition: top 0.4s ease 0.4s, transform 0.4s ease 0.4s;
+}
+#burger .bun:before, #burger .filling:before, #burger .bun:after, #burger .filling:after {
+    content: "";
+    display: block;
+    height: 40%;
+    background: white;
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -45%);
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+#burger .bun:before, #burger .filling:before {
+    left: 0;
+    width: calc(-1px + 75%);
+    border-radius: 10px 0px 0px 10px;
+}
+#burger .bun:after, #burger .filling:after {
+    right: 0;
+    width: calc(-1px + 25%);
+}
+#burger:hover .bun.top:before {
+    background: #fee;
+    box-shadow: #f00 0px 0px 10px 1px;
+}
+#burger:hover .bun.bottom:before {
+    background: #dff;
+    box-shadow: #0ff 0px 0px 10px 1px;
+}
+#burger:hover .filling:before {
+    background: #efe;
+    box-shadow: #0f0 0px 0px 10px 1px;
+}
+#burger .bun.top {
+    top: 25%;
+}
+#burger .bun.bottom {
+    top: 75%;
+}
+#burger .filling {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(180deg);
+    animation: green-ls-out 0.8s ease forwards;
+}
+#burger.active .bun {
+    border-radius: 3px;
+    top: 50%;
+    transition: top 0.4s ease, transform 0.4s ease;
+}
+#burger.active .bun.top {
+    transform: translate(-50%, -50%) rotate(-225deg);
+}
+#burger.active .bun.bottom {
+    transform: translate(-50%, -50%) rotate(405deg);
+}
+#burger.active .filling {
+    transform: translate(-50%, -50%) rotate(-90deg);
+    animation: green-ls-in 0.8s ease forwards;
+}
+
+@keyframes green-ls-in {
+    0% {
+        transform: translate(-50%, -50%) rotate(180deg);
+   }
+    50% {
+        transform: translate(-50%, -50%) rotate(-90deg);
+   }
+    100% {
+        transform: translate(-50%, -50%) rotate(-90deg) translate(200%, 0%);
+   }
+}
+@keyframes green-ls-out {
+    0% {
+        transform: translate(-50%, -200%) rotate(-90deg);
+   }
+    50% {
+        transform: translate(-50%, -50%) rotate(-90deg);
+   }
+    100% {
+        transform: translate(-50%, -50%) rotate(180deg);
+   }
+}
+@keyframes fadein {
+    from {
+        Opacity: 0;
+   }
+    to {
+        Opacity: 1;
+   }
+}

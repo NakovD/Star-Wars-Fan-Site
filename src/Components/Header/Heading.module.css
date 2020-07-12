@@ -1,0 +1,16 @@
+@font-face {font-family: 'SF Distant Galaxy'; src: url('./SfDistantGalaxy-0l3d.ttf');}
+/* THIS FONT IS TAKEN FROM HERE: https://www.fontspace.com/sf-distant-galaxy-font-f6436
+CHECK IF YOU NEED MORE THERE */
+.heading-container { 
+    width: 70%;
+    margin: 0 auto;
+} 
+h1 {
+    padding-top: 2px;
+    font-family:"SF Distant Galaxy";
+    font-size: 5em;
+    font-weight: 600;
+    /* color: rgba(161, 121, 11, 0); */
+    /* -webkit-text-stroke: 1px #afb533; */
+    text-shadow: -1px 0 #afb533, 0 1px #afb533, 1px 0 #afb533, 0 -1px #afb533;
+}
