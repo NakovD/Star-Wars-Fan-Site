@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +10,44 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+    box-sizing: border-box;
+    /* display: flex; */
+    /* width: 100%; */
+    /* flex-wrap: wrap; */
+    background-image: url(https://www.vancouversymphony.ca/site-content/uploads/2019/01/BANNERstarwars3.jpg);
+    background-color: black;
+    /* height: 100%; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+#root {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+#root {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  background-image: url(https://www.vancouversymphony.ca/site-content/uploads/2019/01/BANNERstarwars3.jpg);
+  background-color: black;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
