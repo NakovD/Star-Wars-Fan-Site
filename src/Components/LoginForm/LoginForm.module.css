@@ -1,0 +1,107 @@
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+input {
+  border: none;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5em;
+  padding: 0;
+  -webkit-appearance: none;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+after { clear: both; }
+
+#login {
+  width: 400px;
+  margin: 5em auto;
+}
+
+#login form {
+  margin: auto;
+  padding: 22px;
+  width: 100%;
+  border-radius: 5px;
+  background: #282e33;
+  border-top: 3px solid #434a52;
+  border-bottom: 3px solid #434a52;
+}
+
+#login form span {
+  background-color: #363b41;
+  border-radius: 3px 0px 0px 3px;
+  border-right: 3px solid #434a52;
+  color: #606468;
+  display: block;
+  float: left;
+  line-height: 50px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+}
+#login form p {
+  margin: 1em 0 2em 0;
+  text-align: center;
+  font-size: 20px;
+}
+
+#login form input[type="text"] {
+  background-color: #3b4148;
+  border-radius: 0px 3px 3px 0px;
+  color: #a9a9a9;
+  margin-bottom: 2em;
+  padding: 0 16px;
+  width: 80%;
+  height: 50px;
+}
+
+#login form input[type="password"] {
+  background-color: #3b4148;
+  border-radius: 0px 3px 3px 0px;
+  color: #a9a9a9;
+  margin-bottom: 2em;
+  padding: 0 16px;
+  width: 80%;
+  height: 50px;
+}
+
+#login form input[type="submit"] {
+  background: #8a0f0b;
+  border: 0;
+  width: 94%;
+  height: 40px;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+#login form input[type="submit"]:hover {
+  border: 2px solid#620b8a;
+  background: #0b168a;
+}
+#login label {
+  font-size: 18px;
+  margin-right: 0.5em;
+  color: #ffffff;
+}
+#login form select {
+  width: 100px;
+  height: 40px;
+  margin-bottom: 2em;
+  background-color: #363b41;
+  border-radius: 3px;
+  font-size: 15px;
+}
+
+#dark, #light{
+  width: 100%;
+  height: 40px;
+  background-color: #3b4148;
+  font-size: 15px;
+}
