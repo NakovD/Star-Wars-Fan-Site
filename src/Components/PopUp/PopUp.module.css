@@ -1,0 +1,14 @@
+.symbol {
+    display: inline-block;
+    margin-left: 12px;
+  }
+.symbolPopUp {
+    padding: 5px;
+    background-color: white;
+  }
+.show {
+    display: block;
+  }
+.hide {
+    display: none;
+  }
