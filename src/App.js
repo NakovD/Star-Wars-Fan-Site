@@ -1,13 +1,18 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import Header from './Components/Header/Header.js';
-import LoginForm from './Components/LoginForm/LoginForm.js';
+import AuthForm from './Components/Auth/AuthForm.js';
+// import ErrorNotification from './Components/ErrorNot/ErrorNotification.js';
 
 function App() {
+  const staTE = {
+    error: true,
+    errMessage: 'Wrong password!'
+}
   return (
     <div className="app_container">
-      <LoginForm />
+      {/* <ErrorNotification error={staTE.error} text={staTE.errMessage}/> */}
+      <AuthForm type="register"/>
     </div>
   );
 }
