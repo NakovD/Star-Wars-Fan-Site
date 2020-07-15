@@ -2,7 +2,7 @@ import React from 'react';
 import InputField from './InputField.js';
 import FBButton from './FBButton.js';
 import styles from './AuthForm.module.css';
-// import PopUp from '../PopUp/PopUp.js';
+import PopUp from '../PopUp/PopUp.js';
 
 const AuthForm = ({ type }) => {
     if (type === 'register') {
@@ -14,9 +14,9 @@ const AuthForm = ({ type }) => {
                     <InputField placeholder="Repeat Password" id="pass" className="fontawesome-lock" error={false} />
                     <InputField placeholder="Password" id="pass" className="fontawesome-lock" error={false} />
                     <input type="submit" value="Sign In" />
-                    <p>Or</p>
+                    <p className={styles.or}>Or</p>
                     <FBButton text="Sign In with" />
-                    {/* <PopUp /> */}
+                    <PopUp />
                 </form>
             </div>);
     } else if (type === 'login') {
@@ -27,7 +27,7 @@ const AuthForm = ({ type }) => {
                     <InputField placeholder="Username" id="user" className="fontawesome-user" error={false} />
                     <InputField placeholder="Password" id="pass" className="fontawesome-lock" error={false} />
                     <input type="submit" value="Login" />
-                    <p>Or</p>
+                    <p className={styles.or}>Or</p>
                     <FBButton text="Continue with" />
                 </form>
             </div>)
