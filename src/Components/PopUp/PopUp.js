@@ -4,12 +4,17 @@ import styles from './PopUp.module.css';
 //!! WORK IN PROGRESS! ITS NOT FINISHED!
 
 const PopUp = () => {
-    const state = { showPopUp: true }
+    const [showPopUp, changeVis] = useState(false);
     const show_hideFunc = () => {
+        if (!showPopUp) {
+            changeVis(true);
+        }else {
+            changeVis(false);
+        }
     }
     return (
-        <div className={styles.symbol} onClick={show_hideFunc}>&#10071;
-            <p className={`${styles.symbolPopUp} ${state.showPopUp ? styles.show : styles.hide}`}></p>
+        <div className={styles.symbol} onMouseOver={show_hideFunc} onMouseLeave={show_hideFunc}>&#10071;
+            <p className={`${styles.symbolPopUp} ${showPopUp ? styles.show : styles.hide}`}>If you join for the first time with FB, go to your profile page and choose your side!</p>
         </div>
     )
 }

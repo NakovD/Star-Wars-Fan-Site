@@ -5,10 +5,6 @@ import AuthForm from './Components/Auth/AuthForm.js';
 // import ErrorNotification from './Components/ErrorNot/ErrorNotification.js';
 
 function App() {
-  const staTE = {
-    error: true,
-    errMessage: 'Wrong password!'
-}
   return (
     <div className="app_container">
       {/* <ErrorNotification error={staTE.error} text={staTE.errMessage}/> */}
