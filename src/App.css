@@ -2,6 +2,9 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  padding-top: 2em;
+  justify-content: space-evenly;
+  align-content: flex-end;
 }
 /* .App {
   text-align: center;
