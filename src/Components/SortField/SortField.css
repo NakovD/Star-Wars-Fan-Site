@@ -1,0 +1,14 @@
+.sortField {
+    flex: 0 0 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 2em;
+    justify-content: space-evenly;
+    align-items: baseline;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.sortField > p {
+    color: #f0f0f0;
+    text-shadow:  0 0 20px #de4e5e, 0 0 50px #b50015;
+    /* padding-top: 5px; */
+}
