@@ -1,0 +1,81 @@
+
+.heroDetails {
+    display: flex;
+    width: 95%;
+    flex-wrap: wrap;
+    /* color: #85144b; */
+    margin: 2em auto;
+    border: 2px solid blue;
+}
+.glowTextLight {
+    color: #f0f0f0; 
+	text-shadow:  0 0 10px #f0f0f0, 0 0 50px #3455eb;
+}
+.glowTextDark {
+    color: #f0f0f0;
+	text-shadow:  0 0 20px #de4e5e, 0 0 50px #b50015;
+}
+.heroIMG {
+    flex: 0 0 50%;   
+    /* max-height: 50em; */
+    /* overflow-y: scroll; */
+}
+.heroIMG > img {
+    width: 95%;
+    display: block;
+    height: auto;
+    /* min-height: 600px; */
+    max-height: 700px;
+    object-fit: scale-down;
+    margin: 1em auto;
+}
+.heroContent {
+    flex: 0 0 50%;
+    font-family: 'Inconsolata', monospace;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 1em;
+}
+.heroName {
+    flex: 1 1 80%;
+    text-align: center;
+    margin: 1.5em;
+}
+.heroName > h4 {
+    margin: 0;
+    padding: 0;
+    font-family: 'SF Distant Galaxy';
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 1.5;
+    
+}
+.heroFaction, .heroSpecies, .era {
+    flex: 1 1 80%;
+    align-items: center;
+    /* margin-top: 1em; */
+    padding-bottom: 1em;
+    font-size: 24px;
+    font-weight: 600;
+}
+.heroFaction > p, .heroSpecies > p, .era > p {
+    display: inline-block;
+    margin: 0;
+    padding: 0 0.5em;
+    font-size: 20px;
+    font-weight: 100;
+}
+.heroDescription {
+    flex: 1 1 60%;
+    margin: auto;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.6;
+}
+.heroDescription > p {
+    margin: 0.7em 0;
+    padding: 0;
+    font-weight: 100;
+    font-size: 20px;
+}

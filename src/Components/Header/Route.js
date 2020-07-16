@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Route.module.css';
+import { Link } from 'react-router-dom';
 
 
 const Route = ({ color, goTo }) => {
@@ -21,7 +22,7 @@ const Route = ({ color, goTo }) => {
     //     </li>
     return (
         <li className={styles[color]}>
-            <a href={goTo}>{goTo}</a>
+            <Link to={`/${goTo.toLowerCase()}`}>{goTo}</Link>
         </li>
 
     )
