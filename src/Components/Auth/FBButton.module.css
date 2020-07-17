@@ -14,6 +14,7 @@ button.fb {
     border-radius: 5px;
     text-align: center;
     border: none;
+    cursor: pointer;
   }
   
   .connect:before {

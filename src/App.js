@@ -1,13 +1,15 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import CharacterForm from './Components/CharacterForm/CharacterForm.js';
-import AuthPage from './Components/Auth/AuthPage.js';
-
+import ForumHome from './Components/Forum/ForumHome.js';
+// import SortField from './Components/SortField/SortField.js';
+// import HeroCard from './Components/HeroCard/HeroCard.js';
 function App() {
   return (
     <div className="app_container">
-      <CharacterForm type="edit"/>
+      {/* <SortField /> */}
+      {/* <HeroCard /> */}
+      <ForumHome />
     </div>
   );
 }

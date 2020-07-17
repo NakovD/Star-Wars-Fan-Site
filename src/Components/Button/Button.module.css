@@ -1,6 +1,6 @@
 .container {
     opacity: 1;
-    flex: 0 1 10%;
+    width: auto;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -16,12 +16,11 @@
     font-size: 12px;
     font-weight: 400;
     /* line-height: 45px; */
-    max-width: 160px;
+    /* max-width: 160px; */
     position: relative;
     text-decoration: none;
     text-transform: uppercase;
-    width: 100%;
-  }
+}
   .btn:hover {
     text-decoration: none;
   }
@@ -30,7 +29,7 @@
   .effect01 {
     color: #8a8aff;
     border: 2px solid #FFF;
-    padding: 2px;
+    padding: 8px 0;
     box-shadow:0px 0px 0px 1px #000 inset;
     background-color: #000;
     overflow: hidden;
@@ -45,6 +44,7 @@
   
   /*btn_text*/
   .effect01 span {
+    padding: 0 10px;
     transition: all 0.2s ease-out;
     z-index: 2;
   }
