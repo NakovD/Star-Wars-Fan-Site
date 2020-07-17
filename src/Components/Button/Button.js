@@ -1,13 +1,15 @@
 import React from 'react';
-import './Button.css';
+// import './Button.css';
+import { Link } from 'react-router-dom';
+import styles from './Button.module.css';
 
 
 
 
 const Button = ({ text }) => {
     return (
-        <div className="container">
-            <a href="/createDiscussion" className="btn effect01" target="_blank"><span>{text}</span></a>
+        <div className={styles.container}>
+            <Link to='/log in' className={`${styles.btn} ${styles.effect01}`}><span>{text}</span></Link>
         </div>
     )
 }

@@ -11,7 +11,7 @@ const CharacterForm = ({ type }) => {
         headingText = 'Create a new character!';
         buttonText = 'Submit';
     } else if (type === 'edit') {
-        headingText = 'Request and edit for a character!';
+        headingText = 'Request an edit for a character!';
         buttonText = 'Request an edit!';
     }
     return (
