@@ -1,17 +1,9 @@
 import React from 'react';
-import styles from './InputField.module.css';
-import ErrorNotification from '../ErrorNot/ErrorNotification.js';
 
 
-
-const InputField = ({ placeholder, id, className,error }) => {
-
+const InputField = ({ type, usedFor}) => {
     return (
-        <div className={styles.inputField}>
-            <span className={className}></span>
-            <input type="text" id={id} placeholder={placeholder} />
-            {/* <ErrorNotification text={"Invalid username!"} error={error}/> */}
-        </div>
+        <input type={type} id={usedFor.toLowerCase()} name={usedFor} placeholder={usedFor} />
     )
 }
 
