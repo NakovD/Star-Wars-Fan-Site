@@ -1,0 +1,76 @@
+#charForm {width:100%; height: auto; margin: 0 auto; background: rgba(0, 91, 150, 0.1);}
+
+.container {width:550px; height:auto; margin: 0 auto; padding: 30px 0 50px 0;}
+#charForm h2 {
+    color: #fff;
+    width: 30%;
+    margin: 1.5em auto 1em auto;
+    text-align: center;
+}
+#charForm .container form input, select, option, textarea {
+	width:95%;
+	height:35px;
+	padding:5px 10px;
+	font-size: 12px;
+	color:#999;
+	letter-spacing:1px;
+	background: #001f3f;
+	border:2px solid #0074D9;
+	margin-bottom:25px;
+  -webkit-transition:all .1s ease-in-out;
+	-moz-transition:all .1s ease-in-out;
+	-ms-transition:all .1s ease-in-out;
+	-o-transition:all .1s ease-in-out;
+	transition:all .1s ease-in-out;}
+#charForm .container form > label {
+    display: inline-block;
+    width: 12%;
+    color:#999;
+    font-size: 14px;
+    margin-right: 3px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#charForm .container form select {
+    padding: 5px;
+    color: #999;
+}
+#charForm .container form select option {
+    color: #999;
+}
+#charForm .container form select {
+    width: 82.3%;
+}
+#charForm .container form input:focus,
+#charForm .container form textarea:focus {
+	border:2px solid #dd4545;
+	color:#999;}
+
+#charForm .container form textarea {
+	height:150px;}
+
+
+#charForm .container form .submit {
+	width:95%;
+	padding:5px 10px;
+	font-size: 12px;
+	letter-spacing:1px;
+	background:#dd4545;
+	height:40px;
+	text-transform:uppercase;
+	letter-spacing:1px;
+	color:#FFF;
+	border:2px solid #b43838;
+  -webkit-transition:all .1s ease-in-out;
+	-moz-transition:all .1s ease-in-out;
+	-ms-transition:all .1s ease-in-out;
+	-o-transition:all .1s ease-in-out;
+	transition:all .1s ease-in-out;}
+
+#charForm .container form .submit:hover {
+	color:#FFF;
+	border:2px solid #dd4545;
+	background: #b43838;
+	cursor:pointer;}
+
+#charForm .container form .required {
+	color:#b43838;}
