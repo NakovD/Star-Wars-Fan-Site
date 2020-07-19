@@ -1,0 +1,90 @@
+.tableContainer th h1 {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: left;
+    color: #185875;
+}
+
+.tableContainer td {
+    font-weight: normal;
+    color: #FB667A;
+    font-size: 16px;
+    -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+    -moz-box-shadow: 0 2px 2px -2px #0E1119;
+    box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.tableContainer {
+    flex: 0 0 100%;
+    text-align: left;
+    overflow: hidden;
+    /* width: 80%; */
+    /* margin: 0 auto; */
+    display: table;
+    /* padding: 0 0 8em 0; */
+}
+.tableContainer tbody tr a {
+    text-decoration: none;
+    color: #FB667A;
+}
+.tableContainer td, .tableContainer th {
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-left:2%;  
+}
+/* Background-color of the odd rows */
+.tableContainer tr:nth-child(odd) {
+    background-color: #323C50;
+}
+
+/* Background-color of the even rows */
+.tableContainer tr:nth-child(even) {
+    background-color: #2C3446;
+}
+
+.tableContainer th {
+    background-color: #1F2739;
+}
+
+.tableContainer td:first-child { 
+    color: #FB667A;
+}
+
+.tableContainer tr:hover {
+    background-color: #464A52;
+    -webkit-box-shadow: 0 6px 6px -6px #0E1119;
+    -moz-box-shadow: 0 6px 6px -6px #0E1119;
+    box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+.tableContainer td:hover {
+    background-color: #9c1329;
+    font-weight: bold;
+    color: #0f36a3;
+    box-shadow: #6e0a6e -1px 1px, #6e0a6e -2px 2px, #6e0a6e -3px 3px, #6e0a6e -4px 4px, #6e0a6e -5px 5px, #6e0a6e -6px 6px;
+    transform: translate3d(6px, -6px, 0);
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: all;
+    transition-timing-function: line;
+}
+.tableContainer a:hover {
+    color: #0f36a3;
+}
+
+@media (max-width: 800px) {
+.tableContainer td:nth-child(4),
+.tableContainer th:nth-child(4) { display: none; }
+}
+.tableContainer .discussionName {
+    width: 25%;
+}
+.tableContainer .creator {
+    width: 15%;
+}
+.tableContainer .replies {
+    width: 5%;;
+}
+.tableContainer .likes {
+    width: 5%;
+}

@@ -4,10 +4,11 @@ import Button from '../Button/Button.js';
 import TableRow from './TableRow.js';
 import styles from './ForumHome.module.css';
 import SmallButton from './SmallButton.js';
+import TableForum from './TableForum.js';
 
 const ForumHome = () => {
     const info = {
-        title: 'Rey is flat like a skateboard, my dudes, I just cant fap...',
+        title: 'Rey is flat like a skateboard, my dudes, I just cant fap on her...',
         creator: 'migo-chigo123123',
         replies: '120',
         likes: '2000'
@@ -21,7 +22,10 @@ const ForumHome = () => {
                 <SmallButton text='Replies' />
                 <SmallButton text='Date' />
             </div>
-            <table className={styles.tableContainer}>
+            <TableForum >
+                <TableRow {...info}/>
+            </TableForum>
+            {/* <table className={styles.tableContainer}>
                 <thead>
                     <tr>
                         <th className="discussionName"><h1>Discussion</h1></th>
@@ -36,8 +40,8 @@ const ForumHome = () => {
                 <TableRow />
                 <TableRow />
                 <TableRow /> */}
-                </tbody>
-            </table>
+                {/* </tbody> */}
+            {/* // </table> */}
         </div>
     )
 }

@@ -3,7 +3,7 @@ import styles from './Route.module.css';
 import { Link } from 'react-router-dom';
 
 
-const Route = ({ color, goTo }) => {
+const Route = ({ color, goTo, href }) => {
 
     // <li>
     //     <a href="#">Home</a>
@@ -22,7 +22,7 @@ const Route = ({ color, goTo }) => {
     //     </li>
     return (
         <li className={styles[color]}>
-            <Link to={`/${goTo.toLowerCase()}`}>{goTo}</Link>
+            <Link to={`/${href}`}>{goTo}</Link>
         </li>
 
     )
