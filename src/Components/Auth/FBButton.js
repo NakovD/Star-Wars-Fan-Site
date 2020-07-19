@@ -7,7 +7,7 @@ const FBButton = ({text}) => {
 
 
     return (
-        <button  className={`${styles.fb} ${styles.connect}`}>{text} in with Facebook</button>
+        <button  className={`${styles.fb} ${styles.connect}`}>{text} Facebook</button>
     )
 }
 

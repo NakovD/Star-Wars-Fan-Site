@@ -106,8 +106,4 @@ after { clear: both; }
   background-color: #3b4148;
   font-size: 15px;
 }
-#authForm .or {
-  width: 94%;
-  margin: 0.5em 0 0.5em 0.5em;
-  text-align: center;
-}
+

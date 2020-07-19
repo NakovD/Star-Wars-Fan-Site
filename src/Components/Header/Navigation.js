@@ -1,21 +1,20 @@
 import React from 'react';
 import styles from './Navigation.module.css';
 import Route from './Route.js';
-
+import headerLink from '../../utils/headerLinks.js';
 
 
 
 const Navigation = ({ visibility }) => {
-
-
+    const loggedIn = true;   //this will change
+    const darkSide = 'red';
+    const lightSide = 'blue';
+    
+    const allLinks = headerLink(loggedIn);
     return (
         <nav className={visibility ? styles.show : null}>
             <ul>
-                <Route color='yellow' goTo={"Home"}/>
-                <Route color='yellow' goTo={"Characters"}/>
-                <Route color='yellow' goTo={"About Me"}/>
-                <Route color='yellow' goTo={"Log In"}/>
-                <Route color='yellow' goTo={"Sign Up"}/>
+                {allLinks.map(link => { return (<Route key={link.to} color={loggedIn ? lightSide : 'yellow'} goTo={link.to} href={link.href} />) })}
             </ul>
         </nav>
 
