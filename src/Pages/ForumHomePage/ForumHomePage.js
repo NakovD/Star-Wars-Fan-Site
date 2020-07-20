@@ -1,4 +1,5 @@
 import React from 'react';
+import ForumBody from '../../Components/Forum/ForumBody.js';
 import Button from '../../Components/Button/Button.js';
 import TableForum from '../../Components/Forum/TableForum.js';
 import TableRow from '../../Components/Forum/TableRow.js';
@@ -38,9 +39,8 @@ const ForumHomePage = () => {
     ]
 
     return (
-        <div className={styles.forum}>
-            <h2>Star wars Fans - forum</h2>
-            <Button text="Create Discussion" />
+        <ForumBody >
+            <Button href='/createDiscussion' text="Create Discussion" />
             <div className={styles.sortField} >Sort by:
             <SmallButton text='Likes' />
                 <SmallButton text='Replies' />
@@ -49,7 +49,8 @@ const ForumHomePage = () => {
             <TableForum >
                 {info.map((obj, i) => { return <TableRow key={i} {...obj} /> })}
             </TableForum>
-        </div>)
+        </ForumBody>
+    );
 }
 
 export default ForumHomePage;

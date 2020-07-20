@@ -1,0 +1,21 @@
+.comment {
+    flex: 0 0 51%;
+    height: auto;
+    color: #fff;
+    margin-bottom: 1.5em;
+    padding: 0.5em;
+    border-radius: 3px;
+    /* text-align: right; */
+}
+.comment a {
+    text-decoration: none;
+    color: #fff;
+}
+.comment p {
+    justify-content: right;
+    width: 70%;
+    border-radius: 10px;
+    background: #373737;
+    padding: 0.5em;
+    margin: 0.1em 0.1em 0.1em 0.1em;
+}

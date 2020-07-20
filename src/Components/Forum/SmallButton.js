@@ -9,7 +9,7 @@ import styles from './SmallButton.module.css';
 const SmallButton = ({ text }) => {
 
     return (
-    <Link to="/sign in"className={styles.myButton}>{text}</Link>
+    <Link to="/sign in" className={styles.myButton}>{text}</Link>
     )
 }
 

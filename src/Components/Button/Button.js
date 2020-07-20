@@ -6,10 +6,10 @@ import styles from './Button.module.css';
 
 
 
-const Button = ({ text }) => {
+const Button = ({href, text }) => {
     return (
         <div className={styles.container}>
-            <Link to='/log in' className={`${styles.btn} ${styles.effect01}`}><span>{text}</span></Link>
+            <Link to={href} className={`${styles.btn} ${styles.effect01}`}><span>{text}</span></Link>
         </div>
     )
 }
