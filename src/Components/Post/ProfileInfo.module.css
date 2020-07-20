@@ -1,0 +1,39 @@
+.profilePage {
+    color: white;
+}
+.profilePage {
+    flex: 0 0 20%;     
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.light {
+    border-radius: 3px;
+    border-right: 3px solid rgb(50, 109, 168);
+}
+.dark {
+    border-radius: 3px;
+    border-right: 3px solid rgb(158,6,27);
+}
+.profileName {
+    flex: 0 0 90%;
+    margin: 0.5em 0;
+    padding: 0.5em 0 0 0;
+}
+.profilePage > img {
+    width: 75%;
+    flex: 0 0 80%;
+    object-fit: contain;
+    border-radius: 5px;
+    margin: 0.7em auto;
+}
+.profilePage > p {
+    display: inline-block;
+}
+.rankIcon {
+    flex: 0 1 30%;
+    text-align: right;
+    padding-left: 2em;
+    padding-right: 0.5em;
+    margin-bottom: 0.5em;
+}
