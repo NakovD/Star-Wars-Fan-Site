@@ -26,7 +26,7 @@
     height: auto;
     /* min-height: 600px; */
     max-height: 700px;
-    object-fit: scale-down;
+    object-fit: contain;
     margin: 1em auto;
 }
 .heroContent {
