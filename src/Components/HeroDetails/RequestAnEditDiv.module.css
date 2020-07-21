@@ -1,0 +1,15 @@
+.proposeEdit {
+    flex: 0 0 90%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2em;
+}
+.proposeEdit :nth-child(even) {
+    flex: 0 0 18%;
+}
+.proposeEdit > p {
+    width: 80%;
+    padding: 0.2em;
+    font-size: 22px;
+    font-family: 'Red Rose', cursive;
+}

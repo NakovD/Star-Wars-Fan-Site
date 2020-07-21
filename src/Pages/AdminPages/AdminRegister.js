@@ -1,33 +1,22 @@
 import React from 'react';
 import AuthForm from '../../Components/Auth/AuthForm.js';
-import PopUp from '../../Components/PopUp/PopUp.js';
 import InputFieldSpan from '../../Components/Auth/InputFieldSpan.js';
 import AuthHeading from '../../Components/Auth/AuthHeading.js';
 import InputSumbit from '../../Components/Auth/InputSubmit.js';
-import Or from '../../Components/Auth/Or.js';
-import FBButton from '../../Components/Auth/FBButton.js';
+import AdminP from './AdminP.js';
 
-
-const RegisterPage = () => {
-
+const AdminRegister = () => {
 
     return (
         <AuthForm type="register">
-            <AuthHeading text="Are you new here? Welcome! Join us now!" />
+            <AuthHeading text="It seems you are worthy! Join to rule the Empire with us!" />
             <InputFieldSpan type="text" usedFor="Username" className="fontawesome-user" />
             <InputFieldSpan type="password" usedFor="Password" className="fontawesome-lock" />
             <InputFieldSpan type="password" usedFor="Repeat password" className="fontawesome-lock" />
-            <label>Choose your side:</label>
-            <select name="side">
-                <option value="Dark Side">Dark Side</option>
-                <option value="Light Side">Light Side</option>
-            </select>
+            <AdminP textBef="You are already registered?" href="/adminOnly/login" textAft="Then log in now!"/>
             <InputSumbit value="Sign In" />
-            <Or />
-            <FBButton text="Sign In with" />
-            <PopUp text="If you join for the first time with FB, go to your profile page and choose your side!" />
         </AuthForm>
     )
 }
 
-export default RegisterPage;
+export default AdminRegister;

@@ -3,23 +3,19 @@ import AuthForm from '../../Components/Auth/AuthForm.js';
 import InputFieldSpan from '../../Components/Auth/InputFieldSpan.js';
 import AuthHeading from '../../Components/Auth/AuthHeading.js';
 import InputSumbit from '../../Components/Auth/InputSubmit.js';
-import Or from '../../Components/Auth/Or.js';
-import FBButton from '../../Components/Auth/FBButton.js';
+import AdminP from './AdminP.js';
 
-
-const LoginPage = () => {
-
+const AdminLogin = () => {
 
     return (
-        <AuthForm type="login">
-            <AuthHeading text="Welcome back hero! Just a few steps and you are in!" />
+        <AuthForm type="register">
+            <AuthHeading text="Welcome back, apprentice!" />
             <InputFieldSpan type="text" usedFor="Username" className="fontawesome-user" />
-            <InputFieldSpan type="password" usedFor="Password" className="fontawesome-lock" />
+            <InputFieldSpan type="password" usedFor="Repeat password" className="fontawesome-lock" />
+            <AdminP textBef="You are new here?" href="/adminOnly/register" textAft="Join the dark side then!"/>
             <InputSumbit value="Log In" />
-            <Or />
-            <FBButton text="Continue with" />
         </AuthForm>
     )
 }
 
-export default LoginPage;
+export default AdminLogin;

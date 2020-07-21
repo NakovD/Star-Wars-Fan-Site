@@ -1,0 +1,13 @@
+.else {
+    margin: 0.5em auto 1.5em;
+    width: 90%;
+    font-size: 17px;
+}
+.else a {
+    text-decoration: none;
+    color: black;
+}
+.else a :hover {
+    color: #fff;
+    text-decoration: underline;
+}
