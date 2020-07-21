@@ -9,14 +9,14 @@ const SortField = () => {
     return(
         <div className="sortField">
             <p>Sort</p>
-            <Button text="Sith"/>
-            <Button text="Jedi"/>
-            <Button text="Rebel"/>
-            <Button text="Empire"/>
-            <Button text="Resistance"/>
-            <Button text="First Order"/>
-            <Button text="Old Republic"/>
-            <Button text="Galactic Republic"/>
+            <Button href="/somewhere" text="Sith"/>
+            <Button href="/somewhere" text="Jedi"/>
+            <Button href="/somewhere" text="Rebel"/>
+            <Button href="/somewhere" text="Empire"/>
+            <Button href="/somewhere" text="Resistance"/>
+            <Button href="/somewhere" text="First Order"/>
+            <Button href="/somewhere" text="Old Republic"/>
+            <Button href="/somewhere" text="Galactic Republic"/>
         </div>
     )
 }

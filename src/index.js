@@ -9,6 +9,9 @@ import LoginPage from './Pages/LoginPage/LoginPage.js';
 import RegisterPage from './Pages/RegisterPage/RegisterPage.js';
 import ForumHomePage from './Pages/ForumHomePage/ForumHomePage.js';
 import DiscussionPage from './Pages/DiscussionPage/DiscussionPage.js';
+import CharDetailsPage from './Pages/CharDetailsPage/CharDetailsPage.js';
+
+
 ReactDOM.render(
   <React.StrictMode>
     <Router >
@@ -19,6 +22,7 @@ ReactDOM.render(
           <Route path="/register" component={RegisterPage} />
           <Route path="/forum" component={ForumHomePage} />
           <Route path="/editChar" component={DiscussionPage} />
+          <Route path="/charDetails/:id" component={CharDetailsPage} />
         </Switch>
       </PageLayout>
     </Router>
