@@ -7,7 +7,7 @@ const headerLinks = (loggedIn) => {
             },
             {
                 to: 'Add a new character',
-                href: 'addChar'
+                href: 'addCharacter'
             },
             {
                 to: 'Forum',

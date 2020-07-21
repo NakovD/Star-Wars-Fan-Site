@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import HeroDetails from '../../Components/HeroDetails/HeroDetails.js';
+import HeroDetailsBody from '../../Components/HeroDetails/HeroDetailsBody.js';
+import HeroContent from '../../Components/HeroDetails/HeroContent.js';
+import RequestAnEditDiv from '../../Components/HeroDetails/RequestAnEditDiv.js';
 import serverRequests from '../../utils/back-end-service.js';
 
 
@@ -13,10 +15,14 @@ const CharDetailsPage = (props) => {
             changeDetails(charInfo);
         }
         getInfo();
-    },[]);
-    
+    }, []);
+
     return (
-        <HeroDetails {...charDetails}/>
+        <HeroDetailsBody img={charDetails.imgURL}>
+
+            <HeroContent {...charDetails} />
+            <RequestAnEditDiv _id={charDetails._id} />
+        </HeroDetailsBody>
     )
 }
 

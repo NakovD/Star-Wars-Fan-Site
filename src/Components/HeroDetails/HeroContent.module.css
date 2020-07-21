@@ -1,36 +1,5 @@
-
-.heroDetails {
-    display: flex;
-    width: 95%;
-    flex-wrap: wrap;
-    /* color: #85144b; */
-    margin: 2em auto;
-    border: 2px solid blue;
-}
-.glowTextLight {
-    color: #f0f0f0; 
-	text-shadow:  0 0 10px #f0f0f0, 0 0 50px #3455eb;
-}
-.glowTextDark {
-    color: #f0f0f0;
-	text-shadow:  0 0 20px #de4e5e, 0 0 50px #b50015;
-}
-.heroIMG {
-    flex: 0 0 50%;   
-    /* max-height: 50em; */
-    /* overflow-y: scroll; */
-}
-.heroIMG > img {
-    width: 95%;
-    display: block;
-    height: auto;
-    /* min-height: 600px; */
-    max-height: 700px;
-    object-fit: contain;
-    margin: 1em auto;
-}
 .heroContent {
-    flex: 0 0 50%;
+    flex: 0 1 50%;
     font-family: 'Inconsolata', monospace;
     display: flex;
     flex-wrap: wrap;
