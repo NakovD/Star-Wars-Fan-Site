@@ -17,7 +17,8 @@ import AdminRegister from './Pages/AdminPages/AdminRegister.js';
 import AdminLogin from './Pages/AdminPages/AdminLogin.js';
 import CreateDiscussionPage from './Pages/CreateDiscussionPage/CreateDiscussionPage.js';
 
-
+// TO DO: select html element separate in component; you use it a few times
+// TO DO
 ReactDOM.render(
   <React.StrictMode>
     <Router >
