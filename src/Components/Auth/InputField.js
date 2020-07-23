@@ -1,18 +1,24 @@
 import React from 'react';
+import ErrorNotification from '../ErrorNot/ErrorNotification.js';
 
 
-const InputField = ({ type, usedFor, value }) => {
-    if (usedFor === 'Repeat password') {
-        return (
-            <input type={type} id="repeatPassword" defaultValue={value} name="repeatPassword" placeholder={usedFor} />
-        );
-    }else if (usedFor === 'Secret Code') {
-        return (
-            <input type={type} id="secretCode" defaultValue={value} name="secretCode" placeholder={usedFor} />
-        )
+const InputField = ({ type, usedFor, value, onChange, onBlur, error }) => {
+    const namesWithSpaces = {
+        'Repeat password': 'repeatPassword',
+        'Secret Code': 'secretCode',
+        'Image Link': 'imageURL'
+    }
+    let name = '';
+    if (namesWithSpaces[usedFor]) {
+        name = namesWithSpaces[usedFor];
+    } else {
+        name = usedFor.toLowerCase();
     }
     return (
-        <input type={type} id={usedFor.toLowerCase()} defaultValue={value} name={usedFor.toLowerCase()} placeholder={usedFor} />
+        <>
+            <input type={type} value={value} id={name} onChange={onChange} onBlur={onBlur} name={name} placeholder={usedFor} />
+            {error ? (<ErrorNotification error={error} />) : null}
+        </>
     )
 }
 

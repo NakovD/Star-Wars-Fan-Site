@@ -15,7 +15,7 @@ const CharDetailsPage = (props) => {
             changeDetails(charInfo);
         }
         getInfo();
-    }, []);
+    }, [idChar]);
 
     return (
         <HeroDetailsBody img={charDetails.imgURL}>

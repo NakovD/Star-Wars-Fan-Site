@@ -1,16 +1,14 @@
 import React from 'react';
-import './ErrorNotification.css';
+import styles from './ErrorNotification.module.css';
 
 
 
 
-const ErrorNotification = ({ text, error }) => {
-    // console.log(`${styles.fa} ${styles['fa-times-circle']}`);
+const ErrorNotification = (props) => {
     return (
-        <div></div>
+        <div className={styles.error}>!
+            <p>{props.error}</p></div>
     )
-         
-    
 }
 
 export default ErrorNotification;

@@ -1,5 +1,23 @@
-
-
+.error {
+  display: inline-block;
+  position: relative;
+  width: 2%;
+  margin: 10px 0px 0px 13px;
+  font-size: 20px;
+  color: #ff0008;
+}
+.error p {
+  position: absolute;
+  margin-left: 5px;
+  padding: 4px;
+  border-radius: 5px;
+  top: 0px;
+  left: 10px;
+  width: auto;
+  min-width: 150px;
+  font-size: 14px;
+  background-color: rgba(115, 0, 4, 0.7);
+}
 
 
 
