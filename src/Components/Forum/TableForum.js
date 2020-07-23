@@ -1,5 +1,4 @@
 import React from 'react';
-import TableRow from './TableRow';
 import styles from './TableForum.module.css';
 
 

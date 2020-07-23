@@ -13,6 +13,7 @@ const PopUp = ({ text }) => {
         }
     }
     return (
+            // eslint-disable-next-line
         <div className={styles.symbol} onMouseOver={show_hideFunc} onMouseLeave={show_hideFunc}>&#10071;
             <p className={`${styles.symbolPopUp} ${showPopUp ? styles.show : styles.hide}`}>{text}</p>
         </div>

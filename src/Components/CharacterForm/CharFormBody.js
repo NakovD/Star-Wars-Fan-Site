@@ -6,10 +6,8 @@ const CharFormBody = (props) => {
         <section id={styles.charForm}>
             <h2>{props.headingText}</h2>
             <div className={styles.container}>
-                <form name="htmlForm" method="POST">
+                <form name="htmlForm" onSubmit={props.onSubmit}>
                     {props.children}
-                    <textarea name="description" placeholder="Description" defaultValue={props.description} required></textarea>
-                    <button name="send" type="submit" className={styles.submit}>{props.btnText}</button>
                 </form>
             </div>
         </section>

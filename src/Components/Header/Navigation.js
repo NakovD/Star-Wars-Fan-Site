@@ -7,7 +7,7 @@ import headerLink from '../../utils/headerLinks.js';
 
 const Navigation = ({ visibility }) => {
     const loggedIn = true;   //this will change
-    const darkSide = 'red';
+    // const darkSide = 'red';
     const lightSide = 'blue';
     
     const allLinks = headerLink(loggedIn);

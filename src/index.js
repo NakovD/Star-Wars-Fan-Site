@@ -8,7 +8,7 @@ import CharactersPage from './Pages/CharactersPage/CharactersPage.js';
 import LoginPage from './Pages/LoginPage/LoginPage.js';
 import RegisterPage from './Pages/RegisterPage/RegisterPage.js';
 import ForumHomePage from './Pages/ForumHomePage/ForumHomePage.js';
-import DiscussionPage from './Pages/DiscussionPage/DiscussionPage.js';
+// import DiscussionPage from './Pages/DiscussionPage/DiscussionPage.js';
 import CharDetailsPage from './Pages/CharDetailsPage/CharDetailsPage.js';
 import CreateCharacterPage from './Pages/CreateCharacterPage/CreateCharacterPage.js';
 import EditCharacterPage from './Pages/EditCharacterPage/EditCharacterPage.js';

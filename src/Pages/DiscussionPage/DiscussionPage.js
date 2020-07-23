@@ -9,8 +9,8 @@ import Comment from '../../Components/Post/Comment.js';
 
 // https://codepen.io/Codchunks/pen/NEzpZB for a comment text area, very simple and cool!
 const DiscussionPage = () => {
-    const darkSide = true;
-    const lightSide = true;
+    // const darkSide = true;
+    // const lightSide = true;
     return (
         <ForumBody >
             <PostBody >

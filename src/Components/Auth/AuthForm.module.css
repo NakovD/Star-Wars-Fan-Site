@@ -87,12 +87,14 @@ after { clear: both; }
   background: #0b168a;
 }
 #authForm label {
+  flex: 0 0 20%;
   font-size: 18px;
   margin-right: 0.5em;
   color: #ffffff;
 }
 #authForm form select {
-  width: 130px;
+  flex: 0 0 80%;
+  width: 145px;
   height: 35px;
   margin-bottom: 1.5em;
   border-color: rgba(2, 2, 2, 0);
