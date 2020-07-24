@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-const TableRow = ({ title, creator, replies, likes }) => {
+const TableRow = ({ title, creator, comments, likes,_id }) => {
     return (
         <tr>
-            <td><Link to="/log in">{title}</Link></td>
-            <td>{creator}</td>
-            <td>{replies}</td>
+            <td><Link to={`discussion/${_id}`}>{title}</Link></td>
+            <td>{creator.username}</td>
+            <td>{comments.length}</td>
             <td>{likes}</td>
         </tr>
     )

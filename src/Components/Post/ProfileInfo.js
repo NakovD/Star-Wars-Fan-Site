@@ -1,15 +1,13 @@
 import React from 'react';
 import styles from './ProfileInfo.module.css';
+import { Link } from 'react-router-dom';
 
 
-const ProfileInfo = () => {
-
-    const darkSide = false;
-    
+const ProfileInfo = ({ profilePic, username, _id, side }) => {
     return (
-        <div className={`${styles.profilePage} ${darkSide ? styles.dark : styles.light}`}>
-            <p className={styles.profileName}>ProfileName</p>
-            <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/obi-wan-show-1567178968.jpg?crop=0.486xw:0.973xh;0.512xw,0.00340xh&resize=480:*" alt="noimg" />
+        <div className={`${styles.profilePage} ${(side === 'light') ? styles.light : styles.dark}`}>
+            <p className={styles.profileName}><Link to={`/profilePage/${_id}`}>{username}</Link></p>
+            <img src={profilePic} alt="ProfileIMG" />
             <p className={styles.rankIcon}>Rank:</p><span className="swg swg-darthvader swg-2x"></span>
             <p>Vader himself!</p>
         </div>

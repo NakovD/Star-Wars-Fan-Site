@@ -10,6 +10,7 @@ h1 {
     font-family:"SF Distant Galaxy";
     font-size: 70px;
     font-weight: 600;
+    text-align: center;
     /* color: rgba(161, 121, 11, 0); */
     /* -webkit-text-stroke: 1px #afb533; */
     text-shadow: -1px 0 #afb533, 0 1px #afb533, 1px 0 #afb533, 0 -1px #afb533;
