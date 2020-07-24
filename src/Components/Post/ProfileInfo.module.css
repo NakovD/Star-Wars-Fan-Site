@@ -6,6 +6,7 @@
     display: flex;
     flex-wrap: wrap;
     text-align: center;
+    align-items: baseline ;
 }
 .light {
     border-radius: 3px;
@@ -19,11 +20,16 @@
     flex: 0 0 90%;
     margin: 0.5em 0;
     padding: 0.5em 0 0 0;
+    max-height: 30px;
+}
+.profileName a {
+    text-decoration: none;
+    color: #fff;
 }
 .profilePage > img {
-    width: 75%;
+    width: 80%;
     flex: 0 0 80%;
-    object-fit: contain;
+    object-fit: scale-down;
     border-radius: 5px;
     margin: 0.7em auto;
 }

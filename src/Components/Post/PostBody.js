@@ -3,10 +3,8 @@ import styles from './PostBody.module.css';
 
 
 const PostBody = (props) => {
-
-    const darkSide = false;
     return (
-        <div className={`${styles.post} ${darkSide ? styles.darkSide : styles.lightSide}`}>
+        <div className={`${styles.post} ${(props.side === 'light') ? styles.lightSide : styles.darkSide}`}>
             {props.children}
         </div>
     )

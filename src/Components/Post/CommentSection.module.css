@@ -46,7 +46,7 @@
     text-align: left;
     margin-top: 0.5em;
     top: 3em;
-    left: 41em;
+    left: 38em;
 }
 .show {
     display: block;
@@ -54,13 +54,13 @@
 .hide {
     display: none;
 }
-textarea{
+.addComment textarea{
     width: 95%;
     color: #fff;
     border: none;
     background: #1c1e21;
     padding: 5px 10px;
-    height: 50px;
+    height: 70px;
     border-radius: 5px 5px 0px 0px;
     border-bottom: 3px solid #016BA8;
     margin-top: 10px;

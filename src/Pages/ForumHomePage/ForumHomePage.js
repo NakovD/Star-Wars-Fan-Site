@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ForumBody from '../../Components/Forum/ForumBody.js';
 import Button from '../../Components/Button/Button.js';
 import TableForum from '../../Components/Forum/TableForum.js';
 import TableRow from '../../Components/Forum/TableRow.js';
 import SmallButton from '../../Components/Forum/SmallButton.js';
 import styles from './ForumHomePage.module.css';
+import serverRequests from '../../utils/back-end-service.js';
 
 
 
@@ -12,31 +13,16 @@ import styles from './ForumHomePage.module.css';
 
 
 const ForumHomePage = () => {
-    const info = [{
-        title: 'Rey is flat like a skateboard, my dudes, I just cant fap on her...',
-        creator: 'migo-chigo123123',
-        replies: '120',
-        likes: '2000'
-    },
-    {
-        title: 'Rey is flat like a skateboard, my dudes, I just cant fap on her...',
-        creator: 'migo-chigo123123',
-        replies: '120',
-        likes: '2000'
-    },
-    {
-        title: 'Rey is flat like a skateboard, my dudes, I just cant fap on her...',
-        creator: 'migo-chigo123123',
-        replies: '120',
-        likes: '2000'
-    },
-    {
-        title: 'Rey is flat like a skateboard, my dudes, I just cant fap on her...',
-        creator: 'migo-chigo123123',
-        replies: '120',
-        likes: '2000'
-    },
-    ]
+
+    const [posts, changePosts] = useState([]);
+
+    useEffect(() => {
+        const getPosts = async () => {
+            const data = await serverRequests.GET('http://localhost:3001/api/posts');
+            changePosts(data);
+        }
+        getPosts();
+    }, []);
 
     return (
         <ForumBody >
@@ -47,7 +33,7 @@ const ForumHomePage = () => {
                 <SmallButton text='Date' />
             </div>
             <TableForum >
-                {info.map((obj, i) => { return <TableRow key={i} {...obj} /> })}
+                {posts.map(obj => { return <TableRow key={obj._id} {...obj} /> })}
             </TableForum>
         </ForumBody>
     );

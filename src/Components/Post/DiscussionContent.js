@@ -1,14 +1,20 @@
 import React from 'react';
 import styles from './DiscussionContent.module.css';
 
-const DiscussionContent = () => {
+const DiscussionContent = ({ data }) => {
+    let dateString = '';
+    if (data.createdAt) {
+        const dateArr = data.createdAt.split('-');
+        const date = dateArr[2].slice(0, 2);
+        dateString = `${date}-${dateArr[1]}-${dateArr[0]}`;
+    }
 
     return (
         <div className={styles.content}>
-            <p className={styles.titlePost}>Kylo ren is crybaby?</p>
-            <p className={styles.postDescription}>I really think kylo is making himself funny, i mean, he isnt even a true sith. Probably just an emo :D :D Prove me wrongI really think kylo is making himself funny, i mean, he isnt even a true sith. Probably just an emo :D :D Prove me wrongI really think kylo is making himself funny, i mean, he isnt even a true sith. Probably just an emo :D :D Prove me wrongI really think kylo is making himself funny, i mean, he isnt even a true sith. Probably just an emo :D :D Prove me wrongI really think kylo is making himself funny, i mean, he isnt even a true sith. Probably just an emo :D :D Prove me wrongI really think kylo is making himself funny, i mean, he isnt even a true sith. Probably just an emo :D :D Prove me wrongI really think kylo is making himself funny, i mean, he isnt even a true sith. Probably just an emo :D :D Prove me wrongI really think kylo is making himself funny, i mean, he isnt even a true sith. Probably just an emo :D :D Prove me wrong</p>
-            <p className={styles.postedOn}>Posted on: </p>
-            <p className={styles.likes}>5 people liked this!</p>
+            <p className={styles.titlePost}>{data.title}</p>
+            <p className={styles.postDescription}>{data.description}</p>
+            <p className={styles.postedOn}>Posted on: {dateString} </p>
+            <p className={styles.likes}>{data.likes} people liked this!</p>
         </div>
     )
 }
