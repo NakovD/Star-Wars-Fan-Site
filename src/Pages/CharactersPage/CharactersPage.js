@@ -6,7 +6,7 @@ import serverRequests from '../../utils/back-end-service.js';
 
 
 const CharactersPage = () => {
-
+    
     const [characters, changeChars] = useState([]);
 
     useEffect(() => {
