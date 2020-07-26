@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AuthContext from './Context.js';
+import { verifyUser } from './utils/auth.js';
 
 const App = (props) => {
+
     const [auth, changeAuth] = useState({
         loggedIn: null,
         userInfo: {
@@ -18,7 +20,7 @@ const App = (props) => {
     }
 
     const logOut = () => {
-        document.cookie = 'clear cookie'; //TO DO, ADD COOKIE NAME FOR REGULAR USER AND FOR ADMIN;
+        document.cookie = "authToken= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"; //TO DO, ADD COOKIE NAME FOR REGULAR USER AND FOR ADMIN;
         changeAuth({
             loggedIn: false,
             userInfo: {
@@ -27,6 +29,19 @@ const App = (props) => {
             }
         });
     }
+
+    useEffect(() => {
+        const serverOperation = async () => {
+            const verify = await verifyUser();
+            if (verify.error) {
+                logOut();
+                return;
+            }
+            logIn(verify.userInfo);
+
+        }
+        serverOperation();
+    }, []);
 
 
     return (

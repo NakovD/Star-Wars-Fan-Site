@@ -25,7 +25,7 @@ const validator = (field, authData) => {
                     error: true,
                     message: 'Password must be at least 6 characters long!'
                 }
-            }else if (authData.repeatPassword !== authData.password) {
+            } else if (authData.repeatPassword !== authData.password) {
                 return {
                     error: true,
                     message: 'Passwords must match!'
@@ -41,23 +41,36 @@ const validator = (field, authData) => {
     return validations[field](authData);
 }
 
-const submitValidator = (authData) => {
-    if (authData.usernameErr || authData.passwordErr || authData.repeatPasswordErr) {
-        return {
-            error: true,
-            message: 'There is an error, brother!'
-        };
-    } else {
-        if (!authData.username || !authData.password || !authData.repeatPassword || !authData.side) {
-            return {
-                error: true,
-                message: 'Fields must not be empty(you may have forgotten to choose a side)!'
-            };
-        }
-        return {
-            error: false
+const submitValidator = (authData, submitFor) => {
+    const typeValidator = {
+        'register': function (authData) {
+            const errObj = { error: null, message: null };
+            if (authData.usernameErr || authData.passwordErr || authData.repeatPasswordErr) {
+                errObj.error = true;
+                errObj.message = 'There is an error, brother!'
+                return errObj;
+            }
+            if (!authData.username || !authData.password || !authData.repeatPassword || !authData.side) {
+                errObj.error = true;
+                errObj.message = 'Fields must not be empty(You may have forgotten to choose a side!)';
+                return errObj;
+            }
+            errObj.error = false;
+            return errObj;
+        },
+        'login': function (authData) {
+            const errObj = { error: null, message: null };
+            if (!authData.username || !authData.password) {
+                errObj.error = true;
+                errObj.message = 'Please fill all fields!';
+                return errObj;
+            }
+            errObj.error = false;
+            return errObj;
         }
     }
+    return typeValidator[submitFor](authData);
+
 }
 
 export {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import AuthForm from '../../Components/Auth/AuthForm.js';
 import PopUp from '../../Components/PopUp/PopUp.js';
 import InputFieldSpan from '../../Components/Auth/InputFieldSpan.js';
@@ -11,8 +11,10 @@ import SelectComp from '../../Components/SelectComp/SelectComp.js';
 import { validator, submitValidator } from '../../utils/authValidator.js';
 import { register } from '../../utils/auth.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
+import authContext from '../../Context.js';
 
 const RegisterPage = (props) => {
+    const authInfo = useContext(authContext);
     const [authData, changeData] = useState({
         username: '',
         usernameErr: false,
@@ -21,19 +23,20 @@ const RegisterPage = (props) => {
         repeatPassword: '',
         repeatPasswordErr: false,
         side: '',
-        sideErr: '',
         submitErr: ''
     });
     const submitFunc = async (e) => {
         e.preventDefault();
-        const check = submitValidator(authData);
+        const check = submitValidator(authData, 'register');
         if (check.error) {
             changeData({ ...authData, submitErr: check.message });
             return;
         }
         const registerUser = await register(authData);
         if (!registerUser.error) {
+            authInfo.logIn(registerUser.userInfo);
             props.history.push('/characters');
+            return;
         }
 
     }
@@ -42,7 +45,7 @@ const RegisterPage = (props) => {
         const check = validator(property, value);
         if (check.error) {
             changeData({ ...authData, [`${property}Err`]: check.message })
-        } else if (!check.error) {
+        } else  {
             changeData({ ...authData, [`${property}Err`]: false })
         }
     }
