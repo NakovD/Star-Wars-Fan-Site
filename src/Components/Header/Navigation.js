@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { withRouter } from 'react-router-dom';
 import styles from './Navigation.module.css';
 import Route from './Route.js';
 import headerLink from '../../utils/headerLinks.js';
+import authContext from '../../Context.js';
+import Logout from './Logout.js';
 
 
+const Navigation = (props) => {
+    const authInfo = useContext(authContext);
+    const allLinks = headerLink(authInfo.loggedIn);
+    const LogOutHandler = () => {
+        authInfo.logOut();
+        props.history.push('/characters');
+        return;
+    }
 
-const Navigation = ({ visibility }) => {
-    const loggedIn = true;   //this will change
-    // const darkSide = 'red';
-    const lightSide = 'blue';
-    
-    const allLinks = headerLink(loggedIn);
     return (
-        <nav className={visibility ? styles.show : null}>
+        <nav className={props.visibility ? styles.show : null}>
             <ul>
-                {allLinks.map(link => { return (<Route key={link.to} color={loggedIn ? lightSide : 'yellow'} goTo={link.to} href={link.href} />) })}
+                {allLinks.map(link => {
+                    return (<Route key={link.to} side={authInfo.userInfo.side} goTo={link.to} href={link.href} />)
+                })}
+                {authInfo.loggedIn ? (<Logout onClick={e => LogOutHandler()} side={authInfo.userInfo.side} />) : null}
             </ul>
         </nav>
 
     )
 }
 
-export default Navigation;
+export default withRouter(Navigation);

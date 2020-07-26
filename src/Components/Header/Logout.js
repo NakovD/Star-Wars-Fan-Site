@@ -1,23 +1,18 @@
 import React from 'react';
 import styles from './Route.module.css';
-import { Link } from 'react-router-dom';
 
-
-const Route = ({ side, goTo, href }) => {
+const Logout = ({ side, onClick }) => {
     let color = '';
     if (side === 'dark') {
         color = 'red';
     } else if (side === 'light') {
         color = 'green';
-    } else {
-        color = 'yellow';
     }
     return (
         <li className={styles[color]}>
-            <Link to={`/${href}`}>{goTo}</Link>
+            <p onClick={onClick}>Logout</p>
         </li>
-
     )
 }
 
-export default Route;
+export default Logout;

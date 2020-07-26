@@ -12,7 +12,6 @@ export default {
             },
             body: JSON.stringify(body)
         });
-        const message = await response.json();
-        return message;
+        return response;
     }
 }

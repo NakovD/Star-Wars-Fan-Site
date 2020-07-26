@@ -16,17 +16,13 @@ const headerLinks = (loggedIn) => {
             {
                 to: 'Profile Page',
                 href: 'profilePage'
-            },
-            {
-                to: 'Logout',
-                href: 'logout'
             }
         ]
     }else {
         return [
             {
                 to: 'Home',
-                href: '/'
+                href: ''
             },
             {
                 to: 'Characters',
@@ -43,7 +39,7 @@ const headerLinks = (loggedIn) => {
             
             {
                 to: 'About Me',
-                href: '/aboutMe'
+                href: 'aboutMe'
             }
         ]
     }
