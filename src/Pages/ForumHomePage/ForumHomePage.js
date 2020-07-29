@@ -18,7 +18,7 @@ const ForumHomePage = () => {
 
     useEffect(() => {
         const getPosts = async () => {
-            const data = await serverRequests.GET('http://localhost:3001/api/posts');
+            const data = await serverRequests.GET('posts');
             changePosts(data);
         }
         getPosts();

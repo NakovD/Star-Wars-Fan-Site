@@ -1,15 +1,33 @@
 import serverRequests from './back-end-service.js';
 
 
+const verifyAdmin = async (body) => {
+
+    const fetch = await serverRequests.POST('admin/verify', body);
+    if (fetch.status !== 200) {
+        const obj = await fetch.json();
+        return {
+            error: true,
+            message: obj.message
+        }
+    } else {
+        const obj = await fetch.json();
+        return {
+            error: false,
+            message: obj.message
+        }
+    }
+}
+
 const authenticate = async (reqBody, url) => {
     const auth = await serverRequests.POST(url, reqBody);
     if (auth.status === 200 || auth.status === 201) {
-        const token = auth.headers.get('authToken');
-        document.cookie = `authToken=${token}; path=/`;
-        const userObj = await auth.json();
+        const token = auth.headers.get('adminAuth');
+        document.cookie = `adminAuth=${token}; path=/adminOnly`;
+        const adminObj = await auth.json();
         return {
             error: false,
-            userInfo: userObj.userInfo
+            userInfo: adminObj.userInfo
         }
     } else {
         const data = await auth.json();
@@ -25,7 +43,7 @@ const getCookie = (name) => {
     return cookieValue ? cookieValue[2] : null;
 }
 
-const verifyUser = async (typeToken) => {
+const verifyAdminLogin = async (typeToken) => {
     const token = getCookie(typeToken);
     if (!token) {
         return {
@@ -33,7 +51,7 @@ const verifyUser = async (typeToken) => {
             message: 'No token'
         }
     }
-    const verify = await serverRequests.POST('verifyUser', { token });
+    const verify = await serverRequests.POST('admin/verifyLogin', { token });
     if (verify.status === 200) {
         const responseObj = await verify.json();
         return {
@@ -46,9 +64,11 @@ const verifyUser = async (typeToken) => {
             message: verify.message
         }
     }
+
 }
 
 export {
+    verifyAdmin,
     authenticate,
-    verifyUser
+    verifyAdminLogin
 }

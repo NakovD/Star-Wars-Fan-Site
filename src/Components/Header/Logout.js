@@ -7,10 +7,12 @@ const Logout = ({ side, onClick }) => {
         color = 'red';
     } else if (side === 'light') {
         color = 'green';
+    } else if (side === 'admin') {
+        color = 'purple';
     }
     return (
         <li className={styles[color]}>
-            <p onClick={onClick}>Logout</p>
+            <p className={styles.logout} onClick={onClick}>Logout</p>
         </li>
     )
 }

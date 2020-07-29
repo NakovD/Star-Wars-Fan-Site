@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+.homeContainer {
+    width: 65%;
+    margin: 1em auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.homeContainer img {
+    flex: 0 0 auto; 
+    height: 500px;
+    padding-right: 1em;
+}
+
+.homeText {
+    color:white;
+    flex: 0 0 50%;
+}
+
+.homeText h2 {
+    font-family: 'SF Distant Galaxy';
+    font-size: 40px;
+    letter-spacing: 1px;
+    color: rgba(0, 0, 0, 0.9);
+    padding-bottom: 0.5em;
+    font-weight: 550;
+    text-shadow: -1px 0 #00b07b, 0 1px #00b07b, 1px 0 #00b07b, 0 -1px #00b07b;
+
+}
+
+.homeText h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 25px;
+    padding-bottom: 1em;
+    color: #00b07b;
+}
+.homeText h4 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    padding-bottom: 1em;
+    color: #00b07b;
+}
+
+.homeText p {
+    color: #00b07b;
+    font-size: 18px;
+    font-family: 'Orbitron', sans-serif;
+    padding-bottom: 1em;
+}

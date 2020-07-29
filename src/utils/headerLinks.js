@@ -1,5 +1,5 @@
 const headerLinks = (loggedIn) => {
-    if (loggedIn) {
+    if (loggedIn === 'regular') {
         return [
             {
                 to: 'Characters',
@@ -18,7 +18,14 @@ const headerLinks = (loggedIn) => {
                 href: 'profilePage'
             }
         ]
-    }else {
+    } else if (loggedIn === 'admin') {
+            return [
+                {
+                    to: 'Characters',
+                    href: 'adminOnly/characters'
+                }
+            ]
+    } else if (!loggedIn) {
         return [
             {
                 to: 'Home',
@@ -36,7 +43,7 @@ const headerLinks = (loggedIn) => {
                 to: 'Register',
                 href: 'register'
             },
-            
+
             {
                 to: 'About Me',
                 href: 'aboutMe'

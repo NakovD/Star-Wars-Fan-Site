@@ -9,12 +9,14 @@ const Route = ({ side, goTo, href }) => {
         color = 'red';
     } else if (side === 'light') {
         color = 'green';
+    } else if (side === 'admin') {
+        color = 'purple';
     } else {
         color = 'yellow';
     }
     return (
         <li className={styles[color]}>
-            <Link to={`/${href}`}>{goTo}</Link>
+            <Link className={styles.link} to={`/${href}`}>{goTo}</Link>
         </li>
 
     )

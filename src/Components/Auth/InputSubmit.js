@@ -2,7 +2,6 @@ import React from 'react';
 
 
 
-
 const InputSubmit = ({ value }) => {
 
     return (
