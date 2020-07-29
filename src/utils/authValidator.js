@@ -1,41 +1,31 @@
 
 
-const validator = (field, authData) => {
+const validator = (field, authData, onErr, noErr) => {
     const validations = {
         'username': function (authData) {
             if (authData.username.length < 5) {
-
-                return {
-                    error: true,
-                    message: 'Username must be at least 5 characters long!'
-                }
+                const message = 'Username must be at least 5 characters long!';
+                return onErr(message, field);
             }
+            return noErr(field);
         },
         'password': function (authData) {
             if (authData.password.length < 6) {
-                return {
-                    error: true,
-                    message: 'Password must be at least 6 characters long!'
-                }
+                const message = 'Password must be at least 6 characters long!';
+                return onErr(message, field);
             }
+            return noErr(field);
         },
         'repeatPassword': function (authData) {
+            let message = ''
             if (authData.repeatPassword.length < 6) {
-                return {
-                    error: true,
-                    message: 'Password must be at least 6 characters long!'
-                }
+                message = 'Password must be at least 6 characters long!';
+                return onErr(message, field);
             } else if (authData.repeatPassword !== authData.password) {
-                return {
-                    error: true,
-                    message: 'Passwords must match!'
-                }
+                message = 'Passwords must match!';
+                return onErr(message, field);
             }
-        }
-    }
-    if (!validations[field](authData)) {
-        return {
-            error: false
+            return noErr(field);
         }
     }
     return validations[field](authData);
@@ -61,6 +51,21 @@ const submitValidator = (authData, submitFor) => {
         'login': function (authData) {
             const errObj = { error: null, message: null };
             if (!authData.username || !authData.password) {
+                errObj.error = true;
+                errObj.message = 'Please fill all fields!';
+                return errObj;
+            }
+            errObj.error = false;
+            return errObj;
+        },
+        'adminRegister': function (authData) {
+            const errObj = { error: null, message: null };
+            if (authData.usernameErr || authData.passwordErr || authData.repeatPasswordErr) {
+                errObj.error = true;
+                errObj.message = 'There is an error, brother!'
+                return errObj;
+            }
+            if (!authData.username || !authData.password || !authData.repeatPassword) {
                 errObj.error = true;
                 errObj.message = 'Please fill all fields!';
                 return errObj;

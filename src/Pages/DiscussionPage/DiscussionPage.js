@@ -20,24 +20,22 @@ const DiscussionPage = (props) => {
 
     useEffect(() => {
         const getDetails = async () => {
-            const discInfo = await serverRequests.GET(`http://localhost:3001/api/post/${discussionId}`);
+            const discInfo = await serverRequests.GET(`post/${discussionId}`);
             changeDisc(discInfo);
         }
         getDetails();
-    }, [discussionId]);
+    }, [discussionDetails.comments, discussionId]);
 
-        console.log(discussionDetails);
     return (
         <ForumBody >
             <PostBody side={discussionDetails.creator.side}>
                 <ProfileInfo {...discussionDetails.creator} />
                 <DiscussionContent data={discussionDetails} />
             </PostBody>
-            <CommentSection comments={discussionDetails.comments}>
-                <Comment username="KIRO" commentText="HI SUCKA" />
-                <Comment username="MIRO" commentText="Welcome in our home! we curse a lot here!" />
-                <Comment username="Dido" commentText="Sorry, man, they are a little too much, welcome! We are really happy that you are here" />
-                <Comment username="Dori" commentText="hi guys,nice to see you" />
+            <CommentSection>
+                {discussionDetails.comments ? discussionDetails.comments.map(comment => {
+                    return (<Comment key={comment._id} {...comment} />)
+                }) : null}
             </CommentSection>
         </ForumBody>
     );

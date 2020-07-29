@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import CharFormBody from '../../Components/CharacterForm/CharFormBody.js';
 import InputField from '../../Components/Auth/InputField.js';
 import InputSubmit from '../../Components/Auth/InputSubmit.js';
@@ -6,17 +6,17 @@ import PopUp from '../../Components/PopUp/PopUp.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
 import discussionValidator from '../../utils/discussionValidator.js';
 import createDisc from '../../utils/createDiscussion.js';
+import AuthContext from '../../Context.js';
 
 
 
 const CreateDiscussionPage = (props) => {
-
+    const authInfo = useContext(AuthContext);
     const [discussion, changeDiscussion] = useState({
         title: '',
         description: '',
         err: false
     });
-
     const submitDiscussion = async (e) => {
         e.preventDefault();
         const check = discussionValidator(discussion);
@@ -24,7 +24,7 @@ const CreateDiscussionPage = (props) => {
             changeDiscussion({ ...discussion, err: check.message });
             return;
         }
-        const createDiscussion = await createDisc(discussion);
+        const createDiscussion = await createDisc(discussion,authInfo.userInfo.userId);
         if (createDiscussion.error) {
             changeDiscussion({ ...discussion, err: createDiscussion.message });
             return;

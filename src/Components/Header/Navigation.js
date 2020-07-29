@@ -3,16 +3,16 @@ import { withRouter } from 'react-router-dom';
 import styles from './Navigation.module.css';
 import Route from './Route.js';
 import headerLink from '../../utils/headerLinks.js';
-import authContext from '../../Context.js';
+import AuthContext from '../../Context.js';
 import Logout from './Logout.js';
 
 
 const Navigation = (props) => {
-    const authInfo = useContext(authContext);
+    const authInfo = useContext(AuthContext);
     const allLinks = headerLink(authInfo.loggedIn);
     const LogOutHandler = () => {
         authInfo.logOut();
-        props.history.push('/characters');
+        props.history.push('/');
         return;
     }
 

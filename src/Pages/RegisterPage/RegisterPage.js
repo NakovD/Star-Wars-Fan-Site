@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { withRouter } from 'react-router-dom';
 import AuthForm from '../../Components/Auth/AuthForm.js';
 import PopUp from '../../Components/PopUp/PopUp.js';
 import InputFieldSpan from '../../Components/Auth/InputFieldSpan.js';
@@ -9,12 +10,12 @@ import Or from '../../Components/Auth/Or.js';
 import FBButton from '../../Components/Auth/FBButton.js';
 import SelectComp from '../../Components/SelectComp/SelectComp.js';
 import { validator, submitValidator } from '../../utils/authValidator.js';
-import { register } from '../../utils/auth.js';
+import { authenticate } from '../../utils/auth.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
-import authContext from '../../Context.js';
+import AuthContext from '../../Context.js';
 
 const RegisterPage = (props) => {
-    const authInfo = useContext(authContext);
+    const authInfo = useContext(AuthContext);
     const [authData, changeData] = useState({
         username: '',
         usernameErr: false,
@@ -32,7 +33,13 @@ const RegisterPage = (props) => {
             changeData({ ...authData, submitErr: check.message });
             return;
         }
-        const registerUser = await register(authData);
+
+        const registerUser = await authenticate({
+            username: authData.username,
+            password: authData.password,
+            repeatPassword: authData.repeatPassword,
+            side: authData.side
+        }, 'register');
         if (!registerUser.error) {
             authInfo.logIn(registerUser.userInfo);
             props.history.push('/characters');
@@ -40,15 +47,8 @@ const RegisterPage = (props) => {
         }
 
     }
-
-    const errorCheck = (property, value) => {
-        const check = validator(property, value);
-        if (check.error) {
-            changeData({ ...authData, [`${property}Err`]: check.message })
-        } else  {
-            changeData({ ...authData, [`${property}Err`]: false })
-        }
-    }
+    const onErr = (msg, prop) => { changeData({ ...authData, [`${prop}Err`]: msg }) };
+    const noErr = (prop) => { changeData({ ...authData, [`${prop}Err`]: false }) }
 
     return (
         <>
@@ -60,7 +60,7 @@ const RegisterPage = (props) => {
                         usedFor="Username"
                         value={authData.username}
                         error={authData.usernameErr}
-                        onBlur={e => errorCheck('username', authData)}
+                        onBlur={e => validator('username', authData, onErr, noErr)}
                         onChange={e => changeData({ ...authData, username: e.target.value })}
                     />
                 </InputFieldSpan>
@@ -71,7 +71,9 @@ const RegisterPage = (props) => {
                         error={authData.passwordErr}
                         value={authData.password}
                         onChange={e => changeData({ ...authData, password: e.target.value })}
-                        onBlur={e => errorCheck('password', authData)}
+                        onBlur={e => validator('password', authData,
+                            (errMsg) => changeData({ ...authData, passwordErr: errMsg }),
+                            () => changeData({ ...authData, passwordErr: false }))}
                     />
                 </InputFieldSpan>
                 <InputFieldSpan className="fontawesome-lock">
@@ -81,7 +83,9 @@ const RegisterPage = (props) => {
                         value={authData.repeatPassword}
                         error={authData.repeatPasswordErr}
                         onChange={e => changeData({ ...authData, repeatPassword: e.target.value })}
-                        onBlur={e => errorCheck('repeatPassword', authData)}
+                        onBlur={e => validator('repeatPassword', authData,
+                            (errMsg) => changeData({ ...authData, repeatPasswordErr: errMsg }),
+                            () => changeData({ ...authData, repeatPasswordErr: false }))}
                     />
                 </InputFieldSpan>
                 <SelectComp
@@ -103,4 +107,4 @@ const RegisterPage = (props) => {
     )
 }
 
-export default RegisterPage;
+export default withRouter(RegisterPage);

@@ -1,18 +1,9 @@
 import serverRequests from './back-end-service.js';
 
 
-const createCharacter = async (charInfo) => {
-    const reqBody = {
-        name: charInfo.name,
-        era: charInfo.era,
-        factions: charInfo.factions,
-        species: charInfo.species,
-        imgURL: charInfo.imgURL,
-        description: charInfo.description
-    }
-    const createChar = await serverRequests.POST('http://localhost:3001/api/createChar', reqBody);
-
-    if (createChar.message !== 'Character saved successfully in DB!') {
+const characterOperations = async (url, charInfo) => {
+    const createChar = await serverRequests.POST(url, charInfo);
+    if (createChar.status !== 201 && createChar.status !== 200) {
         return {
             error: true,
             message: createChar.message
@@ -23,4 +14,5 @@ const createCharacter = async (charInfo) => {
     }
 }
 
-export default createCharacter;
+
+export default characterOperations;

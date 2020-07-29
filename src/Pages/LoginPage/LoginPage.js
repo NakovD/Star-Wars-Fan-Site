@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { withRouter } from 'react-router-dom';
 import AuthForm from '../../Components/Auth/AuthForm.js';
 import InputFieldSpan from '../../Components/Auth/InputFieldSpan.js';
 import InputField from '../../Components/Auth/InputField.js';
@@ -8,12 +9,12 @@ import Or from '../../Components/Auth/Or.js';
 import FBButton from '../../Components/Auth/FBButton.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
 import { validator, submitValidator } from '../../utils/authValidator.js';
-import { login } from '../../utils/auth.js';
-import authContext from '../../Context.js';
+import { authenticate } from '../../utils/auth.js';
+import AuthContext from '../../Context.js';
 
 
 const LoginPage = (props) => {
-    const authInfo = useContext(authContext);
+    const authInfo = useContext(AuthContext);
 
     const [authData, changeAuthData] = useState({
         username: '',
@@ -23,23 +24,21 @@ const LoginPage = (props) => {
         submitErr: ''
     });
 
-    const errorCheck = (property, value) => {
-        const check = validator(property, authData);
-        if (check.error) {
-            changeAuthData({ ...authData, [`${property}Err`]: check.message });
-        } else {
-            changeAuthData({ ...authData, [`${property}Err`]: false });
-        }
-    }
+    const onErr = (msg, prop) => { changeAuthData({ ...authData, [`${prop}Err`]: msg }) };
+    const noErr = (prop) => { changeAuthData({ ...authData, [`${prop}Err`]: false }) }
 
     const submitHandler = async (e) => {
         e.preventDefault();
+        console.log(document.cookies);
         const check = submitValidator(authData, 'login');
         if (check.error) {
             changeAuthData({ ...authData, submitErr: check.message });
             return;
         }
-        const logInUser = await login(authData);
+        const logInUser = await authenticate({
+            username: authData.username,
+            password: authData.password
+        }, 'login');
         if (!logInUser.error) {
             authInfo.logIn(logInUser.userInfo);
             props.history.push('/characters');
@@ -56,7 +55,7 @@ const LoginPage = (props) => {
                     usedFor="Username"
                     value={authData.username}
                     error={authData.usernameErr}
-                    onBlur={e => errorCheck('username', authData.username)}
+                    onBlur={e => validator('username', authData, onErr, noErr)}
                     onChange={e => changeAuthData({ ...authData, username: e.target.value })}
                 />
             </InputFieldSpan>
@@ -66,7 +65,7 @@ const LoginPage = (props) => {
                     usedFor="Password"
                     value={authData.password}
                     error={authData.passwordErr}
-                    onBlur={e => errorCheck('password', authData.password)}
+                    onBlur={e => validator('password', authData, onErr, noErr)}
                     onChange={e => changeAuthData({ ...authData, password: e.target.value })}
                 />
             </InputFieldSpan>
@@ -78,4 +77,4 @@ const LoginPage = (props) => {
     )
 }
 
-export default LoginPage;
+export default withRouter(LoginPage);

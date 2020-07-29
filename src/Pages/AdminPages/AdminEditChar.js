@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import CharFormBody from '../../Components/CharacterForm/CharFormBody.js';
 import InputField from '../../Components/Auth/InputField.js';
-import InputSubmit from '../../Components/Auth/InputSubmit.js';
 import PopUp from '../../Components/PopUp/PopUp.js';
 import SelectComp from '../../Components/SelectComp/SelectComp.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
 import charValidator from '../../utils/characterValidator.js';
+import styles from './AdminEditChar.module.css';
 import serverRequests from '../../utils/back-end-service.js';
 import characterOperations from '../../utils/characterDbSave.js';
 
 
-
-const EditCharacterPage = (props) => {
+const AdminEditChar = (props) => {
     const idChar = props.match.params.id;
     const [charDetails, changeDetails] = useState({
         name: '',
@@ -31,24 +30,23 @@ const EditCharacterPage = (props) => {
         getData();
     }, [idChar]);
 
-    const submitForm = async (e) => {
-        e.preventDefault();
+    const submitForm = async () => {
         const check = charValidator(charDetails);
         if (check.error) {
             changeDetails({ ...charDetails, err: check.message });
             return;
         }
-        const createChar = await characterOperations('createChar', charDetails);
-        
-        if (createChar.error) {
-            changeDetails({ ...charDetails, err: createChar.message });
+
+        const approveCharacter = await characterOperations('approveChar', charDetails);
+        if (approveCharacter.error) {
+            changeDetails({ ...charDetails, err: approveCharacter.message });
             return;
         }
-        props.history.push('/characters');
+        props.history.push('/adminOnly/characters');
     }
 
     return (
-        <CharFormBody headingText="Request an edit, now!" onSubmit={e => submitForm(e)} btnText="Request an edit!">
+        <CharFormBody headingText="Approve or disapprove, now!">
             <InputField
                 type="text"
                 usedFor='Name'
@@ -85,10 +83,12 @@ const EditCharacterPage = (props) => {
                 value={charDetails.description}
                 onChange={e => changeDetails({ ...charDetails, description: e.target.value })}
                 required></textarea>
-            <InputSubmit value="Request an edit!" />
+            <button type='button' onClick={e => submitForm()} className={styles.adminBtn} >Approve?</button>
+            <p className={styles.or}>Or</p>
+            <button type='button' className={styles.adminBtn} >Disapprove?</button>
             {charDetails.err ? (<ErrNotification error={charDetails.err} />) : null}
         </CharFormBody>
     )
 }
 
-export default EditCharacterPage;
+export default AdminEditChar;

@@ -6,7 +6,7 @@ import SelectComp from '../../Components/SelectComp/SelectComp.js';
 import InputSubmit from '../../Components/Auth/InputSubmit.js';
 import charValidator from '../../utils/characterValidator.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
-import createCharacter from '../../utils/characterDbSave.js';
+import characterOperations from '../../utils/characterDbSave.js';
 
 
 const CreateCharacterPage = (props) => {
@@ -27,7 +27,7 @@ const CreateCharacterPage = (props) => {
             changeDetails({ ...charInfo, err: check.message });
             return;
         }
-        const createChar = await createCharacter(charInfo);
+        const createChar = await characterOperations('createChar', charInfo);
         if (createChar.error) {
             changeDetails({ ...charInfo, err: createChar.error });
             return;

@@ -7,6 +7,15 @@
     background: rgba(28, 30, 33, 0.4);
     position: relative;
 }
+.commentSection :nth-child(odd) {
+    margin-left: auto;
+    text-align: justify;
+    text-justify: distribute;
+}
+.commentSection :nth-child(1) {
+    margin-left: 0;
+}
+
 .commentSection p {
     color: #fff;
     font-size: 20px;

@@ -66,6 +66,7 @@
 	-o-transition:all .1s ease-in-out;
 	transition:all .1s ease-in-out;}
 
+
 #charForm .container form .submit:hover {
 	color:#FFF;
 	border:2px solid #dd4545;

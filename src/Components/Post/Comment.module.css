@@ -5,17 +5,17 @@
     margin-bottom: 1.5em;
     padding: 0.5em;
     border-radius: 3px;
+    align-items: right;
     /* text-align: right; */
 }
-.comment a {
+.comment .profileLink {
     text-decoration: none;
     color: #fff;
 }
-.comment p {
-    justify-content: right;
-    width: 70%;
+.comment .commentText {
+    width: 95%;
     border-radius: 10px;
     background: #373737;
     padding: 0.5em;
-    margin: 0.1em 0.1em 0.1em 0.1em;
+    margin: 0.1em;
 }
