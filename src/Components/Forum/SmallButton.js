@@ -1,15 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './SmallButton.module.css';
 
 
 
 
 
-const SmallButton = ({ text }) => {
+const SmallButton = ({ text, onClick,disabled }) => {
 
     return (
-    <Link to="/sign in" className={styles.myButton}>{text}</Link>
+        <button className={styles.myButton} disabled={disabled} onClick={onClick}>{text}</button>
     )
 }
 

@@ -19,6 +19,7 @@ import AdminCharDetails from './Pages/AdminPages/AdminCharDetails.js';
 import AdminEditChar from './Pages/AdminPages/AdminEditChar.js';
 import Unauthorized from './Pages/Unauthorized/Unauthorized.js';
 import Home from './Pages/HomePage/Home.js';
+import ProfilePage from './Pages/ProfilePage/Profile.js';
 import authContext from './Context.js';
 
 
@@ -36,6 +37,7 @@ const Navigation = () => {
                     <Route path='/charDetails/:id' component={CharDetailsPage} />
                     <Route path='/adminOnly/verify' render={() => (!authInfo.loggedIn ? <AdminVerify /> : <Redirect to='/unauthorized' />)} />
                     <Route path='/unauthorized' component={Unauthorized} />
+                    <Route path='/profilePage' component={ProfilePage} />
                     <Route path='/login' render={() => (!authInfo.loggedIn ? <LoginPage /> : <Redirect to='/unauthorized' />)} />
                     <Route path='/register' render={() => (!authInfo.loggedIn ? <RegisterPage /> : <Redirect to='/unauthorized' />)} />
                     <Route path='/adminOnly/login' render={() => (!authInfo.loggedIn ? <AdminLogin /> : <Redirect to='/unauthorized' />)} />

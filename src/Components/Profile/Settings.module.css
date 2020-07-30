@@ -1,0 +1,42 @@
+.settings {
+    margin: 1em 1em 0.5em 1em;
+}
+.settings h4 {
+	margin-bottom: 1em;
+}
+.settings button.primary {
+	background-color: #03BFCB;
+	border: 1px solid #03BFCB;
+	border-radius: 3px;
+	color: #231E39;
+	font-family: Montserrat, sans-serif;
+	font-weight: 500;
+	padding: 10px 25px;
+	margin-bottom: 1em;
+}
+
+.settings select {
+	width: 40%;
+	margin-right: 2em;
+	background-color: #231E39;
+	border-radius: 10px;
+	border: 2px solid #02899C;
+}
+.settings option {
+	background-color: #231E39;
+}
+.settings input {
+	width: 95%;
+	margin-right: 2em;
+	padding: 5px 10px;
+	margin-bottom: 1em;
+	border: 2px solid #02899C;
+	background-color: #231E39;
+	border-radius: 10px;
+	
+}
+
+.settings button.primary.ghost {
+	background-color: transparent;
+	color: #02899C;
+}
