@@ -8,6 +8,7 @@ import charValidator from '../../utils/characterValidator.js';
 import styles from './AdminEditChar.module.css';
 import serverRequests from '../../utils/back-end-service.js';
 import characterOperations from '../../utils/characterDbSave.js';
+import deleteChar from '../../utils/deleteChar.js';
 
 
 const AdminEditChar = (props) => {
@@ -21,6 +22,7 @@ const AdminEditChar = (props) => {
         description: '',
         err: false
     });
+    
     useEffect(() => {
         const getData = async () => {
             const charInfo = await serverRequests.GET(`character/${idChar}`);
@@ -40,6 +42,15 @@ const AdminEditChar = (props) => {
         const approveCharacter = await characterOperations('approveChar', charDetails);
         if (approveCharacter.error) {
             changeDetails({ ...charDetails, err: approveCharacter.message });
+            return;
+        }
+        props.history.push('/adminOnly/characters');
+    }
+
+    const deleteCharHandler = async () => {
+        const deleteChar_ = await deleteChar(idChar);
+        if (deleteChar_.error) {
+            changeDetails({ ...charDetails, err: deleteChar_.message });
             return;
         }
         props.history.push('/adminOnly/characters');
@@ -85,7 +96,7 @@ const AdminEditChar = (props) => {
                 required></textarea>
             <button type='button' onClick={e => submitForm()} className={styles.adminBtn} >Approve?</button>
             <p className={styles.or}>Or</p>
-            <button type='button' className={styles.adminBtn} >Disapprove?</button>
+            <button type='button' onClick={e => deleteCharHandler()} className={styles.adminBtn} >Disapprove?</button>
             {charDetails.err ? (<ErrNotification error={charDetails.err} />) : null}
         </CharFormBody>
     )
