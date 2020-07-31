@@ -1,16 +1,19 @@
 import React from 'react';
 import styles from './Discussions.module.css';
 
-const Discussions = () => {
-
-
+const Discussions = ({ discussions }) => {
+    let only3 = [];
+    if (discussions) {
+        const mostReplies = discussions.sort((a, b) => b.comments.length - a.comments.length);
+        only3 = mostReplies.slice(0, 3);
+    }
     return (
         <div className={styles.discussions}>
             <h5>Discussions:</h5>
             <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
+                {only3.map(el => {
+                    return (<li key={el._id}>{el.title}</li>)
+                })}
             </ul>
         </div>
     )

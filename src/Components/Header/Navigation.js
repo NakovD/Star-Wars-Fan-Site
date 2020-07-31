@@ -9,7 +9,7 @@ import Logout from './Logout.js';
 
 const Navigation = (props) => {
     const authInfo = useContext(AuthContext);
-    const allLinks = headerLink(authInfo.loggedIn);
+    const allLinks = headerLink(authInfo.loggedIn, authInfo.userInfo.userId);
     const LogOutHandler = () => {
         authInfo.logOut();
         props.history.push('/');

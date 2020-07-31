@@ -1,10 +1,16 @@
 import React from 'react';
-import './Unauthorized.css';
+import styles from './Unauthorized.module.css';
 
 const Unauthorized = () => {
 
     return (
-        <div className="unauthorized">YOU ARE NOT ALLOWED TO GO THESE WAY, SORRY! AND BYE!</div>
+        <>
+            <div className={styles.unauthorized}>
+                <p>There isn't a page like this or You are not allowed to go this way! Sorry!</p>
+                <div className={`${styles.saber} ${styles.first}`}></div>
+                <div className={`${styles.saber} ${styles.second}`}></div>
+            </div>
+        </>
     )
 }
 

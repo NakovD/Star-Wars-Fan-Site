@@ -37,7 +37,7 @@ const Navigation = () => {
                     <Route path='/charDetails/:id' component={CharDetailsPage} />
                     <Route path='/adminOnly/verify' render={() => (!authInfo.loggedIn ? <AdminVerify /> : <Redirect to='/unauthorized' />)} />
                     <Route path='/unauthorized' component={Unauthorized} />
-                    <Route path='/profilePage' component={ProfilePage} />
+                    <Route path='/profilePage/:id' component={ProfilePage} />
                     <Route path='/login' render={() => (!authInfo.loggedIn ? <LoginPage /> : <Redirect to='/unauthorized' />)} />
                     <Route path='/register' render={() => (!authInfo.loggedIn ? <RegisterPage /> : <Redirect to='/unauthorized' />)} />
                     <Route path='/adminOnly/login' render={() => (!authInfo.loggedIn ? <AdminLogin /> : <Redirect to='/unauthorized' />)} />

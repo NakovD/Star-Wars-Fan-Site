@@ -1,4 +1,4 @@
-const headerLinks = (loggedIn) => {
+const headerLinks = (loggedIn, _id) => {
     if (loggedIn === 'regular') {
         return [
             {
@@ -15,16 +15,16 @@ const headerLinks = (loggedIn) => {
             },
             {
                 to: 'Profile Page',
-                href: 'profilePage'
+                href: `profilePage/${_id}`
             }
         ]
     } else if (loggedIn === 'admin') {
-            return [
-                {
-                    to: 'Characters',
-                    href: 'adminOnly/characters'
-                }
-            ]
+        return [
+            {
+                to: 'Characters',
+                href: 'adminOnly/characters'
+            }
+        ]
     } else if (!loggedIn) {
         return [
             {
