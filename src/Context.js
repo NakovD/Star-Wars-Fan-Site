@@ -11,7 +11,7 @@ const AuthContext = React.createContext({
     },
     verifyA: () => { },
     logIn: () => { },
-    logOut: () => { }
+    logOut: () => { },
 });
 
 

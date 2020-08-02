@@ -4,13 +4,12 @@ import PostBody from '../../Components/Post/PostBody.js';
 import ProfileInfo from '../../Components/Post/ProfileInfo.js';
 import DiscussionContent from '../../Components/Post/DiscussionContent.js';
 import CommentSection from '../../Components/Post/CommentSection.js';
-import Comment from '../../Components/Post/Comment.js';
 import serverRequests from '../../utils/back-end-service.js';
 import likePost from '../../utils/likePost.js';
+import addComment from '../../utils/addComment.js';
+import AddComment from '../../Components/Post/AddComment.js';
 import AuthContext from '../../Context.js';
 
-
-// https://codepen.io/Codchunks/pen/NEzpZB for a comment text area, very simple and cool!
 const DiscussionPage = (props) => {
     const authInfo = useContext(AuthContext);
     const [discussionDetails, changeDisc] = useState({
@@ -18,20 +17,24 @@ const DiscussionPage = (props) => {
             side: ''
         }
     });
+    const [comments, setComments] = useState([]);
     const [liked, changeLiked] = useState(false);
     const discussionId = props.match.params.id;
+    const [comment, setComment] = useState('');
+
 
     useEffect(() => {
         const getDetails = async () => {
             const discInfo = await serverRequests.GET(`post/${discussionId}`);
+            const commentsData = await serverRequests.GET(`comments/${discussionId}`);
             changeDisc(discInfo);
+            setComments(commentsData);
             if (discInfo.usersLiked.includes(authInfo.userInfo.userId)) {
                 changeLiked(true);
             }
         }
         getDetails();
-
-    }, [discussionDetails.comments, authInfo.userInfo.userId, discussionId]);
+    }, [authInfo.userInfo.userId, discussionId]);
 
     const likeHandler = async () => {
         if (discussionDetails.usersLiked.includes(authInfo.userInfo.userId)) {
@@ -42,17 +45,31 @@ const DiscussionPage = (props) => {
         }
     }
 
+    const addCommentFunc = async () => {
+        if (!comment) {
+            return;
+        }
+
+        const addComment_ = await addComment(comment, authInfo.userInfo.userId, discussionId);
+        if (addComment_.error) {
+            alert(addComment_.message);
+            return;
+        }
+        setComment('');
+    }
+
     return (
         <ForumBody >
             <PostBody side={discussionDetails.creator.side}>
                 <ProfileInfo {...discussionDetails.creator} />
                 <DiscussionContent disabled={liked} onClick={e => likeHandler()} data={discussionDetails} />
             </PostBody>
-            <CommentSection>
-                {discussionDetails.comments ? discussionDetails.comments.map(comment => {
-                    return (<Comment key={comment._id} {...comment} />)
-                }) : null}
-            </CommentSection>
+            <CommentSection comments={comments} />
+            <AddComment
+                value={comment}
+                onChange={e => setComment(e.target.value)}
+                onClick={addCommentFunc}
+            />
         </ForumBody>
     );
 }

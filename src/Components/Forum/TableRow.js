@@ -7,7 +7,7 @@ const TableRow = ({ title, creator, comments, likes,_id }) => {
         <tr>
             <td><Link to={`discussion/${_id}`}>{title}</Link></td>
             <td>{creator.username}</td>
-            <td>{comments.length}</td>
+            <td>{comments}</td>
             <td>{likes}</td>
         </tr>
     )

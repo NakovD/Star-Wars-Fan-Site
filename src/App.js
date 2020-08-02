@@ -65,7 +65,6 @@ const App = (props) => {
         serverVerification();
     }, []);
 
-
     return (
         <AuthContext.Provider value={{
             loggedIn: auth.loggedIn,
@@ -73,7 +72,7 @@ const App = (props) => {
             adminVerify: auth.adminVerify,
             verifyA: verifyA,
             logIn: logIn,
-            logOut: logOut
+            logOut: logOut,
         }}>
             {props.children}
         </AuthContext.Provider>

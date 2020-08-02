@@ -21,7 +21,7 @@ const ProfilePage = (props) => {
 
         }
         fetchData();
-    }, [userId, userData]);
+    }, [userId]);
 
     return (
         <ProfileBody userInfo={userData}>

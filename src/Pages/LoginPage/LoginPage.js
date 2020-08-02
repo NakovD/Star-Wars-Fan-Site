@@ -29,7 +29,6 @@ const LoginPage = (props) => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        console.log(document.cookies);
         const check = submitValidator(authData, 'login');
         if (check.error) {
             changeAuthData({ ...authData, submitErr: check.message });
