@@ -33,7 +33,7 @@ const Navigation = () => {
             <PageLayout>
                 <Switch>
                     <Route exact path='/' component={Home} />
-                    <Route path='/characters' component={CharactersPage} />
+                    <Route path='/characters'  component={CharactersPage} />
                     <Route path='/charDetails/:id' component={CharDetailsPage} />
                     <Route path='/adminOnly/verify' render={() => (!authInfo.loggedIn ? <AdminVerify /> : <Redirect to='/unauthorized' />)} />
                     <Route path='/unauthorized' component={Unauthorized} />

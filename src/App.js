@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AuthContext from './Context.js';
 import { verifyUser } from './utils/auth.js';
 import { verifyAdminLogin } from './utils/adminAuth.js';
+import fbConnect from './utils/fbConnect.js';
 
 const App = (props) => {
 
@@ -13,6 +14,9 @@ const App = (props) => {
             side: ''
         }
     });
+
+    fbConnect();
+
     const logIn = (userInfo) => {
         if (userInfo.side === 'admin') {
             changeAuth({

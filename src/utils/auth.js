@@ -52,8 +52,7 @@ const fbAuthenticate = async (body) => {
     const authenticate = await serverRequests.POST('registerFbUser', body);
     if (authenticate.status === 201) {
         const token = authenticate.headers.get('authToken');
-        console.log(token);
-        // document.cookie = `authToken=${token}; path=/`;
+        document.cookie = `authToken=${token}; path=/`;
         const userObj = await authenticate.json();
         return {
             error: false,
