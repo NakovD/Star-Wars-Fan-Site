@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AuthContext from './Context.js';
 import { verifyUser } from './utils/auth.js';
 import { verifyAdminLogin } from './utils/adminAuth.js';
+import fbConnect from './utils/fbConnect.js';
 
 const App = (props) => {
 
@@ -13,6 +14,9 @@ const App = (props) => {
             side: ''
         }
     });
+
+    fbConnect();
+
     const logIn = (userInfo) => {
         if (userInfo.side === 'admin') {
             changeAuth({
@@ -65,7 +69,6 @@ const App = (props) => {
         serverVerification();
     }, []);
 
-
     return (
         <AuthContext.Provider value={{
             loggedIn: auth.loggedIn,
@@ -73,7 +76,7 @@ const App = (props) => {
             adminVerify: auth.adminVerify,
             verifyA: verifyA,
             logIn: logIn,
-            logOut: logOut
+            logOut: logOut,
         }}>
             {props.children}
         </AuthContext.Provider>

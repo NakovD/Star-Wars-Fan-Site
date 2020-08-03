@@ -48,7 +48,28 @@ const verifyUser = async (typeToken) => {
     }
 }
 
+const fbAuthenticate = async (body) => {
+    const authenticate = await serverRequests.POST('registerFbUser', body);
+    if (authenticate.status === 201) {
+        const token = authenticate.headers.get('authToken');
+        document.cookie = `authToken=${token}; path=/`;
+        const userObj = await authenticate.json();
+        return {
+            error: false,
+            userInfo: userObj.userInfo
+        }
+    } else {
+        const data = await authenticate.json();
+        return {
+            error: true,
+            message: data.message
+        }
+    }
+
+};
+
 export {
     authenticate,
-    verifyUser
+    verifyUser,
+    fbAuthenticate
 }

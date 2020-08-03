@@ -12,7 +12,7 @@ const AdminHome = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const data = await serverRequests.GET('/characters');
+            const data = await serverRequests.GET('/characters/admin');
             changeChars(data);
         }
         getData();
