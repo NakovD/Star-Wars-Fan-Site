@@ -37,9 +37,14 @@
     display: inline-block;
 }
 .rankIcon {
-    flex: 0 1 30%;
+    flex: 0 1 50%;
     text-align: right;
-    padding-left: 2em;
+    padding-left: 0.5em;
     padding-right: 0.5em;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.5em auto;
+}
+.rankText {
+    /* padding-left: 1em; */
+    margin: 0.8em auto;
+    text-align: center;
 }
