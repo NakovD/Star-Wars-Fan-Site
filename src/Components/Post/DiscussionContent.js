@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './DiscussionContent.module.css';
 import SmallButton from '../Forum/SmallButton.js';
 
-const DiscussionContent = ({ data, onClick, disabled }) => {
+const DiscussionContent = ({ data, likeHandler, disabled }) => {
     let dateString = '';
     if (data.createdAt) {
         const dateArr = data.createdAt.split('-');
@@ -14,7 +14,7 @@ const DiscussionContent = ({ data, onClick, disabled }) => {
             <p className={styles.titlePost}>{data.title}</p>
             <p className={styles.postDescription}>{data.description}</p>
             <p className={styles.postedOn}>Posted on: {dateString} </p>
-            <SmallButton text="Like" disabled={disabled} onClick={onClick} />
+            {!disabled ? (<SmallButton text="Like" onClick={likeHandler} />) : null}
             <p className={styles.likes}>{data.likes} people liked this!</p>
         </div>
     )

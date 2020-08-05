@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams, useHistory } from "react-router-dom";
 import CharFormBody from '../../Components/CharacterForm/CharFormBody.js';
 import InputField from '../../Components/Auth/InputField.js';
 import InputSubmit from '../../Components/Auth/InputSubmit.js';
@@ -12,7 +13,8 @@ import characterOperations from '../../utils/characterDbSave.js';
 
 
 const EditCharacterPage = (props) => {
-    const idChar = props.match.params.id;
+    const { idChar } = useParams();
+    const history = useHistory();
     const [charDetails, changeDetails] = useState({
         name: '',
         era: '',
@@ -39,12 +41,12 @@ const EditCharacterPage = (props) => {
             return;
         }
         const createChar = await characterOperations('createChar', charDetails);
-        
+
         if (createChar.error) {
             changeDetails({ ...charDetails, err: createChar.message });
             return;
         }
-        props.history.push('/characters');
+        history.push('/thanksSucka');
     }
 
     return (

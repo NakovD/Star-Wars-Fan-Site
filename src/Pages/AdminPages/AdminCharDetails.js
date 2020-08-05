@@ -10,7 +10,7 @@ const AdminCharDetails = (props) => {
     const [charDetails, changeDetails] = useState({});
     useEffect(() => {
         const getInfo = async () => {
-            const charInfo = await serverRequests.GET(`character/${idChar}`);
+            const charInfo = await serverRequests.GET(`/character/adminOnly/${idChar}`);
             changeDetails(charInfo);
         }
         getInfo();

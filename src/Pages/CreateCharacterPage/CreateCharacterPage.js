@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import CharFormBody from '../../Components/CharacterForm/CharFormBody.js';
 import InputField from '../../Components/Auth/InputField.js';
 import PopUp from '../../Components/PopUp/PopUp.js';
@@ -9,7 +10,8 @@ import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
 import characterOperations from '../../utils/characterDbSave.js';
 
 
-const CreateCharacterPage = (props) => {
+const CreateCharacterPage = () => {
+    const history = useHistory();
     const [charInfo, changeDetails] = useState({
         name: '',
         era: '',
@@ -32,7 +34,7 @@ const CreateCharacterPage = (props) => {
             changeDetails({ ...charInfo, err: createChar.error });
             return;
         }
-        props.history.push('/characters');
+        history.push('/thanksSucka');
     }
     return (
         <CharFormBody headingText="Create a character, now!" onSubmit={e => submitForm(e)} btnText="Create!">

@@ -7,10 +7,10 @@ const Pagination = ({ prev, next, maxPages }) => {
 
 
     return (
-        <>
-            {(prev >= 0) ? (<button className={styles.prev}><Link to={`/characters?page=${prev}`} >Previous Page</Link></button>) : null}
-            {(next < maxPages) ? (<button className={styles.next}><Link to={`/characters?page=${next}`} >Next Page</Link></button>) : null}
-        </>
+            <div className={styles.pagination}>
+                {(prev >= 0) ? (<button className={styles.prev}><Link to={`/characters?page=${prev}`} >Previous Page</Link></button>) : null}
+                {(next < maxPages) ? (<button className={styles.next}><Link to={`/characters?page=${next}`} >Next Page</Link></button>) : null}
+            </div>
     )
 }
 

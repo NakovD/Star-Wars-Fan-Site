@@ -1,30 +1,35 @@
 import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import CharFormBody from '../../Components/CharacterForm/CharFormBody.js';
 import InputField from '../../Components/Auth/InputField.js';
 import InputSubmit from '../../Components/Auth/InputSubmit.js';
 import PopUp from '../../Components/PopUp/PopUp.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
-import { create } from '../../utils/DiscussionUtils/submitDiscussion.js';
+import { update } from '../../utils/DiscussionUtils/submitDiscussion.js';
+import useFetchData from '../../utils/customHooks/customHooks.js';
 import AuthContext from '../../Context.js';
 
 
 
-const CreateDiscussionPage = () => {
+const EditDiscussion = () => {
     const authInfo = useContext(AuthContext);
     const history = useHistory();
+    const { discId } = useParams();
     const [discussion, changeDiscussion] = useState({
         title: '',
         description: '',
-        err: false
+        err: false,
+        discussionId: discId
     });
+    useFetchData(`post/${discId}`, changeDiscussion);
+
     const onSucc = (history) => {
-        history.push('/forum')
+        history.push(`/discussion/${discId}`);
     }
 
     return (
-        <CharFormBody headingText="Create a discussion and talk with others!"
-            onSubmit={e => create(e, changeDiscussion, discussion, authInfo.userInfo.userId, onSucc, history)}>
+        <CharFormBody headingText="Edit your discussion!"
+            onSubmit={e => update(e, changeDiscussion, discussion, authInfo.userInfo.userId, onSucc, history)}>
             <InputField
                 type="text"
                 usedFor='Title'
@@ -37,10 +42,10 @@ const CreateDiscussionPage = () => {
                 value={discussion.description}
                 onChange={e => changeDiscussion({ ...discussion, description: e.target.value })}
                 required></textarea>
-            <InputSubmit value="Create a discussion?" />
+            <InputSubmit value="Edit your discussion?" />
             {discussion.err ? (<ErrNotification error={discussion.err} />) : null}
         </CharFormBody>
     )
 }
 
-export default CreateDiscussionPage;
+export default EditDiscussion;

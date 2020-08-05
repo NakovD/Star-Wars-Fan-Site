@@ -14,6 +14,7 @@ const Discussions = ({ discussions }) => {
                 {only3.map(el => {
                     return (<li key={el._id}>{el.title}</li>)
                 })}
+                {(only3.length === 0) ? (<div>This user doesn't have any discussions yet!</div>) : null}
             </ul>
         </div>
     )

@@ -1,11 +1,21 @@
 .unauthorized {
     color: white;
     position: relative;
+    text-align: center;
 }
 .unauthorized p {
     padding-bottom: 1em;
-    color: #fc032c;
+    color: rgba(252, 3, 44, 0.8);
     font: 16px/1.5pt 'Segoe UI', Verdana, sans-serif;
+  }
+  .unauthorized a {
+    color: rgba(119, 3, 252, 0.7);
+    text-decoration: none;
+    font: 16px/1.5pt 'Segoe UI', Verdana, sans-serif;
+}
+.unauthorized a:hover {
+  text-decoration: underline;
+  color: rgba(119, 3, 252, 1);
 }
 
   .saber {
