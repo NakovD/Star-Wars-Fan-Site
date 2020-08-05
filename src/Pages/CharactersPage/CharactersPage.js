@@ -1,31 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import SortField from '../../Components/SortField/SortField.js';
+import SearchField from '../../Components/SearchField/SearchField.js';
 import HeroCard from '../../Components/HeroCard/HeroCard.js';
+import NoChars from '../../Components/NoChars/NoChars.js';
 import Pagination from '../../Components/Pagination/Pagination.js';
 import serverRequests from '../../utils/back-end-service.js';
+import pageAndKeyWord from '../../utils/paginationAndSearch.js';
 
 
 
 const CharactersPage = (props) => {
     const [characters, changeChars] = useState([]);
     const [pages, changePages] = useState(0);
-    const regex = /\?page=([\d])/;
-    const check = props.location.search.match(regex);
-    const page = check ? +check[1] : 0;
+
+    const queries = pageAndKeyWord(props.location.search);
     useEffect(() => {
         const getData = async () => {
-            const data = await serverRequests.GET(`characters?page=${page}`);
+            const data = await serverRequests.GET(`characters?page=${queries.page}&keyWord=${queries.keyWord}`);
             changePages(data.maxPages);
             changeChars(data.characters);
         }
         getData();
-    }, [page]);
+    }, [queries.page, queries.keyWord]);
 
     return (
         <>
-            <SortField />
+            <SearchField />
+            {(characters.length === 0) ? (<NoChars />) : null}
             {characters.map(character => { return (<HeroCard key={character._id} {...character} />) })}
-            <Pagination prev={page - 1} maxPages={pages} next={page + 1} />
+            <Pagination prev={queries.page - 1} maxPages={pages} next={queries.page + 1} />
         </>
     );
 }

@@ -21,7 +21,7 @@ const RequestAnEditDiv = ({ _id, typeUser }) => {
     return (
         <div className={styles.proposeEdit} >
             <p>{textLabel}</p>
-            <Button href={href} text={buttonText} />
+            <Button href={href} text={buttonText} link={true} />
         </div>
     )
 }

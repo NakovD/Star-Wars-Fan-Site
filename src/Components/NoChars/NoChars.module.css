@@ -1,0 +1,8 @@
+.noChars {
+    width: 100%;
+    text-align: center;
+    font-size: 17px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 1em auto;
+    color: #b05427;
+}

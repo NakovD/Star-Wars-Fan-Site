@@ -3,12 +3,10 @@ import styles from './SmallButton.module.css';
 
 
 
-
-
-const SmallButton = ({ text, onClick,disabled }) => {
+const SmallButton = ({ text, onClick }) => {
 
     return (
-        <button className={styles.myButton} disabled={disabled} onClick={onClick}>{text}</button>
+        <button className={styles.myButton} onClick={onClick}>{text}</button>
     )
 }
 

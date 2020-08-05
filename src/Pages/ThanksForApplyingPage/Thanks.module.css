@@ -1,0 +1,19 @@
+.thanks {
+    color: #0ce2ed;
+    width: 80%;
+    margin: 2em auto;
+    font-size: 20px;
+    padding: 2em;
+    text-align: center;
+    font-weight: 600;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: rgba(99, 105, 115, 0.7);
+}
+
+.thanks a {
+    text-decoration: none;
+    color: #ed0970;
+}
+.thanks a:hover {
+    text-decoration: underline;
+}

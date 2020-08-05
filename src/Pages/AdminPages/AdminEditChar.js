@@ -25,7 +25,7 @@ const AdminEditChar = (props) => {
     
     useEffect(() => {
         const getData = async () => {
-            const charInfo = await serverRequests.GET(`character/${idChar}`);
+            const charInfo = await serverRequests.GET(`/character/adminOnly/${idChar}`);
             changeDetails(charInfo);
             changeDetails({ ...charInfo, err: false })
         }

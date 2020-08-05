@@ -5,9 +5,9 @@
 }
 .else a {
     text-decoration: none;
-    color: black;
+    color: rgba(194, 19, 25, 0.8);
 }
-.else a :hover {
-    color: #fff;
+.else a:hover {
+    color: rgba(19, 80, 194, 0.8);
     text-decoration: underline;
 }

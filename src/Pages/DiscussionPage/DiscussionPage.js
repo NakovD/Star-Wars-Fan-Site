@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import ForumBody from '../../Components/Forum/ForumBody.js';
 import PostBody from '../../Components/Post/PostBody.js';
 import ProfileInfo from '../../Components/Post/ProfileInfo.js';
@@ -8,10 +9,12 @@ import serverRequests from '../../utils/back-end-service.js';
 import likePost from '../../utils/likePost.js';
 import addComment from '../../utils/addComment.js';
 import AddComment from '../../Components/Post/AddComment.js';
+import EditDiv from '../../Components/Post/EditAndDeleteDiv.js';
 import AuthContext from '../../Context.js';
 
-const DiscussionPage = (props) => {
+const DiscussionPage = () => {
     const authInfo = useContext(AuthContext);
+    const { discussionId } = useParams();
     const [discussionDetails, changeDisc] = useState({
         creator: {
             side: ''
@@ -19,8 +22,8 @@ const DiscussionPage = (props) => {
     });
     const [comments, setComments] = useState([]);
     const [liked, changeLiked] = useState(false);
-    const discussionId = props.match.params.id;
     const [comment, setComment] = useState('');
+    const [dataChange, setChange] = useState(false);
 
 
     useEffect(() => {
@@ -34,13 +37,14 @@ const DiscussionPage = (props) => {
             }
         }
         getDetails();
-    }, [authInfo.userInfo.userId, discussionId]);
+    }, [authInfo.userInfo.userId, discussionId, dataChange]);
 
     const likeHandler = async () => {
         if (discussionDetails.usersLiked.includes(authInfo.userInfo.userId)) {
             changeLiked(true);
         } else {
             const like = await likePost(authInfo.userInfo.userId, discussionDetails._id);
+            setChange(prev => !prev);
             return like;
         }
     }
@@ -56,14 +60,16 @@ const DiscussionPage = (props) => {
             return;
         }
         setComment('');
+        setChange(prev => !prev);
     }
 
     return (
         <ForumBody >
             <PostBody side={discussionDetails.creator.side}>
                 <ProfileInfo {...discussionDetails.creator} />
-                <DiscussionContent disabled={liked} onClick={e => likeHandler()} data={discussionDetails} />
+                <DiscussionContent disabled={liked} likeHandler={e => likeHandler()} data={discussionDetails} />
             </PostBody>
+            {(authInfo.userInfo.userId === discussionDetails.creator._id) ? (<EditDiv userId={authInfo.userInfo.userId} discId={discussionDetails._id} />) : null}
             <CommentSection comments={comments} />
             <AddComment
                 value={comment}
