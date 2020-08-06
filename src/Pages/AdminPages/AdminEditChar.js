@@ -4,10 +4,10 @@ import InputField from '../../Components/Auth/InputField.js';
 import PopUp from '../../Components/PopUp/PopUp.js';
 import SelectComp from '../../Components/SelectComp/SelectComp.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
-import charValidator from '../../utils/characterValidator.js';
+import charValidator from '../../utils/characterUtils/characterValidator.js';
 import styles from './AdminEditChar.module.css';
 import serverRequests from '../../utils/back-end-service.js';
-import characterOperations from '../../utils/characterDbSave.js';
+import characterOperations from '../../utils/characterUtils/characterDbSave.js';
 import deleteChar from '../../utils/deleteChar.js';
 
 
@@ -26,7 +26,6 @@ const AdminEditChar = (props) => {
     useEffect(() => {
         const getData = async () => {
             const charInfo = await serverRequests.GET(`/character/adminOnly/${idChar}`);
-            changeDetails(charInfo);
             changeDetails({ ...charInfo, err: false })
         }
         getData();

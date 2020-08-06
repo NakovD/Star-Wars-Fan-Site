@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import ForumBody from '../../Components/Forum/ForumBody.js';
 import Button from '../../Components/Button/Button.js';
@@ -7,7 +7,7 @@ import TableRow from '../../Components/Forum/TableRow.js';
 import SmallButton from '../../Components/Forum/SmallButton.js';
 import getSortKeyWord from '../../utils/sortForumPosts.js';
 import styles from './ForumHomePage.module.css';
-import serverRequests from '../../utils/back-end-service.js';
+import useFetchData from '../../utils/customHooks/customHooks.js';
 
 const ForumHomePage = (props) => {
     const [posts, changePosts] = useState([]);
@@ -15,14 +15,7 @@ const ForumHomePage = (props) => {
     const history = useHistory();
     const sortWord = getSortKeyWord(location.search);
 
-    useEffect(() => {
-        const getPosts = async () => {
-            const data = await serverRequests.GET(`posts?sort=${sortWord}`);
-            changePosts(data);
-        }
-        getPosts();
-    }, [sortWord]);
-
+    useFetchData(`posts?sort=${sortWord}`, changePosts);
 
     return (
         <ForumBody >

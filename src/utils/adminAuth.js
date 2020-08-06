@@ -19,25 +19,6 @@ const verifyAdmin = async (body) => {
     }
 }
 
-const authenticate = async (reqBody, url) => {
-    const auth = await serverRequests.POST(url, reqBody);
-    if (auth.status === 200 || auth.status === 201) {
-        const token = auth.headers.get('adminAuth');
-        document.cookie = `adminAuth=${token}; path=/adminOnly`;
-        const adminObj = await auth.json();
-        return {
-            error: false,
-            userInfo: adminObj.userInfo
-        }
-    } else {
-        const data = await auth.json();
-        return {
-            error: true,
-            message: data.message
-        }
-    }
-}
-
 const getCookie = (name) => {
     const cookieValue = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
     return cookieValue ? cookieValue[2] : null;
@@ -69,6 +50,5 @@ const verifyAdminLogin = async (typeToken) => {
 
 export {
     verifyAdmin,
-    authenticate,
     verifyAdminLogin
 }

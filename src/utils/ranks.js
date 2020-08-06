@@ -13,7 +13,7 @@ const ranks = (side, discussions) => {
         },
         'dark': function (discussions) {
             if (discussions <= 10) { return { icon: 'swg-stormtrooper', text: 'Stormtrooper! Never hits!' } }
-            else if (discussions <= 30) { return { icon: 'swg-deathtrooper', text: 'Deathtrooper! Now you hit some things!' } }
+            else if (discussions <= 30) { return { icon: 'swg-deathtrooper', text: 'Deathtrooper! Now you hit sometimes!' } }
             else if (discussions <= 50) { return { icon: 'swg-darthmaul', text: 'Darth Maul! Dont get sliced in half!' } }
             else if (discussions <= 80) { return { icon: 'swg-bobbafett', text: 'Bobba Fett! You dont want this problems!' } }
             else if (discussions <= 110) { return { icon: 'swg-phasma', text: 'Phasma! Girl in a war? Thats cool!' } }

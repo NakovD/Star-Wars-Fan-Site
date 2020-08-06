@@ -10,7 +10,7 @@ const EditDiscussion = ({ discId, userId }) => {
     return (
         <div className={styles.edit}>
             <Button text="Edit discussion" href={`/editDisc/${discId}`} link={true} />
-            <Button text="Delete discussi" onClick={e => deleteDisc(discId, userId, history)} link={false} />
+            <Button text="Delete discussion" onClick={e => deleteDisc(discId, userId, history)} link={false} />
         </div>
     );
 }

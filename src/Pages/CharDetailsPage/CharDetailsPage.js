@@ -15,7 +15,6 @@ const CharDetailsPage = (props) => {
 
     return (
         <HeroDetailsBody img={charDetails.imgURL}>
-
             <HeroContent {...charDetails} />
             {(authInfo.loggedIn === 'regular') ? (<RequestAnEditDiv typeUser="regular" _id={charDetails._id} />) : null}
 

@@ -18,13 +18,13 @@ const CreateDiscussionPage = () => {
         description: '',
         err: false
     });
-    const onSucc = (history) => {
-        history.push('/forum')
+    const onSucc = () => {
+        history.push('/forum');
     }
 
     return (
         <CharFormBody headingText="Create a discussion and talk with others!"
-            onSubmit={e => create(e, changeDiscussion, discussion, authInfo.userInfo.userId, onSucc, history)}>
+            onSubmit={e => create(e, changeDiscussion, discussion, authInfo.userInfo.userId, onSucc)}>
             <InputField
                 type="text"
                 usedFor='Title'

@@ -58,7 +58,7 @@ const submitValidator = (authData, submitFor) => {
             errObj.error = false;
             return errObj;
         },
-        'adminRegister': function (authData) {
+        'admin/register': function (authData) {
             const errObj = { error: null, message: null };
             if (authData.usernameErr || authData.passwordErr || authData.repeatPasswordErr) {
                 errObj.error = true;

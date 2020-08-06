@@ -23,13 +23,13 @@ const EditDiscussion = () => {
     });
     useFetchData(`post/${discId}`, changeDiscussion);
 
-    const onSucc = (history) => {
+    const onSucc = () => {
         history.push(`/discussion/${discId}`);
     }
 
     return (
         <CharFormBody headingText="Edit your discussion!"
-            onSubmit={e => update(e, changeDiscussion, discussion, authInfo.userInfo.userId, onSucc, history)}>
+            onSubmit={e => update(e, changeDiscussion, discussion, authInfo.userInfo.userId, onSucc)}>
             <InputField
                 type="text"
                 usedFor='Title'
