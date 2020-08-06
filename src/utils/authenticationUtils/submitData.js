@@ -1,15 +1,23 @@
 import {
     authenticate
 } from './auth.js';
-import { submitValidator } from '../authValidator.js';
+import { submitValidator } from './authValidator.js';
 
 
 const submitAuthData = async (e, submitFor, authData, changeMethod, onSucc, onFail) => {
     e.preventDefault();
-    const check = submitValidator(authData, submitFor);
-    if (check.error) {
-        changeMethod({ ...authData, submitErr: check.message });
-        return;
+    if (submitFor === 'admin/login') {
+        const check = submitValidator(authData, 'login');
+        if (check.error) {
+            changeMethod({ ...authData, submitErr: check.message });
+            return;
+        }
+    } else {
+        const check = submitValidator(authData, submitFor);
+        if (check.error) {
+            changeMethod({ ...authData, submitErr: check.message });
+            return;
+        }
     }
     const authenticateUser = await authenticate(authData, submitFor);
     if (!authenticateUser.error) {

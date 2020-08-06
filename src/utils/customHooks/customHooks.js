@@ -11,7 +11,6 @@ const useFetchData = async (url, changeMethod) => {
         }
         func();
     }, [url, changeMethod]);
-
 }
 
 export default useFetchData;

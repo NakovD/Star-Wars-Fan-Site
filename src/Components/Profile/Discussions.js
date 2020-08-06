@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Discussions.module.css';
 
 const Discussions = ({ discussions }) => {
@@ -12,7 +13,7 @@ const Discussions = ({ discussions }) => {
             <h5>Discussions:</h5>
             <ul>
                 {only3.map(el => {
-                    return (<li key={el._id}>{el.title}</li>)
+                    return (<Link key={el._id} to={`/discussion/${el._id}`}><li >{el.title}</li></Link>)
                 })}
                 {(only3.length === 0) ? (<div>This user doesn't have any discussions yet!</div>) : null}
             </ul>

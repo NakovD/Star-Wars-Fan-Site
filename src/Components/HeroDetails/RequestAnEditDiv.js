@@ -14,7 +14,7 @@ const RequestAnEditDiv = ({ _id, typeUser }) => {
         textLabel = 'Check the info carefully, please! If there is not a character like this in the Star Wars universe, DONT approve it!';
     } else if (typeUser === 'regular') {
         buttonText = 'Request an edit!';
-        href = `/edit/${_id}`;
+        href = `/editChar/${_id}`;
         textLabel = 'You think the information is not correct or not complete? Request and edit now!';
     }
 

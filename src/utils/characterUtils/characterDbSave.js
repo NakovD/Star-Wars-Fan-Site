@@ -1,4 +1,4 @@
-import serverRequests from './back-end-service.js';
+import serverRequests from '../back-end-service.js';
 
 
 const characterOperations = async (url, charInfo) => {

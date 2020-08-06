@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import AuthForm from '../../Components/Auth/AuthForm.js';
 import InputFieldSpan from '../../Components/Auth/InputFieldSpan.js';
 import InputField from '../../Components/Auth/InputField.js';
@@ -7,13 +7,14 @@ import AuthHeading from '../../Components/Auth/AuthHeading.js';
 import InputSumbit from '../../Components/Auth/InputSubmit.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js'
 import AdminP from './AdminP.js';
-import { validator, submitValidator } from '../../utils/authValidator.js';
-import { authenticate } from '../../utils/adminAuth.js';
+import { validator } from '../../utils/authenticationUtils/authValidator.js';
+import submitAuthData from '../../utils/authenticationUtils/submitData.js';
 import AuthContext from '../../Context.js';
 
 
-const AdminLogin = (props) => {
+const AdminLogin = () => {
     const authInfo = useContext(AuthContext);
+    const history = useHistory();
     const [authData, changeAuth] = useState({
         username: '',
         usernameErr: false,
@@ -21,33 +22,18 @@ const AdminLogin = (props) => {
         passwordErr: false,
         submitErr: false
     });
+    const onSuccAuth = (userInfo) => {
+        authInfo.logIn(userInfo);
+        history.push('/adminOnly/characters');
+    };
+    const onFailAuth = (msg) => { changeAuth({ ...authData, submitErr: msg }) };
 
     const onErr = (msg, prop) => { changeAuth({ ...authData, [`${prop}Err`]: msg }) };
-    const noErr = (prop) => { changeAuth({ ...authData, [`${prop}Err`]: false }) }
-
-    const submitHandler = async (e) => {
-        e.preventDefault();
-        const submitDataCheck = submitValidator(authData, 'login');
-        if (submitDataCheck.error) {
-            changeAuth({ ...authData, submitErr: submitDataCheck.message });
-            return;
-        }
-        const logInAdmin = await authenticate({
-            username: authData.username,
-            password: authData.password
-        }, 'admin/login');
-        if (logInAdmin.error) {
-            changeAuth({ ...authData, submitErr: logInAdmin.message });
-            return;
-        }
-        authInfo.logIn(logInAdmin.userInfo);
-        props.history.push('/adminOnly/characters');
-
-
-    }
+    const noErr = (prop) => { changeAuth({ ...authData, [`${prop}Err`]: false }) };
 
     return (
-        <AuthForm type="register" onSubmit={e => submitHandler(e)}>
+        <AuthForm type="register"
+            onSubmit={e => submitAuthData(e, 'admin/login', authData, changeAuth, onSuccAuth, onFailAuth)}>
             <AuthHeading text="Welcome back, apprentice!" />
             <InputFieldSpan className="fontawesome-user" >
                 <InputField
@@ -76,4 +62,4 @@ const AdminLogin = (props) => {
     )
 }
 
-export default withRouter(AdminLogin);
+export default AdminLogin;

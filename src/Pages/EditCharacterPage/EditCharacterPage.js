@@ -6,11 +6,9 @@ import InputSubmit from '../../Components/Auth/InputSubmit.js';
 import PopUp from '../../Components/PopUp/PopUp.js';
 import SelectComp from '../../Components/SelectComp/SelectComp.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
-import charValidator from '../../utils/characterValidator.js';
 import serverRequests from '../../utils/back-end-service.js';
-import characterOperations from '../../utils/characterDbSave.js';
-
-
+import submitCharData from '../../utils/characterUtils/submitCharacterData.js';
+import speciesOptions from '../../utils/speciesFactory.js';
 
 const EditCharacterPage = (props) => {
     const { idChar } = useParams();
@@ -27,30 +25,17 @@ const EditCharacterPage = (props) => {
     useEffect(() => {
         const getData = async () => {
             const charInfo = await serverRequests.GET(`character/${idChar}`);
-            changeDetails(charInfo);
-            changeDetails({ ...charInfo, err: false })
+            changeDetails({ ...charInfo, err: false });
         }
         getData();
     }, [idChar]);
-
-    const submitForm = async (e) => {
-        e.preventDefault();
-        const check = charValidator(charDetails);
-        if (check.error) {
-            changeDetails({ ...charDetails, err: check.message });
-            return;
-        }
-        const createChar = await characterOperations('createChar', charDetails);
-
-        if (createChar.error) {
-            changeDetails({ ...charDetails, err: createChar.message });
-            return;
-        }
+    const onSucc = () => {
         history.push('/thanksSucka');
     }
 
     return (
-        <CharFormBody headingText="Request an edit, now!" onSubmit={e => submitForm(e)} btnText="Request an edit!">
+        <CharFormBody headingText="Request an edit, now!"
+            onSubmit={e => submitCharData(e, charDetails, changeDetails, 'createChar', onSucc)} btnText="Request an edit!">
             <InputField
                 type="text"
                 usedFor='Name'
@@ -67,13 +52,8 @@ const EditCharacterPage = (props) => {
                 value={charDetails.factions}
                 onChange={e => changeDetails({ ...charDetails, factions: e.target.value })} />
             <PopUp text="Separate them with comma and space!" />
-            <SelectComp label="Species:" selectName="species" onChange={e => changeDetails({ ...charDetails, species: e.target.value })}>
-                <option value="Human">Human</option>
-                <option value="Twi-leks">Twi'leks</option>
-                <option value="Togruta">Togruta</option>
-                <option value="Nightsister">Nightsister</option>
-                <option value="Zabrak">Zabrak</option>
-                <option value="Wookie">Wookie</option>
+            <SelectComp label="Species:" value={charDetails.species} selectName="species" onChange={e => changeDetails({ ...charDetails, species: e.target.value })}>
+                {speciesOptions}
             </SelectComp>
             <InputField
                 type="text"

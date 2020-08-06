@@ -9,7 +9,7 @@ import InputSumbit from '../../Components/Auth/InputSubmit.js';
 import Or from '../../Components/Auth/Or.js';
 import FBButton from '../../Components/Auth/FBButton.js';
 import SelectComp from '../../Components/SelectComp/SelectComp.js';
-import { validator } from '../../utils/authValidator.js';
+import { validator } from '../../utils/authenticationUtils/authValidator.js';
 import submitAuthData from '../../utils/authenticationUtils/submitData.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
 import AuthContext from '../../Context.js';

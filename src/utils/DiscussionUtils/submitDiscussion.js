@@ -4,7 +4,7 @@ import {
 } from './dbOperations.js';
 import discussionValidator from './discussionValidator.js';
 
-const create = async (e, changeMethod, discussion, userId, onSucc, history) => {
+const create = async (e, changeMethod, discussion, userId, onSucc) => {
     e.preventDefault();
     const check = discussionValidator(discussion);
 
@@ -14,10 +14,10 @@ const create = async (e, changeMethod, discussion, userId, onSucc, history) => {
 
     if (createDiscussion.error) { return changeMethod({ ...discussion, err: createDiscussion.message }); }
 
-    onSucc(history);
+    onSucc();
 }
 
-const update = async (e, changeMethod, discussion, userId, onSucc, history) => {
+const update = async (e, changeMethod, discussion, userId, onSucc) => {
     e.preventDefault();
     const check = discussionValidator(discussion);
     if (check.error) { return changeMethod({ ...discussion, err: check.message }) };
@@ -25,7 +25,8 @@ const update = async (e, changeMethod, discussion, userId, onSucc, history) => {
     const updateDiscussion = await editDisc(discussion, userId);
 
     if (updateDiscussion.error) { return changeMethod({ ...discussion, err: updateDiscussion.message }) };
-    onSucc(history);
+    
+    onSucc();
 }
 
 export {

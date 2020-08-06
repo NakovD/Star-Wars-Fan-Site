@@ -5,9 +5,9 @@ import InputField from '../../Components/Auth/InputField.js';
 import PopUp from '../../Components/PopUp/PopUp.js';
 import SelectComp from '../../Components/SelectComp/SelectComp.js';
 import InputSubmit from '../../Components/Auth/InputSubmit.js';
-import charValidator from '../../utils/characterValidator.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
-import characterOperations from '../../utils/characterDbSave.js';
+import submitCharData from '../../utils/characterUtils/submitCharacterData.js';
+import speciesOptions from '../../utils/speciesFactory.js';
 
 
 const CreateCharacterPage = () => {
@@ -22,22 +22,11 @@ const CreateCharacterPage = () => {
         err: false
     });
 
-    const submitForm = async (e) => {
-        e.preventDefault();
-        const check = charValidator(charInfo);
-        if (check.error) {
-            changeDetails({ ...charInfo, err: check.message });
-            return;
-        }
-        const createChar = await characterOperations('createChar', charInfo);
-        if (createChar.error) {
-            changeDetails({ ...charInfo, err: createChar.error });
-            return;
-        }
-        history.push('/thanksSucka');
-    }
+    const onSucc = () => { history.push('/thanksSucka') };
+
     return (
-        <CharFormBody headingText="Create a character, now!" onSubmit={e => submitForm(e)} btnText="Create!">
+        <CharFormBody headingText="Create a character, now!"
+            onSubmit={e => submitCharData(e, charInfo, changeDetails, 'createChar', onSucc)} btnText="Create!">
             <InputField
                 type="text"
                 usedFor='Name'
@@ -56,14 +45,7 @@ const CreateCharacterPage = () => {
             <PopUp text="Separate them with comma and space!" />
             <SelectComp label="Species:" defaultValue='default' selectName="species" onChange={e => changeDetails({ ...charInfo, species: e.target.value })}>
                 <option value="default" disabled hidden>Choose species</option>
-                <option value="Human">Human</option>
-                <option value="Twi-leks">Twi'leks</option>
-                <option value="Togruta">Togruta</option>
-                <option value="Nightsister">Nightsister</option>
-                <option value="Zabrak">Zabrak</option>
-                <option value="Wookie">Wookie</option>
-                <option value="Unknown">Unknown(who knows what yoda is?!?)</option>
-                <option value="Other">Other(I will check and add it myself)</option>
+                {speciesOptions}
             </SelectComp>
             <InputField
                 type="text"
