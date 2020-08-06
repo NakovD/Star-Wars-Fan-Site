@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import AuthForm from '../../Components/Auth/AuthForm.js';
 import PopUp from '../../Components/PopUp/PopUp.js';
 import InputFieldSpan from '../../Components/Auth/InputFieldSpan.js';
@@ -9,13 +9,14 @@ import InputSumbit from '../../Components/Auth/InputSubmit.js';
 import Or from '../../Components/Auth/Or.js';
 import FBButton from '../../Components/Auth/FBButton.js';
 import SelectComp from '../../Components/SelectComp/SelectComp.js';
-import { validator, submitValidator } from '../../utils/authValidator.js';
-import { authenticate } from '../../utils/auth.js';
+import { validator } from '../../utils/authValidator.js';
+import submitAuthData from '../../utils/authenticationUtils/submitData.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
 import AuthContext from '../../Context.js';
 
-const RegisterPage = (props) => {
+const RegisterPage = () => {
     const authInfo = useContext(AuthContext);
+    const history = useHistory();
     const [authData, changeData] = useState({
         username: '',
         usernameErr: false,
@@ -26,33 +27,20 @@ const RegisterPage = (props) => {
         side: '',
         submitErr: ''
     });
-    const submitFunc = async (e) => {
-        e.preventDefault();
-        const check = submitValidator(authData, 'register');
-        if (check.error) {
-            changeData({ ...authData, submitErr: check.message });
-            return;
-        }
-
-        const registerUser = await authenticate({
-            username: authData.username,
-            password: authData.password,
-            repeatPassword: authData.repeatPassword,
-            side: authData.side
-        }, 'register');
-        if (!registerUser.error) {
-            authInfo.logIn(registerUser.userInfo);
-            props.history.push('/characters');
-            return;
-        }
-
+    const onSuccAuth = (userInfo) => {
+        authInfo.logIn(userInfo);
+        history.push('/characters');
+    }
+    const onFailAuth = (mssg) => {
+        changeData({ ...authData, submitErr: mssg });
     }
     const onErr = (msg, prop) => { changeData({ ...authData, [`${prop}Err`]: msg }) };
     const noErr = (prop) => { changeData({ ...authData, [`${prop}Err`]: false }) }
 
     return (
         <>
-            <AuthForm type="register" onSubmit={e => submitFunc(e)} >
+            <AuthForm type="register"
+                onSubmit={e => submitAuthData(e, 'register', authData, changeData, onSuccAuth, onFailAuth)} >
                 <AuthHeading text="Are you new here? Welcome! Join us now!" />
                 <InputFieldSpan className="fontawesome-user">
                     <InputField
@@ -107,4 +95,4 @@ const RegisterPage = (props) => {
     )
 }
 
-export default withRouter(RegisterPage);
+export default RegisterPage;

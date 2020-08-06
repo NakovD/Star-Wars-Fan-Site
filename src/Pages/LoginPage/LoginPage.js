@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import AuthForm from '../../Components/Auth/AuthForm.js';
 import InputFieldSpan from '../../Components/Auth/InputFieldSpan.js';
 import InputField from '../../Components/Auth/InputField.js';
@@ -8,14 +8,14 @@ import InputSumbit from '../../Components/Auth/InputSubmit.js';
 import Or from '../../Components/Auth/Or.js';
 import FBButton from '../../Components/Auth/FBButton.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
-import { validator, submitValidator } from '../../utils/authValidator.js';
-import { authenticate } from '../../utils/auth.js';
+import { validator } from '../../utils/authValidator.js';
+import submitAuthData from '../../utils/authenticationUtils/submitData.js';
 import AuthContext from '../../Context.js';
 
 
-const LoginPage = (props) => {
+const LoginPage = () => {
     const authInfo = useContext(AuthContext);
-
+    const history = useHistory();
     const [authData, changeAuthData] = useState({
         username: '',
         usernameErr: '',
@@ -24,29 +24,18 @@ const LoginPage = (props) => {
         submitErr: ''
     });
 
+    const onSuccAuth = (userInfo) => {
+        authInfo.logIn(userInfo);
+        history.push('/characters');
+    }
+    const onFailAuth = (mssg) => { changeAuthData({ ...authData, submitErr: mssg }); }
+
     const onErr = (msg, prop) => { changeAuthData({ ...authData, [`${prop}Err`]: msg }) };
     const noErr = (prop) => { changeAuthData({ ...authData, [`${prop}Err`]: false }) }
 
-    const submitHandler = async (e) => {
-        e.preventDefault();
-        const check = submitValidator(authData, 'login');
-        if (check.error) {
-            changeAuthData({ ...authData, submitErr: check.message });
-            return;
-        }
-        const logInUser = await authenticate({
-            username: authData.username,
-            password: authData.password
-        }, 'login');
-        if (!logInUser.error) {
-            authInfo.logIn(logInUser.userInfo);
-            props.history.push('/characters');
-            return;
-        }
-    }
-
     return (
-        <AuthForm type="login" onSubmit={e => submitHandler(e)}>
+        <AuthForm type="login"
+            onSubmit={e => submitAuthData(e, 'login', authData, changeAuthData, onSuccAuth, onFailAuth)}>
             <AuthHeading text="Welcome back hero! Just a few steps and you are in!" />
             <InputFieldSpan className="fontawesome-user" >
                 <InputField
@@ -76,4 +65,4 @@ const LoginPage = (props) => {
     )
 }
 
-export default withRouter(LoginPage);
+export default LoginPage;

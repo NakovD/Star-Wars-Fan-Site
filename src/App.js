@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AuthContext from './Context.js';
-import { verifyUser } from './utils/auth.js';
+import { verifyUser } from './utils/authenticationUtils/auth.js';
 import { verifyAdminLogin } from './utils/adminAuth.js';
 import fbConnect from './utils/fbConnect.js';
 
