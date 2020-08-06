@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from '../../Components/Button/Button.js';
 import styles from './EditAndDeleteDiv.module.css';
-import { deleteDisc } from '../../utils/DiscussionUtils/dbOperations.js';
+import { deleteDisc } from '../../utils/discussionUtils/dbOperations.js';
 
 const EditDiscussion = ({ discId, userId }) => {
     const history = useHistory();

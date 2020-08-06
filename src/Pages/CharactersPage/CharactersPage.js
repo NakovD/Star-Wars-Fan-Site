@@ -21,13 +21,12 @@ const CharactersPage = (props) => {
         }
         getData();
     }, [queries.page, queries.keyWord]);
-
     return (
         <>
             <SearchField />
             {(characters.length === 0) ? (<NoChars />) : null}
             {characters.map(character => { return (<HeroCard key={character._id} {...character} />) })}
-            <Pagination prev={queries.page - 1} maxPages={pages} next={queries.page + 1} />
+            <Pagination prev={queries.page - 1} keyWord={queries.keyWord} maxPages={pages} next={queries.page + 1} />
         </>
     );
 }

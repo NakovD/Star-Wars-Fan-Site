@@ -5,7 +5,7 @@ import InputField from '../../Components/Auth/InputField.js';
 import InputSubmit from '../../Components/Auth/InputSubmit.js';
 import PopUp from '../../Components/PopUp/PopUp.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
-import { create } from '../../utils/DiscussionUtils/submitDiscussion.js';
+import { create } from '../../utils/discussionUtils/submitDiscussion.js';
 import AuthContext from '../../Context.js';
 
 
