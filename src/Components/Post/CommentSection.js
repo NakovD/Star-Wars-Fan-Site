@@ -4,7 +4,7 @@ import Comment from '../../Components/Post/Comment.js';
 import styles from './CommentSection.module.css';
 
 const CommentSection = ({ comments }) => {
-    
+
     return (
         <div className={styles.commentSection}>
             <p>Comments:</p>

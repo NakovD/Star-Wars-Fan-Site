@@ -9,6 +9,7 @@ const AuthContext = React.createContext({
         side: '',
         type: ''
     },
+    changeSide: () => { },
     verifyA: () => { },
     logIn: () => { },
     logOut: () => { },

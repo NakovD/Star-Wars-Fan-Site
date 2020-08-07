@@ -17,7 +17,7 @@ const SortField = () => {
                 usedFor='Search'
                 value={searchWord}
                 onChange={e => changeSearch(e.target.value)} />
-            <button className='button'><Link to={`/characters?keyWord=${searchWord}`}>Search by name?</Link></button>
+            <button className='button'><Link to={`/characters?keyWord=${searchWord}`}>Search?</Link></button>
         </div>
     )
 }

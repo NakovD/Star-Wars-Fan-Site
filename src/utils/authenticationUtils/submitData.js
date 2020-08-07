@@ -28,4 +28,6 @@ const submitAuthData = async (e, submitFor, authData, changeMethod, onSucc, onFa
     return;
 }
 
+
+
 export default submitAuthData;

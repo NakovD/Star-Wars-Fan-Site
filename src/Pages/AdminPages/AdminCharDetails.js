@@ -3,10 +3,11 @@ import HeroDetailsBody from '../../Components/HeroDetails/HeroDetailsBody.js';
 import HeroContent from '../../Components/HeroDetails/HeroContent.js';
 import RequestAnEditDiv from '../../Components/HeroDetails/RequestAnEditDiv.js';
 import serverRequests from '../../utils/back-end-service.js';
+import { useParams } from 'react-router-dom';
 
 
-const AdminCharDetails = (props) => {
-    const idChar = props.match.params.id;
+const AdminCharDetails = () => {
+    const { idChar } = useParams();
     const [charDetails, changeDetails] = useState({});
     useEffect(() => {
         const getInfo = async () => {
