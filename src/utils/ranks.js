@@ -1,6 +1,9 @@
 
 
 const ranks = (side, discussions) => {
+    if (!side || !discussions) {
+        return;
+    }
     const ranks = {
         'light': function (discussions) {
             if (discussions <= 10) { return { icon: 'swg-clonetrooper', text: 'Just a clone!' } }

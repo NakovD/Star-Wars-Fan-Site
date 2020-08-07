@@ -57,9 +57,49 @@ const deleteDisc = async (discussionId, userId, history) => {
     }
 }
 
+const addComment = async (commentBody, userId, discussionId) => {
+    const reqBody = {
+        creator: userId,
+        commentContent: commentBody,
+        discussion: discussionId
+    };
+    const addCommentInDb = await serverRequests.POST('addComment', reqBody);
+    if (addCommentInDb.status !== 201) {
+        const responseObj = await addCommentInDb.json();
+        return {
+            error: true,
+            message: responseObj.message
+        }
+    }
+    return {
+        error: false,
+    }
+}
+
+const likePost = async (userId, discussionId) => {
+    const reqBody = {
+        userId,
+        discussionId
+    };
+    const response = await serverRequests.POST('likePost', reqBody);
+    if (response.status === 200) {
+        return {
+            error: false
+        }
+    } else {
+        const json = await response.json();
+        return {
+            error: true,
+            message: json.message
+        }
+    }
+}
+
 
 export {
     createDisc,
     editDisc,
-    deleteDisc
+    deleteDisc,
+    addComment,
+    likePost
 };

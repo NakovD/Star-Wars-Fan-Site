@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import AuthContext from './Context.js';
 import { verifyUser } from './utils/authenticationUtils/auth.js';
-import { verifyAdminLogin } from './utils/adminAuth.js';
+import { verifyAdminLogin } from './utils/authenticationUtils/adminAuth.js';
 import fbConnect from './utils/fbConnect.js';
 
 const App = (props) => {
-
     const [auth, changeAuth] = useState({
         loggedIn: null,
         adminVerify: null,
@@ -47,8 +46,12 @@ const App = (props) => {
         changeAuth({ ...auth, adminVerify: true })
     }
 
+    const changeSide = (userInfo) => {
+        changeAuth({ ...auth, userInfo });
+    }
+
     useEffect(() => {
-        const serverVerification = async () => {
+        const serverCheck = async () => {
             const cookies = document.cookie;
             if (cookies.includes('adminAuth')) {
                 const verifyAdmin = await verifyAdminLogin('adminAuth');
@@ -64,16 +67,23 @@ const App = (props) => {
                     return;
                 }
                 logIn(verify.userInfo);
+            } else {
+                logOut();
             }
         }
-        serverVerification();
+        serverCheck();
     }, []);
+
+    if (auth.loggedIn === null) {
+        return (<div>Loading...</div>);
+    }
 
     return (
         <AuthContext.Provider value={{
             loggedIn: auth.loggedIn,
             userInfo: auth.userInfo,
             adminVerify: auth.adminVerify,
+            changeSide: changeSide,
             verifyA: verifyA,
             logIn: logIn,
             logOut: logOut,

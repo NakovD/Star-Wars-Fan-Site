@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import serverRequests from '../back-end-service.js';
 
 
-const useFetchData = async (url, changeMethod) => {
+const useFetchData = async (url, changeMethod, whenToChangeStuff = []) => {
 
     useEffect(() => {
         const func = async () => {
@@ -10,7 +10,8 @@ const useFetchData = async (url, changeMethod) => {
             changeMethod(data);
         }
         func();
-    }, [url, changeMethod]);
+        // eslint-disable-next-line
+    }, [url, changeMethod, ...whenToChangeStuff]);
 }
 
 export default useFetchData;

@@ -30,7 +30,8 @@ import authContext from './Context.js';
 const Navigation = () => {
 
     const authInfo = useContext(authContext);
-
+    const loggedIn = authInfo.loggedIn;
+    
     return (
         <Router>
             <PageLayout>
@@ -38,39 +39,39 @@ const Navigation = () => {
                     <Route exact path='/' component={Home} />
                     <Route path='/characters' component={CharactersPage} />
                     <Route path='/charDetails/:id' component={CharDetailsPage} />
-                    <Route path='/adminOnly/verify' render={() => (!authInfo.loggedIn ? <AdminVerify /> : <Redirect to='/unauthorized' />)} />
-                    <Route path='/unauthorized' component={Unauthorized} />
+                    <Route path='/adminOnly/verify' render={() => (!loggedIn ? <AdminVerify /> : <Redirect to='/unauthorized' />)} />
                     <Route path='/profilePage/:userId'>
-                        {authInfo.loggedIn ? (<ProfilePage />) : (<Redirect to='/unauthorized' />)}
+                        {loggedIn ? (<ProfilePage />) : (<Redirect to='/unauthorized' />)}
                     </Route>
                     <Route path='/thanksSucka'>
-                        {authInfo.loggedIn ? (<Appreciate />) : (<Redirect to='/unauthorized' />)}
+                        {loggedIn ? (<Appreciate />) : (<Redirect to='/unauthorized' />)}
                     </Route>
                     <Route path='/login' >
-                        {!authInfo.loggedIn ? (<LoginPage />) : (<Redirect to='/unauthorized' />)}
+                        {!loggedIn ? (<LoginPage />) : (<Redirect to='/unauthorized' />)}
                     </Route>
                     <Route path='/register' >
-                        {authInfo.loggedIn ? (<Redirect to='/unauthorized' />) : (<RegisterPage />)}
+                        {loggedIn ? (<Redirect to='/unauthorized' />) : (<RegisterPage />)}
                     </Route>
-                    <Route path='/adminOnly/login' render={() => (!authInfo.loggedIn ? <AdminLogin /> : <Redirect to='/unauthorized' />)} />
-                    <Route path='/adminOnly/register' render={() => (!authInfo.loggedIn ? <AdminRegister /> : <Redirect to='/unauthorized' />)} />
+                    <Route path='/adminOnly/login' render={() => (!loggedIn ? <AdminLogin /> : <Redirect to='/unauthorized' />)} />
+                    <Route path='/adminOnly/register' render={() => (!loggedIn ? <AdminRegister /> : <Redirect to='/unauthorized' />)} />
                     <Route path='/adminOnly/characters' component={AdminHome} />
-                    <Route path='/adminOnly/charDetails/:id' component={AdminCharDetails} />
-                    <Route path='/adminOnly/edit/:id' component={AdminEditChar} />
+                    <Route path='/adminOnly/charDetails/:idChar' component={AdminCharDetails} />
+                    <Route path='/adminOnly/edit/:idChar' component={AdminEditChar} />
                     <Route path='/addCharacter'>
-                        {(authInfo.loggedIn !== 'regular') ? (<Redirect to='/unauthorized' />) : (<CreateCharacterPage />)}
+                        {(loggedIn !== 'regular') ? (<Redirect to='/unauthorized' />) : (<CreateCharacterPage />)}
                     </Route>
                     <Route path='/editChar/:idChar' >
-                        {(authInfo.loggedIn === 'regular') ? (<EditCharacterPage />) : (<Redirect to='/unauthorized' />)}</Route>
+                        {(loggedIn === 'regular') ? (<EditCharacterPage />) : (<Redirect to='/unauthorized' />)}</Route>
                     <Route path='/forum' >
-                        {(authInfo.loggedIn === 'regular') ? (<ForumHomePage />) : (<Redirect to='/unauthorized' />)}</Route>
+                        {(loggedIn) ? (<ForumHomePage />) : (<Redirect to='/dawdawd' />)}</Route>
                     <Route path='/createDiscussion' >
-                        {(authInfo.loggedIn === 'regular') ? (<CreateDiscussionPage />) : (<Redirect to='/unauthorized' />)}</Route>
+                        {(loggedIn === 'regular') ? (<CreateDiscussionPage />) : (<Redirect to='/unauthorized' />)}</Route>
                     <Route path='/editDisc/:discId' >
-                        {(authInfo.loggedIn === 'regular') ? (<UpdateDisc />) : (<Redirect to='/unauthorized' />)}
+                        {(loggedIn === 'regular') ? (<UpdateDisc />) : (<Redirect to='/unauthorized' />)}
                     </Route>
                     <Route path='/discussion/:discussionId' >
-                        {(authInfo.loggedIn === 'regular') ? (<DiscussionPage />) : (<Redirect to='/unauthorized' />)}</Route>
+                        {(loggedIn === 'regular') ? (<DiscussionPage />) : (<Redirect to='/unauthorized' />)}</Route>
+                    <Route component={Unauthorized} />
                 </Switch>
             </PageLayout>
         </Router>

@@ -1,18 +1,19 @@
 import React, { useState, useContext } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import AuthForm from '../../Components/Auth/AuthForm.js';
 import AuthHeading from '../../Components/Auth/AuthHeading.js';
 import InputFieldSpan from '../../Components/Auth/InputFieldSpan.js';
 import InputSumbit from '../../Components/Auth/InputSubmit.js';
 import InputField from '../../Components/Auth/InputField.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
-import { verifyAdmin } from '../../utils/adminAuth.js';
+import { verifyAdmin } from '../../utils/authenticationUtils/adminAuth.js';
 import AuthContext from '../../Context.js';
 
 
 
-const AdminVerify = (props) => {
+const AdminVerify = () => {
     const authInfo = useContext(AuthContext);
+    const history = useHistory();
     const [secretData, changeSecretData] = useState({
         secretKey: '',
         err: false
@@ -32,7 +33,7 @@ const AdminVerify = (props) => {
             return;
         }
         authInfo.verifyA();
-        props.history.push('/adminOnly/login');
+        history.push('/adminOnly/login');
     }
 
     return (
@@ -53,4 +54,4 @@ const AdminVerify = (props) => {
     )
 }
 
-export default withRouter(AdminVerify);
+export default AdminVerify;

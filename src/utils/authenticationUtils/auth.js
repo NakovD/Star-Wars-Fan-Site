@@ -43,12 +43,11 @@ const verifyUser = async (typeToken) => {
             message: 'No token'
         }
     }
-    const verify = await serverRequests.POST('verifyUser', { token });
-    if (verify.status === 200) {
-        const responseObj = await verify.json();
+    const verify = await serverRequests.GET('verifyUser', token);
+    if (verify.status === 'verified User') {
         return {
             error: false,
-            userInfo: responseObj.userInfo
+            userInfo: verify.userInfo
         }
     } else {
         return {

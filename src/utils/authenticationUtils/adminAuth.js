@@ -1,4 +1,4 @@
-import serverRequests from './back-end-service.js';
+import serverRequests from '../back-end-service.js';
 
 
 const verifyAdmin = async (body) => {
