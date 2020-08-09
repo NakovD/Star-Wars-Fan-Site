@@ -1,4 +1,5 @@
 const apiKey = 'http://localhost:3001/api/';
+
 export default {
     GET: async function (URL, token) {
         const response = await fetch(`${apiKey}${URL}`, {

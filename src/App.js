@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import AuthContext from './Context.js';
 import { verifyUser } from './utils/authenticationUtils/auth.js';
 import { verifyAdminLogin } from './utils/authenticationUtils/adminAuth.js';
-import fbConnect from './utils/fbConnect.js';
+import fbConnect from './utils/fbUtils/fbConnect.js';
 
 const App = (props) => {
     const [auth, changeAuth] = useState({
         loggedIn: null,
-        adminVerify: null,
+        adminVerify: false,
         userInfo: {
             _id: '',
             side: ''
@@ -35,6 +35,7 @@ const App = (props) => {
         document.cookie = "authToken= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"; //TO DO, ADD COOKIE NAME FOR REGULAR USER AND FOR ADMIN;
         changeAuth({
             loggedIn: false,
+            adminVerify: false,
             userInfo: {
                 _id: '',
                 side: ''
@@ -43,7 +44,8 @@ const App = (props) => {
     }
 
     const verifyA = () => {
-        changeAuth({ ...auth, adminVerify: true })
+        debugger;
+        changeAuth({ ...auth, adminVerify: true });
     }
 
     const changeSide = (userInfo) => {

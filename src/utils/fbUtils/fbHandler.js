@@ -1,4 +1,4 @@
-import { fbAuthenticate } from './authenticationUtils/auth.js';
+import { fbAuthenticate } from '../authenticationUtils/auth.js';
 
 const fbHandler = (url, onSucc, onErr) => {
 

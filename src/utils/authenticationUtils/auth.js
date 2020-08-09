@@ -8,7 +8,6 @@ const getAndSetToken = (response) => {
     } else if (response.headers.get('adminAuth')) {
         token = response.headers.get('adminAuth');
         document.cookie = `adminAuth=${token}; path=/adminOnly`;
-        console.log('admin');
     }
 }
 

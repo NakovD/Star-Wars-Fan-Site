@@ -7,7 +7,7 @@ import SelectComp from '../../Components/SelectComp/SelectComp.js';
 import InputSubmit from '../../Components/Auth/InputSubmit.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
 import { submitCharData } from '../../utils/characterUtils/submitCharacterData.js';
-import speciesOptions from '../../utils/speciesFactory.js';
+import speciesOptions from '../../utils/otherUtils/speciesFactory.js';
 
 
 const CreateCharacterPage = () => {

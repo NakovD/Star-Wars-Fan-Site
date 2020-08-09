@@ -1,7 +1,7 @@
 import serverRequests from '../back-end-service.js';
 
 
-const changeSideHandler = async (side, oldSide, id, changeMethod) => {
+const changeSideHandler = async (side, oldSide, id, changeMethod, changeSideGlobal) => {
     if (side === oldSide) {
         alert(`You are already ${side} side!`);
         return;
@@ -10,6 +10,7 @@ const changeSideHandler = async (side, oldSide, id, changeMethod) => {
     if (change.status === 200) {
         alert('Side changed!');
         changeMethod(prev => !prev);
+        changeSideGlobal(side);
         return;
     } else {
         const responseJSON = await change.json();

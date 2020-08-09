@@ -1,0 +1,15 @@
+.aboutMe {
+    color:#fff;
+    width: 80%;
+    margin: 2em auto;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #bd060c;
+    font-weight: 700;
+    background-color: rgba(22, 40, 145,0.6);
+    padding: 1em;
+    border-radius: 10px;
+}
+.aboutMe p {
+    padding-bottom: 1em;
+}

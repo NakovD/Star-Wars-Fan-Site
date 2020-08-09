@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './ProfileInfo.module.css';
 import { Link } from 'react-router-dom';
 import '../../starwars-glyphicons/css/starwars-glyphicons.css';
-import ranks from '../../utils/ranks.js';
+import ranks from '../../utils/otherUtils/ranks.js';
 
 const ProfileInfo = ({ profilePic, username, _id, side, discussionsStarted }) => {
 
