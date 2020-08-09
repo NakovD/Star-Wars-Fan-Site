@@ -4,7 +4,7 @@ import HeroCard from '../../Components/HeroCard/HeroCard.js';
 import NoChars from '../../Components/NoChars/NoChars.js';
 import Pagination from '../../Components/Pagination/Pagination.js';
 import serverRequests from '../../utils/back-end-service.js';
-import pageAndKeyWord from '../../utils/paginationAndSearch.js';
+import pageAndKeyWord from '../../utils/otherUtils/paginationAndSearch.js';
 
 
 

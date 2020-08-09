@@ -8,9 +8,9 @@ import SelectComp from '../../Components/SelectComp/SelectComp.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
 import serverRequests from '../../utils/back-end-service.js';
 import { submitCharData } from '../../utils/characterUtils/submitCharacterData.js';
-import speciesOptions from '../../utils/speciesFactory.js';
+import speciesOptions from '../../utils/otherUtils/speciesFactory.js';
 
-const EditCharacterPage = (props) => {
+const EditCharacterPage = () => {
     const { idChar } = useParams();
     const history = useHistory();
     const [charDetails, changeDetails] = useState({

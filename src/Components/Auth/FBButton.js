@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styles from './FBButton.module.css';
 import { useHistory } from "react-router-dom";
-import fbHandler from '../../utils/fbHandler.js';
+import fbHandler from '../../utils/fbUtils/fbHandler.js';
 import AuthContext from '../../Context.js';
 
 

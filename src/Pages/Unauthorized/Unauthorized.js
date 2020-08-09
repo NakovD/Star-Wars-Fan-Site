@@ -4,7 +4,6 @@ import styles from './Unauthorized.module.css';
 
 const Unauthorized = () => {
 
-
     return (
         <>
             <div className={styles.unauthorized}>

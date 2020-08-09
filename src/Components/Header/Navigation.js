@@ -1,23 +1,24 @@
 import React, { useContext } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import styles from './Navigation.module.css';
 import Route from './Route.js';
-import headerLink from '../../utils/headerLinks.js';
+import headerLink from '../../utils/otherUtils/headerLinks.js';
 import AuthContext from '../../Context.js';
 import Logout from './Logout.js';
 
 
-const Navigation = (props) => {
+const Navigation = ({ visibility }) => {
     const authInfo = useContext(AuthContext);
+    const history = useHistory();
     const allLinks = headerLink(authInfo.loggedIn, authInfo.userInfo.userId);
     const LogOutHandler = () => {
         authInfo.logOut();
-        props.history.push('/');
+        history.push('/');
         return;
     }
 
     return (
-        <nav className={props.visibility ? styles.show : null}>
+        <nav className={visibility ? styles.show : null}>
             <ul>
                 {allLinks.map(link => {
                     return (<Route key={link.to} side={authInfo.userInfo.side} goTo={link.to} href={link.href} />)
@@ -29,4 +30,4 @@ const Navigation = (props) => {
     )
 }
 
-export default withRouter(Navigation);
+export default Navigation;

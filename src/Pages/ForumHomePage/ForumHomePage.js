@@ -5,11 +5,11 @@ import Button from '../../Components/Button/Button.js';
 import TableForum from '../../Components/Forum/TableForum.js';
 import TableRow from '../../Components/Forum/TableRow.js';
 import SmallButton from '../../Components/Forum/SmallButton.js';
-import getSortKeyWord from '../../utils/sortForumPosts.js';
+import getSortKeyWord from '../../utils/otherUtils/sortForumPosts.js';
 import styles from './ForumHomePage.module.css';
 import useFetchData from '../../utils/customHooks/customHooks.js';
 
-const ForumHomePage = (props) => {
+const ForumHomePage = () => {
     const [posts, changePosts] = useState([]);
     const location = useLocation();
     const history = useHistory();

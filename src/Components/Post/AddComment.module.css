@@ -1,6 +1,8 @@
 .addComment {
     /* position: absolute; */
     width: 90%;
+    display: flex;
+    flex-wrap: wrap;
     text-align: left;
     margin: 0.5em auto;
 }
@@ -11,7 +13,7 @@
     display: none;
 }
 .addComment textarea{
-    width: 65%;
+    width: 70%;
     color: #fff;
     border: none;
     background: #1c1e21;
@@ -24,6 +26,7 @@
 
 button.addCommentBttn{
     background: #016ba8;
+    flex: 0 0 30%;
     display: block;
     color: #fff;
     padding: 10px 10px;
@@ -39,3 +42,8 @@ button.addCommentBttn{
 }
 
 button.addCommentBttn:hover{ background: #9201A8; }
+
+.addComment button {
+    margin: 0.5em 1em;
+    height: 30px;
+}

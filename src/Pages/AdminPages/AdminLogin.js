@@ -14,6 +14,7 @@ import AuthContext from '../../Context.js';
 
 const AdminLogin = () => {
     const authInfo = useContext(AuthContext);
+    console.log(authInfo);
     const history = useHistory();
     const [authData, changeAuth] = useState({
         username: '',

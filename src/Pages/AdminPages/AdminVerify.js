@@ -34,6 +34,7 @@ const AdminVerify = () => {
         }
         authInfo.verifyA();
         history.push('/adminOnly/login');
+        return;
     }
 
     return (

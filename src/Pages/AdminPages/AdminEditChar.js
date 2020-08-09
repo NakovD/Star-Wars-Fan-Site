@@ -11,7 +11,7 @@ import {
     submitCharData,
     deleteCharHandler
 } from '../../utils/characterUtils/submitCharacterData.js';
-import species from '../../utils/speciesFactory.js';
+import species from '../../utils/otherUtils/speciesFactory.js';
 
 
 const AdminEditChar = () => {
