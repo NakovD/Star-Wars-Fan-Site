@@ -1,3 +1,13 @@
+## Star Wars Fan Site server API
+### Table of contents
+1. Description(#description)
+2. API Prerequisites(#api-prerequisites)
+3. API Installation(#api-installation)
+4. API Endpoints(#api-endpoints)
+
+### Description
+This is the back end service for the project Star Wars Fan site. Without it the site won't work.
+
 ### API Prerequisites
 * run npm i express for express framework, more info [here](https://www.npmjs.com/package/express);
 * run npm i mongoose for mongoose tool, more info [here](https://www.npmjs.com/package/mongoose);
@@ -17,7 +27,7 @@ Then type ```npm start``` in the terminal and the server should start listening 
 DB is up and running! and Server is up and running on port:3001! If they appear then the server is running successfully.
 
 ### API Endpoints
-**Character:**<br/>
+#### **Character:** <br/>
 **Get a specific character details by id**<br/>
 method: **GET**<br/>
 endpoint: /api/character/:id<br/>
@@ -151,6 +161,7 @@ if error occured(status code 500), response should look like:
   message: error message
  } 
 ```
+#### **Discussion** <br/>
 **Get a single discussion details**<br/>
 method: **GET**<br/>
 endpoint: /api/post/:id<br/>
@@ -197,3 +208,156 @@ if error occured(status code 500), response should look like:
   message: error message
  } 
 ```
+**Create a new post**<br/>
+method: **GET**<br/>
+endpoint: /api/createPost<br/>
+response(status code: 201): 
+```
+{
+    message: 'Post created successfully!'
+}
+```
+if error occured(status code 500), response should look like:
+```
+ {
+  message: error message
+ } 
+```
+**Edit a discussion(only discussion creator)**<br/>
+method: **GET**<br/>
+endpoint: /api/editDisc/:id<br/>
+response(status code: 200): 
+```
+{
+    message: 'Post updated successfully!'
+}
+```
+if error occured(status code 500), response should look like:
+```
+ {
+  message: error message
+ } 
+```
+**Like a discussion(only once per user)**<br/>
+method: **GET**<br/>
+endpoint: /api/likePost<br/>
+response(status code: 200): 
+```
+{
+    message: 'User has liked the post successfully!'
+}
+```
+if error occured(status code 500), response should look like:
+```
+ {
+  message: error message
+ } 
+```
+**Delete a discussion(only discussion creator)**<br/>
+method: **DELETE**<br/>
+endpoint: /api/delete/:id<br/>
+response(status code: 200): 
+```
+{
+    message: 'Post deleted successfully!'
+}
+```
+if error occured(status code 500), response should look like:
+```
+ {
+  message: error message
+ } 
+```
+#### **Comment** <br/>
+**Add a new comment to a discussion**<br/>
+method: **GET**<br/>
+endpoint: /api/addComment<br/>
+response(status code: 201): 
+```
+{
+    message: 'Comment added successfully!'
+}
+```
+if error occured(status code 400), response should look like:
+```
+ {
+  message: error message
+ } 
+```
+**Get all comments of a discussion**<br/>
+method: **GET**<br/>
+endpoint: /api/comments/:id<br/>
+response(status code: 200): 
+```
+[
+  {
+    commentContent: String,
+    creatorName: String,
+    creator: Object with data,
+    discussion: ObjectId,
+    _id: ObjectId
+  }
+] Array of comments
+```
+if error occured(status code 500), response should look like:
+```
+ {
+  message: error message
+ } 
+```
+#### **User** <br/>
+**Get user info**<br/>
+method: **GET**<br/>
+endpoint: /api/user/:id<br/>
+response(status code: 200): 
+```
+{
+    username: String,
+    password: String,
+    profilePic: String,
+    side: String,
+    discussionsStarted: Array of ObjectIds
+    _id: ObjectId
+}
+```
+if error occured(status code 500), response should look like:
+```
+ {
+  message: error message
+ } 
+```
+**Change the side of the user**<br/>
+method: **POST**<br/>
+endpoint: /api/changeSide/:id<br/>
+response(status code: 200): 
+```
+{
+    message: 'Side changed successfully!' or 'Sorry, you are already ${side} side now!'(if user is changing to side that he already is)
+}
+```
+if error occured(status code 500), response should look like:
+```
+ {
+  message: error message
+ } 
+```
+**Change user profile picture**<br/>
+method: **POST**<br/>
+endpoint: /api/changePic/:id<br/>
+response(status code: 200): 
+```
+{
+    message: 'Profile picture changed successfully!'
+}
+```
+if error occured(status code 500), response should look like:
+```
+ {
+  message: error message
+ } 
+```
+
+
+
+
+
