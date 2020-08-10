@@ -1,9 +1,9 @@
 ## Star Wars Fan Site server API
 ### Table of contents
-1. Description(#description)
-2. API Prerequisites(#api-prerequisites)
-3. API Installation(#api-installation)
-4. API Endpoints(#api-endpoints)
+1. [Description](#description)
+2. [API Prerequisites](#api-prerequisites)
+3. [API Installation](#api-installation)
+4. [API Endpoints](#api-endpoints)
 
 ### Description
 This is the back end service for the project Star Wars Fan site. Without it the site won't work.
