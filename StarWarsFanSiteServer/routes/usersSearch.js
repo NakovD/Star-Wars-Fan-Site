@@ -32,11 +32,6 @@ router.post('/changeSide/:id', async (req, res) => {
         } else {
             const userUpdate = await User.findByIdAndUpdate(userId, { side: side });
             res.status(200).json({ message: 'Side changed successfully!' });
-            req.io.emit('changedSide', {
-                username: userInfo.username,
-                userId: userInfo._id,
-                side: side
-            });
         }
     } catch (error) {
         res.status(500).json({ message: error.message });
