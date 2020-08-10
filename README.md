@@ -6,6 +6,7 @@
 3. [Instalation](#installation)
 4. [Routes](#routes)
 5. [DATA format](#data-format)
+6. [BackEnd API](#backend-api)
 
 ## Description
 This project is a fan site for everyone who loves Star Wars. You can find a big collection of characters of all eras and factions, and also add new ones or edit old ones. In addition you can use the forum, where users can discuss different topics around the Star Wars universe. Games, movies, TV series, characters and actors, you can discuss everything Star Wars related in our forum. 
@@ -74,7 +75,7 @@ Comment
 
 ### BackEnd API
 
-The project can not work without the BackEnd API. The API is in the project repo in folder: BackEnd API.
+The project can not work without the BackEnd API. The API is in the project repo in folder: StarWarsFanSiteServer. The docs of the API can be found [here](https://github.com/NakovD/Star-Wars-Fan-Site/blob/master/StarWarsFanSiteServer/README.md).
 
 
 
