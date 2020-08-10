@@ -1,68 +1,43 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Star Wars Fan Site
 
-## Available Scripts
+## Table of Contents
+1. [Description](#description)
+2. [Prerequisites](#prerequisites)
+3. [Instalation](#installation)
+4. [Routes](#routes)
 
-In the project directory, you can run:
+## Description
+This project is a fan site for everyone who loves Star Wars. You can find a big collection of characters of all eras and factions, and also add new ones or edit old ones. In addition you can use the forum, where users can discuss different topics around the Star Wars universe. Games, movies, TV series, characters and actors, you can discuss everything Star Wars related in our forum. 
 
-### `npm start`
+### Prerequisites
+* run npm i react-router-dom for a frond end routing, more info [here](https://www.npmjs.com/package/react-router-dom);
+* run npm i socket.io for a socket service, more info [here](https://www.npmjs.com/package/socket.io);
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Installation
+Download the code from github and after installing all the dependencies, then you can type:
+```npm start``` in the terminal and the project should be started. In your browser type [http://localhost:3000](http://localhost:3000)
+and you should see the main page with Luke Skywalker.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Routes
+Route | Description | Limited
+----- | ----------- | -------
+/ | Home Page | All users
+/characters | Characters page(all approved characters) | All users
+/charDetails/:id | Details of a character | All users
+/aboutMe | About me and contacts | All users
+/login | Login page | Only guests
+/register | Register Page | Only guests
+/addCharacter | Add a new character | Registered only
+/editChar/:idChar | Request an edit for existing character | Registered only
+/forum | Forum Home page | Registered only
+/createDiscussion | Create a new discussion |Registered only
+/discussion/:discussionId | Details of a discussion | Registered only
+/editDisc/:discId | Edit a discussion | Registered only; Only the creator of the current discussion
+/thanksSucka | Message after submitting characters changes | Registered only
+/profilePage/:userId | Profile page of a user | Registered only
+/adminOnly/verify | Verify key so can access to admin login/register | Only guests
+/adminOnly/login | Login page for admins | Only users that have provided the special key
+/adminOnly/register | Register page for admins | Only users that have provided the special key
+/adminOnly/characters | Characters page (all not approved characters) | Admins only
+/adminOnly/charDetails/:idChar | Details of a chatacter | Admins only
+/adminOnly/edit/:idChar | Check data for a character | Admins only
