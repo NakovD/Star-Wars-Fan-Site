@@ -86,7 +86,7 @@ route: '/';
 Stateless page with some welcoming text.<br/>
 **Character's page** 
 route: '/characters';
-On this page you can see all the characters that are approved from an admin and their data is 90-100% correct. One single function make a GET request to the database and gets all characters.
+On this page you can see all the characters that are approved from an admin and their data is 90-100% correct. One single function make a GET request to the database and gets all characters.<br/>
 **Note!** The characters are displayed in groups of 6. In the bottom of the page there is a buttons which help to navigate to other pages with characters(again separated in groups of 6).<br/>
 **Single character details page**
 route: '/charDetails/:id'
@@ -97,16 +97,16 @@ route: '/aboutMe';
 Just a stateless page with only HTML. Contains some data about me, what I like to do and about the site.<br/>
 **Register page** 
 route: '/register';
-On this page users can register. They have to provide a password(at least 6 symbols),profileName and choose their side(it CAN be changed later) OR they can use their facebook to register and use the site.
+On this page users can register. They have to provide a password(at least 6 symbols),profileName and choose their side(it CAN be changed later) OR they can use their facebook to register and use the site.<br/>
 **Note!** After successfully registering, users are automatically logged in.<br/>
 **Login page** 
 route: '/login';
-Registered users can login here with their password and username. Or they can enter the site with Facebook. 
+Registered users can login here with their password and username. Or they can enter the site with Facebook.<br/>
 **Note!** If users aren't registered and click on continue with FB on this page, they will be registered automatically.<br/>
 #### Registered pages
 **Character's page** 
 route: '/characters'
-Same as guest character's page.
+Same as guest character's page.<br/>
 **Note!** Authenticated users can also search for a character or factions in this page.<br/>
 **Single character details page**
 route: '/charDetails/:id'
@@ -150,7 +150,7 @@ route: '/thanksSucka'
 Static page without any functionality. It show a text after creating a new character or updating an old one.It also has a link tag to character's page.<br/>
 **Profile page**
 route: '/profilePage/:userId'
-This page gets the data of the user and displays it. It shows his rank, side, profile picture and the 3 most commented discussions. If the user is on his own profle page, he can change his side and change his profile picture. Changes are applied immediately.
+This page gets the data of the user and displays it. It shows his rank, side, profile picture and the 3 most commented discussions. If the user is on his own profle page, he can change his side and change his profile picture. Changes are applied immediately.<br/>
 **Note!** Users can't change to side, they are already. For example: if user is dark side, he can't change to dark side. Notification is showed.<br/>
 **Thanks page**
 route: '/thanksSucka'
