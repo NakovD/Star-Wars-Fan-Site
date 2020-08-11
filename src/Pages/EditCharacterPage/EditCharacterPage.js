@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import CharFormBody from '../../Components/CharacterForm/CharFormBody.js';
 import InputField from '../../Components/Auth/InputField.js';
@@ -9,26 +9,19 @@ import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
 import serverRequests from '../../utils/back-end-service.js';
 import { submitCharData } from '../../utils/characterUtils/submitCharacterData.js';
 import speciesOptions from '../../utils/otherUtils/speciesFactory.js';
+import { useDetails } from '../../utils/customHooks/customHooks.js';
 
 const EditCharacterPage = () => {
     const { idChar } = useParams();
     const history = useHistory();
-    const [charDetails, changeDetails] = useState({
-        name: '',
-        era: '',
-        factions: '',
-        species: '',
-        imgURL: '',
-        description: '',
-        err: false
-    });
+    const [charDetails, changeDetails] = useDetails();
     useEffect(() => {
         const getData = async () => {
             const charInfo = await serverRequests.GET(`character/${idChar}`);
             changeDetails({ ...charInfo, err: false });
         }
         getData();
-    }, [idChar]);
+    }, [idChar, changeDetails]);
     const onSucc = () => {
         history.push('/thanksSucka');
     }

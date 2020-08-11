@@ -12,7 +12,7 @@ const Header = () => {
         visibility ? changeVis(false) : changeVis(true);
     }
     return (
-        <header onClick={showHeader} className={styles['site_header']}>
+        <header onClick={showHeader} onMouseLeave={e => changeVis(false)} className={styles['site_header']}>
             <Burger visibility={visibility} />
             <Navigation visibility={visibility} />
             <Heading />

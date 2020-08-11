@@ -16,6 +16,10 @@ const headerLinks = (loggedIn, _id) => {
             {
                 to: 'Profile Page',
                 href: `profilePage/${_id}`
+            },
+            {
+                to: 'About Me',
+                href: 'aboutMe'
             }
         ]
     } else if (loggedIn === 'admin') {
@@ -43,7 +47,6 @@ const headerLinks = (loggedIn, _id) => {
                 to: 'Register',
                 href: 'register'
             },
-
             {
                 to: 'About Me',
                 href: 'aboutMe'

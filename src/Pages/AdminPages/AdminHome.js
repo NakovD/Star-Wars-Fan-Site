@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import HeroCard from '../../Components/HeroCard/HeroCard.js';
 import styles from './AdminHome.module.css';
-import useFetchData from '../../utils/customHooks/customHooks.js';
+import { useFetchData } from '../../utils/customHooks/customHooks.js';
 
 
 

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, {  useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import AuthForm from '../../Components/Auth/AuthForm.js';
 import PopUp from '../../Components/PopUp/PopUp.js';
@@ -12,21 +12,14 @@ import SelectComp from '../../Components/SelectComp/SelectComp.js';
 import { validator } from '../../utils/authenticationUtils/authValidator.js';
 import submitAuthData from '../../utils/authenticationUtils/submitData.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
+import { useAuth } from '../../utils/customHooks/customHooks.js';
 import AuthContext from '../../Context.js';
 
 const RegisterPage = () => {
     const authInfo = useContext(AuthContext);
     const history = useHistory();
-    const [authData, changeData] = useState({
-        username: '',
-        usernameErr: false,
-        password: '',
-        passwordErr: false,
-        repeatPassword: '',
-        repeatPasswordErr: false,
-        side: '',
-        submitErr: ''
-    });
+    const [authData, changeData] = useAuth('register');
+
     const onSuccAuth = (userInfo) => {
         authInfo.logIn(userInfo);
         history.push('/characters');

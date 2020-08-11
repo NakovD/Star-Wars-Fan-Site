@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const save = require('../controllers/charDBOperations.js');
 const models = require('../models/character/character.js');
+const { adminAuthorization } = require('../controllers/adminAuth.js');
+const { authorization } = require('../controllers/auth.js');
 
-router.post('/createChar', async (req, res) => {
+router.post('/createChar', authorization, async (req, res) => {
     const saveCharInDb = await save(req);
     if (!saveCharInDb.error) {
         res.status(201).json({ message: 'Character saved successfully in DB!' });
@@ -12,7 +14,7 @@ router.post('/createChar', async (req, res) => {
     }
 });
 
-router.post('/approveChar', async (req, res) => {
+router.post('/approveChar', adminAuthorization, async (req, res) => {
     const saveCharInDb = await save(req);
     if (!saveCharInDb.error) {
         res.status(201).json({ message: 'Character saved successfilly in DB!' });
@@ -39,7 +41,7 @@ router.get('/characters', async (req, res) => {
     }
 });
 
-router.get('/characters/adminOnly', async (req, res) => {
+router.get('/characters/adminOnly', adminAuthorization, async (req, res) => {
     try {
         const characters = await models.notApproved.find().lean();
         res.status(200).json(characters);
@@ -58,7 +60,7 @@ router.get('/character/:id', async (req, res) => {          //GET specific chara
     }
 });
 
-router.get('/character/adminOnly/:id', async (req, res) => {
+router.get('/character/adminOnly/:id', adminAuthorization, async (req, res) => {
     const charId = req.params.id;
     try {
         const charInfo = await models.notApproved.findById(charId).lean();
@@ -68,7 +70,7 @@ router.get('/character/adminOnly/:id', async (req, res) => {
     }
 });
 
-router.delete('/disapproveChar', async (req, res) => {
+router.delete('/disapproveChar', adminAuthorization, async (req, res) => {
     const idOfCharToDelete = req.body.id;
     try {
         const deleteChar = await models.notApproved.findByIdAndDelete(idOfCharToDelete);

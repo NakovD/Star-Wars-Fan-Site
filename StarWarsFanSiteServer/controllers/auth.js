@@ -3,9 +3,7 @@ const jwt = require('jsonwebtoken');
 const saltRounds = 10;
 const privateKey = require('../config/env_var.js').development.PRIVATE_KEY;
 const User = require('../models/user/user.js');
-const FBUser = require('../models/user/FBUser.js');
 const usernameAndPasswordCheck = require('./userInfoValidation.js');
-const user = require('../models/user/user.js');
 
 const addCookie = (data, res) => {
     try {
@@ -182,6 +180,24 @@ const verifyUser = async (req, res) => {
     }
 }
 
+const authorization = (req, res, next) => {
+    const token = req.headers.auth;
+    if (!token) {
+        res.status(401).json({ message: 'You are not authorized to use thir resource!' });
+        return;
+    }
+    try {
+        const validateToken = jwt.verify(token, privateKey);
+        next();
+    } catch (error) {
+        res.status(401).json({
+            errorMessage: error.message,
+            more: 'You are not authorized to use this resource!'
+        });
+        return;
+    }
+}
+
 
 
 
@@ -190,5 +206,6 @@ module.exports = {
     register,
     registerFB,
     logIn,
-    verifyUser
+    verifyUser,
+    authorization
 }

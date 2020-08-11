@@ -7,7 +7,7 @@ import TableRow from '../../Components/Forum/TableRow.js';
 import SmallButton from '../../Components/Forum/SmallButton.js';
 import getSortKeyWord from '../../utils/otherUtils/sortForumPosts.js';
 import styles from './ForumHomePage.module.css';
-import useFetchData from '../../utils/customHooks/customHooks.js';
+import { useFetchData } from '../../utils/customHooks/customHooks.js';
 
 const ForumHomePage = () => {
     const [posts, changePosts] = useState([]);

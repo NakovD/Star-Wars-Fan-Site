@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import CharFormBody from '../../Components/CharacterForm/CharFormBody.js';
 import InputField from '../../Components/Auth/InputField.js';
@@ -12,27 +12,21 @@ import {
     deleteCharHandler
 } from '../../utils/characterUtils/submitCharacterData.js';
 import species from '../../utils/otherUtils/speciesFactory.js';
+import { useDetails } from '../../utils/customHooks/customHooks.js';
 
 
 const AdminEditChar = () => {
     const history = useHistory();
     const { idChar } = useParams();
-    const [charDetails, changeDetails] = useState({
-        name: '',
-        era: '',
-        factions: '',
-        species: '',
-        imgURL: '',
-        description: '',
-        err: false
-    });
+    const [charDetails, changeDetails] = useDetails();
     useEffect(() => {
         const getData = async () => {
             const charInfo = await serverRequests.GET(`/character/adminOnly/${idChar}`);
             changeDetails({ ...charInfo, err: false })
         }
         getData();
-    }, [idChar]);
+        console.log('execute');
+    }, [idChar, changeDetails]);
 
     const onSucc = () => {
         history.push('/adminOnly/characters');
