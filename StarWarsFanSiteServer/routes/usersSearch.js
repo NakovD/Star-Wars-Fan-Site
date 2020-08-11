@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const FBUser = require('../models/user/FBUser.js');
 const User = require('../models/user/user.js');
+const { authorization } = require('../controllers/auth.js');
 
 router.get('/FBUsersSearch', async (req, res) => {           //TO DO: this is gonna be the facebook Id for FB Users;
     try {
@@ -12,7 +13,7 @@ router.get('/FBUsersSearch', async (req, res) => {           //TO DO: this is go
     }
 });
 
-router.get('/user/:id', async (req, res) => {  //TO DO: this is gonna be the ObjectId(which mongoose makes) for not fb users;
+router.get('/user/:id', authorization, async (req, res) => {  //TO DO: this is gonna be the ObjectId(which mongoose makes) for not fb users;
     const userId = req.params.id;
     try {
         const findUser = await User.findById(userId).populate('discussionsStarted').lean();
@@ -22,7 +23,7 @@ router.get('/user/:id', async (req, res) => {  //TO DO: this is gonna be the Obj
     }
 });
 
-router.post('/changeSide/:id', async (req, res) => {
+router.post('/changeSide/:id', authorization, async (req, res) => {
     const userId = req.params.id;
     const side = req.body.side;
     try {
@@ -38,7 +39,7 @@ router.post('/changeSide/:id', async (req, res) => {
     }
 })
 
-router.post('/changePic/:id', async (req, res) => {
+router.post('/changePic/:id', authorization, async (req, res) => {
     const userId = req.params.id;
     const IMGLink = req.body.linkIMG;
     try {

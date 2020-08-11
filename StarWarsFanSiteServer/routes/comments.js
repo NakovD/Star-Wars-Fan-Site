@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const saveComment = require('../controllers/commentDbOperations.js');
 const Comment = require('../models/comment/comment.js');
+const { authorization } = require('../controllers/auth.js');
 
-router.post('/addComment', async (req, res) => {
+router.post('/addComment', authorization, async (req, res) => {
     const saveCommentFunc = await saveComment(req, res);
     if (saveCommentFunc.error) {
         res.status(400).json({ message: saveCommentFunc.message });
@@ -12,7 +13,7 @@ router.post('/addComment', async (req, res) => {
     }
 });
 
-router.get('/comments/:id', async (req, res) => {
+router.get('/comments/:id', authorization, async (req, res) => {
     const discussionId = req.params.id;
     const page = +req.query.page || 0;
     try {

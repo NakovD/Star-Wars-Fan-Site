@@ -2,16 +2,17 @@
     color: white;
     position: relative;
     text-align: center;
+    font-weight: 600;    
+    font: 20px/1.5pt 'Segoe UI', Verdana, sans-serif;
+
 }
 .unauthorized p {
     padding-bottom: 1em;
     color: rgba(252, 3, 44, 0.8);
-    font: 16px/1.5pt 'Segoe UI', Verdana, sans-serif;
   }
   .unauthorized a {
     color: rgba(119, 3, 252, 0.7);
     text-decoration: none;
-    font: 16px/1.5pt 'Segoe UI', Verdana, sans-serif;
 }
 .unauthorized a:hover {
   text-decoration: underline;
@@ -106,7 +107,7 @@
   }
 
 .first {
-    top: 21%;
+    top: 18%;
     left: 60%;
     transform: scale(2) rotate(-45deg) scale(-1, 1);
 }

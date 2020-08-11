@@ -44,7 +44,6 @@ const App = (props) => {
     }
 
     const verifyA = () => {
-        debugger;
         changeAuth({ ...auth, adminVerify: true });
     }
 

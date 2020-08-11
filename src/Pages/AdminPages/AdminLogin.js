@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import AuthForm from '../../Components/Auth/AuthForm.js';
 import InputFieldSpan from '../../Components/Auth/InputFieldSpan.js';
@@ -10,19 +10,14 @@ import AdminP from './AdminP.js';
 import { validator } from '../../utils/authenticationUtils/authValidator.js';
 import submitAuthData from '../../utils/authenticationUtils/submitData.js';
 import AuthContext from '../../Context.js';
+import { useAuth } from '../../utils/customHooks/customHooks.js';
 
 
 const AdminLogin = () => {
     const authInfo = useContext(AuthContext);
-    console.log(authInfo);
     const history = useHistory();
-    const [authData, changeAuth] = useState({
-        username: '',
-        usernameErr: false,
-        password: '',
-        passwordErr: false,
-        submitErr: false
-    });
+    const [authData, changeAuth] = useAuth('login');
+
     const onSuccAuth = (userInfo) => {
         authInfo.logIn(userInfo);
         history.push('/adminOnly/characters');

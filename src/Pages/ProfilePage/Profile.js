@@ -4,7 +4,7 @@ import Discussions from '../../Components/Profile/Discussions.js';
 import Settings from '../../Components/Profile/Settings.js';
 import ProfileBody from '../../Components/Profile/ProfileBody.js';
 import authContext from '../../Context.js';
-import useFetchData from '../../utils/customHooks/customHooks.js';
+import { useFetchData } from '../../utils/customHooks/customHooks.js';
 import getRank from '../../utils/otherUtils/ranks.js';
 
 const ProfilePage = () => {

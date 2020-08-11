@@ -7,7 +7,7 @@ import DiscussionContent from '../../Components/Post/DiscussionContent.js';
 import CommentSection from '../../Components/Post/CommentSection.js';
 import AddComment from '../../Components/Post/AddComment.js';
 import EditDiv from '../../Components/Post/EditAndDeleteDiv.js';
-import useFetchData from '../../utils/customHooks/customHooks.js';
+import { useFetchData } from '../../utils/customHooks/customHooks.js';
 import AuthContext from '../../Context.js';
 import pagination from '../../utils/otherUtils/paginationAndSearch.js';
 import serverRequests from '../../utils/back-end-service.js';

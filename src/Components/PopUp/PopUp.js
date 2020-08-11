@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
 import styles from './PopUp.module.css';
 
-//!! WORK IN PROGRESS! ITS NOT FINISHED!
 
 const PopUp = ({ text }) => {
     const [showPopUp, changeVis] = useState(false);
     const show_hideFunc = () => {
-        if (!showPopUp) {
-            changeVis(true);
-        } else {
-            changeVis(false);
-        }
+        showPopUp ? changeVis(false) : changeVis(true)
     }
     return (
             // eslint-disable-next-line

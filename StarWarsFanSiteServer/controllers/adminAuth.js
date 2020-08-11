@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const saltRounds = 10;
 const privateKey = require('../config/env_var.js').development.PRIVATE_KEY;
 const Admin = require('../models/admin/admin.js');
-
 const usernameAndPasswordCheck = require('./userInfoValidation.js');
 
 const verifyAdminWannabe = (req, res) => {
@@ -129,9 +128,28 @@ const verifyAdminLogin = async (req, res) => {
     }
 }
 
+const adminAuthorization = (req, res, next) => {
+    const token = req.headers.auth;
+    if (!token) {
+        res.status(401).json({ message: 'You are not authorized to use this resource!' });
+        return;
+    }
+    try {
+        const verificateToken = jwt.verify(token, privateKey);
+        next();
+    } catch (error) {
+        res.status(401).json({
+            errorMessage: error.message,
+            more: 'You are not authorized to use this resource!'
+        });
+        return;
+    }
+}
+
 module.exports = {
     verifyAdminWannabe,
     registerAdmin,
     logInAdmin,
-    verifyAdminLogin
+    verifyAdminLogin,
+    adminAuthorization
 };
