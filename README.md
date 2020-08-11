@@ -90,7 +90,7 @@ On this page you can see all the characters that are approved from an admin and 
 **Note!** The characters are displayed in groups of 6. In the bottom of the page there is a buttons which help to navigate to other pages with characters(again separated in groups of 6).<br/>
 **Single character details page**
 route: '/charDetails/:id'
-Here you can see the details of a single character. Simple GET request which gets the data from the DB. 
+Here you can see the details of a single character. Simple GET request which gets the data from the DB.<br/>
 **Note!** If the user is a guest he cannot try to edit the character. Requesting and edit for a character that already exists in site is restricted to only registered and logged users.<br/>
 **About me page** 
 route: '/aboutMe';
@@ -152,9 +152,6 @@ Static page without any functionality. It show a text after creating a new chara
 route: '/profilePage/:userId'
 This page gets the data of the user and displays it. It shows his rank, side, profile picture and the 3 most commented discussions. If the user is on his own profle page, he can change his side and change his profile picture. Changes are applied immediately.<br/>
 **Note!** Users can't change to side, they are already. For example: if user is dark side, he can't change to dark side. Notification is showed.<br/>
-**Thanks page**
-route: '/thanksSucka'
-Static page without any functionality. It show a text after creating a new character or updating an old one.It also has a link tag to character's page.<br/>
 
 
 
