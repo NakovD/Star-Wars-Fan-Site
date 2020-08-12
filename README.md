@@ -13,11 +13,12 @@
 This project is a fan site for everyone who loves Star Wars. You can find a big collection of characters of all eras and factions, and also add new ones or edit old ones. In addition you can use the forum, where users can discuss different topics around the Star Wars universe. Games, movies, TV series, characters and actors, you can discuss everything Star Wars related in our forum. 
 
 ### Prerequisites
+* run npx create-react-app (name it as you want) for react application, more info [here](https://reactjs.org/docs/create-a-new-react-app.html)
 * run npm i react-router-dom for a frond end routing, more info [here](https://www.npmjs.com/package/react-router-dom);
 * run npm i socket.io-client for a socket client service, more info [here](https://www.npmjs.com/package/socket.io-client);
 
 ### Installation
-Download the code from github and after installing all the dependencies, then you can type:
+Download the code from github and after installing all the dependencies, put in the main folder that was created from CRA the code you downloaded. Then you can type:
 ```npm start``` in the terminal and the project should be started. In your browser type [http://localhost:3000](http://localhost:3000)
 and you should see the main page with Luke Skywalker. The project can not work without the BackEnd API. More information about the API in [BackEnd API section](#backend-api).
 The API is in the project repo in folder: BackEnd API.
