@@ -11,13 +11,7 @@ io.on('connection', (socket) => {
     socket.on('getId', (obj) => {
         mongoose.models.Comment.on('save', async (doc) => {
             if (doc.discussion.toHexString() === obj.discussion) {
-                const allComments = await mongoose.models.Comment.find({ discussion: obj.discussion }).sort({ _id: -1 }).skip(obj.page * 10).limit(10);
-                const allCount = await mongoose.models.Comment.find({ discussion: obj.discussion}).countDocuments();
-                console.log(allComments);
-                if ((obj.page + 1) === Math.ceil(allCount / 10)) {
-                    socket.emit('comments', allComments);
-                    console.log('you are on the last page :)');
-                }
+                socket.emit('comments', 'update');
             }
         });
     });
@@ -26,10 +20,7 @@ io.on('connection', (socket) => {
         console.log('disconnected');
     })
 });
-app.use((req, res, next) => {
-    req.io = io;
-    next();
-});
+
 
 
 

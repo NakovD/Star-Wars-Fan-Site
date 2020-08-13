@@ -15,11 +15,11 @@ router.post('/addComment', authorization, async (req, res) => {
 
 router.get('/comments/:id', authorization, async (req, res) => {
     const discussionId = req.params.id;
-    const page = +req.query.page || 0;
+    const page = +req.query.page || 1;
     try {
         const countAll = await Comment.find({ discussion: discussionId }).countDocuments();
-        const comments = await Comment.find({ discussion: discussionId }).skip(10 * page).limit(10).lean();
-        res.status(200).json({ comments, maxPages: Math.ceil(countAll / 10) });
+        const comments = await Comment.find({ discussion: discussionId }).skip(3 * (page - 1)).limit(3).lean();
+        res.status(200).json({ comments, maxPages: Math.ceil(countAll / 3) });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

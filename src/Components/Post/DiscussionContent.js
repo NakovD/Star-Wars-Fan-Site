@@ -13,7 +13,7 @@ const DiscussionContent = ({ data, userId, changeMethod }) => {
             disabled = true;
         }
     }
-    
+
     const likeHandler = async () => {
         const like = await likePost(userId, discussionId);
         if (like.error) {
@@ -36,7 +36,9 @@ const DiscussionContent = ({ data, userId, changeMethod }) => {
             <p className={styles.postDescription}>{data.description}</p>
             <p className={styles.postedOn}>Posted on: {dateString} </p>
             {!disabled ? (<SmallButton text="Like" onClick={likeHandler} />) : null}
-            <p className={styles.likes}>{data.likes} people liked this!</p>
+            {(data.likes === 1) ? (<p className={styles.likes}>{data.likes} guy liked this!</p>)
+                : (<p className={styles.likes}>{data.likes} people liked this!</p>)}
+
         </div>
     )
 }

@@ -31,10 +31,10 @@ const AddComment = ({ userId, maxPages, currentPage }) => {
     return (
         <div className={styles.addComment}>
             <textarea value={comment} onChange={e => changeComment(e.target.value)}></textarea>
-            {(prev >= 0) ? (<SmallButton
+            {(prev > 0) ? (<SmallButton
                 text='Previous'
                 onClick={e => history.push(`/discussion/${discussionId}?page=${prev}`)} />) : null}
-            {(next < maxPages) ? (<SmallButton
+            {(next <= maxPages) ? (<SmallButton
                 text='Next'
                 onClick={e => history.push(`/discussion/${discussionId}?page=${next}`)} />) : null}
             <button className={styles.addCommentBttn} onClick={addCommentFunc}>Add Comment!</button>

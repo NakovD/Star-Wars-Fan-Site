@@ -24,14 +24,14 @@ router.post('/approveChar', adminAuthorization, async (req, res) => {
 });
 
 router.get('/characters', async (req, res) => {
-    const page = +req.query.page || 0;
+    const page = +req.query.page || 1;
     const keyWord = req.query.keyWord || '';
     try {
         const filtered = await models.approved.countDocuments({ name: { $regex: keyWord, $options: 'i' } });
-        const part = await models.approved.find({ name: { $regex: keyWord, $options: 'i' } }).skip(page * 6).limit(6).lean();
+        const part = await models.approved.find({ name: { $regex: keyWord, $options: 'i' } }).skip((page - 1) * 6).limit(6).lean();
         if (filtered === 0 && part.length === 0) {
             const count = await models.approved.countDocuments({ factions: { $regex: keyWord, $options: 'i' } });
-            const searchInFactions = await models.approved.find({ factions: { $regex: keyWord, $options: 'i' } }).skip(page * 6).limit(6).lean();
+            const searchInFactions = await models.approved.find({ factions: { $regex: keyWord, $options: 'i' } }).skip((page - 1) * 6).limit(6).lean();
             res.status(200).json({ characters: searchInFactions, maxPages: Math.ceil((count / 6)) });
             return;
         }

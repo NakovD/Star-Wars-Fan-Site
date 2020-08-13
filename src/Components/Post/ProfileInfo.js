@@ -6,7 +6,7 @@ import ranks from '../../utils/otherUtils/ranks.js';
 
 const ProfileInfo = ({ profilePic, username, _id, side, discussionsStarted }) => {
 
-    const rank = side ? ranks(side, discussionsStarted.length) : '';
+    const rank = side ? ranks(side, discussionsStarted) : '';
 
     return (
         <div className={`${styles.profilePage} ${(side === 'light') ? styles.light : styles.dark}`}>

@@ -15,8 +15,7 @@ const ProfilePage = () => {
 
     useFetchData(`user/${userId}`, changeData, [userId, dataChanged]);
     const rank = getRank(userData.side, userData.discussionsStarted);
-
-
+    
     return (
         <ProfileBody userInfo={userData}>
             <h3>Rank:</h3>
