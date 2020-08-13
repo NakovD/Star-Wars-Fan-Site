@@ -19,8 +19,16 @@ const Settings = ({ currentSide, changeMethod, userId }) => {
         authInfo.changeSide(oldUserInfo);
         return;
     }
-
-
+    
+    const myWidget = window.cloudinary.createUploadWidget({
+        cloudName: 'dido98cloudinary',
+        uploadPreset: 'ekeew3n2'
+    }, (error, result) => {
+        if (!error && result && result.event === 'success') {
+            console.log('Done! Here is the image info:', result.info);
+            changeURL(result.info.secure_url);
+        }
+    });
     return (
         <div className={styles.settings}>
             <h4>Settings:</h4>
@@ -34,12 +42,15 @@ const Settings = ({ currentSide, changeMethod, userId }) => {
                 onClick={e => changeSideHandler(side, currentSide, userId, changeMethod, changeSideFunc)}
                 className={`${styles.primary} ${styles.ghost}`}>Change side</button>
             <InputField
+                type="text"
                 value={imgURL}
                 onChange={e => changeURL(e.target.value)}
                 usedFor='Image Link' />
+            <p className={styles.or}>OR</p>
+            <button onClick={e => myWidget.open()} className={`${styles.primary} ${styles.ghost}`} >Upload your image</button>
             <button
                 onClick={e => changeProfileIMG(imgURL, userId, changeMethod, changeURL)}
-                className={`${styles.primary}`}>Change profile picture</button>
+                className={styles.primary}>Change profile picture</button>
         </div>
     )
 }

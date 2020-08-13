@@ -1,5 +1,5 @@
 .settings {
-    margin: 1em 1em 0.5em 1em;
+	margin: 1em 1em 0.5em 1em;
 }
 .settings h4 {
 	margin-bottom: 1em;
@@ -25,15 +25,26 @@
 .settings option {
 	background-color: #231E39;
 }
-.settings input {
+.or {
+	width: 95%;
+	margin: 0 auto 0.5em;
+	font-size: 14px;
+}
+.settings input[type="text"] {
 	width: 95%;
 	margin-right: 2em;
 	padding: 5px 10px;
 	margin-bottom: 1em;
 	border: 2px solid #02899C;
 	background-color: #231E39;
-	border-radius: 10px;
-	
+	border-radius: 10px;	
+}
+.settings input[type="file"] {
+	width: 95%;
+	padding: 10px;
+	margin: 0 auto 1em;
+	border: 2px solid #02899C;
+	border-radius: 10px;	
 }
 
 .settings button.primary.ghost {

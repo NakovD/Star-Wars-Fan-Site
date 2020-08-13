@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import ForumBody from '../../Components/Forum/ForumBody.js';
 import PostBody from '../../Components/Post/PostBody.js';
@@ -11,13 +11,15 @@ import { useFetchData } from '../../utils/customHooks/customHooks.js';
 import AuthContext from '../../Context.js';
 import pagination from '../../utils/otherUtils/paginationAndSearch.js';
 import serverRequests from '../../utils/back-end-service.js';
-// import io from 'socket.io-client';
+import io from 'socket.io-client';
+
 
 
 const DiscussionPage = () => {
     const authInfo = useContext(AuthContext);
     const { discussionId } = useParams();
     const location = useLocation();
+    const socketContainer = useRef(null);
 
     const [discussionDetails, changeDisc] = useState({
         creator: {
@@ -31,7 +33,13 @@ const DiscussionPage = () => {
     const page = pagination(location.search).page;
 
     useFetchData(`post/${discussionId}`, changeDisc, [dataChange]);
-    // useFetchData(`comments/${discussionId}?page=${queries.page}`, setComments);
+
+    // useEffect(() => {
+    //     socketContainer.current = io('http://localhost:3002');
+    //     socketContainer.current.emit('getId', { discussion: discussionId });
+    //     return () => socketContainer.current.close();
+    //     // eslint-disable-next-line
+    // }, []);
 
     useEffect(() => {
         const getData = async () => {
@@ -40,17 +48,11 @@ const DiscussionPage = () => {
             changePages(allComments.maxPages);
         }
         getData();
-    }, [page, discussionId]);
-
-    // useEffect(() => {
-    //     const socket = io('http://localhost:3002');
-    //     socket.emit('getId', { discussion: discussionId, page: page });
-    //     socket.on('comments', (data) => {
-    //         setComments(data);
-    //     });
-    //     return () => socket.close();
-    //     // eslint-disable-next-line
-    // }, []);
+        // socketContainer.current.on('comments', (data) => {
+        //     setChange(prev => !prev);
+        // });
+        // eslint-disable-next-line
+    }, [page, discussionId, dataChange]);
 
     return (
         <ForumBody >
