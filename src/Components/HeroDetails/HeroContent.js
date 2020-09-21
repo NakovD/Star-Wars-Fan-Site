@@ -11,7 +11,7 @@ const HeroContent = (props) => {
             <div className={styles.heroName} >
                 <h4>{props.name}</h4>
             </div>
-            <HeroInfoDiv className={styles.heroFaction} label="Factions" data={props.factions} ></HeroInfoDiv>
+            <HeroInfoDiv className={styles.heroFaction} label="Factions:" data={props.factions} ></HeroInfoDiv>
             <HeroInfoDiv className={styles.heroSpecies} label="Species:" data={props.species} ></HeroInfoDiv>
             <HeroInfoDiv className={styles.era} label="Era:" data={props.era} ></HeroInfoDiv>
             <HeroInfoDiv className={styles.heroDescription} label="Description" data={props.description} ></HeroInfoDiv>

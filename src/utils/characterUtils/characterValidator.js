@@ -12,6 +12,13 @@ const charValidator = (charInfo) => {
             message: 'Description must be at least 20 characters!'
         }
     }
+    if (!charInfo.imgURL.startsWith('http') && !charInfo.imgURL.startsWith('https')) {
+        console.log('Not a picture!');
+        return {
+            error: true,
+            message: 'The image link should start with http or https! :)'
+        }
+    }
     return {
         error: false
     }

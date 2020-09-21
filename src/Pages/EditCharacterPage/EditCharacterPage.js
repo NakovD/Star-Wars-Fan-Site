@@ -10,6 +10,8 @@ import serverRequests from '../../utils/back-end-service.js';
 import { submitCharData } from '../../utils/characterUtils/submitCharacterData.js';
 import speciesOptions from '../../utils/otherUtils/speciesFactory.js';
 import { useDetails } from '../../utils/customHooks/customHooks.js';
+import UplIMG from '../../Components/CharacterForm/UploadImage.js';
+import widget from '../../utils/otherUtils/cloudinaryWidget.js';
 
 const EditCharacterPage = () => {
     const { idChar } = useParams();
@@ -54,6 +56,7 @@ const EditCharacterPage = () => {
                 value={charDetails.imgURL}
                 onChange={e => changeDetails({ ...charDetails, imgURL: e.target.value })} />
             <PopUp text="Please provide picture in portrait orientation!" />
+            <UplIMG onClick={e => widget(changeDetails, charDetails).open()} />
             <textarea
                 name="description"
                 placeholder="Description"

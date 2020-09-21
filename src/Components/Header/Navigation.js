@@ -11,10 +11,12 @@ const Navigation = ({ visibility }) => {
     const authInfo = useContext(AuthContext);
     const history = useHistory();
     const allLinks = headerLink(authInfo.loggedIn, authInfo.userInfo.userId);
+
     const LogOutHandler = () => {
+        console.log(document.cookie);
         authInfo.logOut();
         history.push('/');
-        return;
+        console.log(document.cookie);
     }
 
     return (
@@ -23,7 +25,7 @@ const Navigation = ({ visibility }) => {
                 {allLinks.map(link => {
                     return (<Route key={link.to} side={authInfo.userInfo.side} goTo={link.to} href={link.href} />)
                 })}
-                {authInfo.loggedIn ? (<Logout onClick={e => LogOutHandler()} side={authInfo.userInfo.side} />) : null}
+                {authInfo.loggedIn ? (<Logout onClick={LogOutHandler} side={authInfo.userInfo.side} />) : null}
             </ul>
         </nav>
 

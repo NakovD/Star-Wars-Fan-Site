@@ -7,7 +7,6 @@ const io = require('socket.io')(3002);
 
 io.on('connection', (socket) => {
     console.log('connected');
-
     socket.on('getId', (obj) => {
         mongoose.models.Comment.on('save', async (doc) => {
             if (doc.discussion.toHexString() === obj.discussion) {

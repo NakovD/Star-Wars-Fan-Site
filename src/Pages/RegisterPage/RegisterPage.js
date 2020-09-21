@@ -27,6 +27,7 @@ const RegisterPage = () => {
     const onFailAuth = (mssg) => {
         changeData({ ...authData, submitErr: mssg });
     }
+    
     const onErr = (msg, prop) => { changeData({ ...authData, [`${prop}Err`]: msg }) };
     const noErr = (prop) => { changeData({ ...authData, [`${prop}Err`]: false }) }
 
