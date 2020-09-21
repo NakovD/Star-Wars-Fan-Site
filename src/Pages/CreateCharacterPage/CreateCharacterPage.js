@@ -6,10 +6,11 @@ import PopUp from '../../Components/PopUp/PopUp.js';
 import SelectComp from '../../Components/SelectComp/SelectComp.js';
 import InputSubmit from '../../Components/Auth/InputSubmit.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
+import UplIMG from '../../Components/CharacterForm/UploadImage.js';
 import { submitCharData } from '../../utils/characterUtils/submitCharacterData.js';
 import speciesOptions from '../../utils/otherUtils/speciesFactory.js';
 import { useDetails } from '../../utils/customHooks/customHooks.js';
-
+import widget from '../../utils/otherUtils/cloudinaryWidget.js';
 
 const CreateCharacterPage = () => {
     const history = useHistory();
@@ -47,6 +48,7 @@ const CreateCharacterPage = () => {
                 onChange={e => changeDetails({ ...charInfo, imgURL: e.target.value })}
             />
             <PopUp text="Please provide picture in portrait orientation!" />
+            <UplIMG onClick={e => widget(changeDetails, charInfo).open()} />
             <textarea
                 name="description"
                 placeholder="Description"

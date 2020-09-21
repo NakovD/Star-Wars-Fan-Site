@@ -34,12 +34,12 @@ const DiscussionPage = () => {
 
     useFetchData(`post/${discussionId}`, changeDisc, [dataChange]);
 
-    // useEffect(() => {
-    //     socketContainer.current = io('http://localhost:3002');
-    //     socketContainer.current.emit('getId', { discussion: discussionId });
-    //     return () => socketContainer.current.close();
-    //     // eslint-disable-next-line
-    // }, []);
+    useEffect(() => {
+        socketContainer.current = io('http://localhost:3002');
+        socketContainer.current.emit('getId', { discussion: discussionId });
+        return () => socketContainer.current.close();
+        // eslint-disable-next-line
+    }, []);
 
     useEffect(() => {
         const getData = async () => {
@@ -48,9 +48,9 @@ const DiscussionPage = () => {
             changePages(allComments.maxPages);
         }
         getData();
-        // socketContainer.current.on('comments', (data) => {
-        //     setChange(prev => !prev);
-        // });
+        socketContainer.current.on('comments', (data) => {
+            setChange(prev => !prev);
+        });
         // eslint-disable-next-line
     }, [page, discussionId, dataChange]);
 

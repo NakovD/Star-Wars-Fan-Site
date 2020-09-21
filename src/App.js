@@ -31,8 +31,8 @@ const App = (props) => {
     }
 
     const logOut = () => {
-        document.cookie = "adminAuth= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"; //TO DO, ADD COOKIE NAME FOR REGULAR USER AND FOR ADMIN;
-        document.cookie = "authToken= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"; //TO DO, ADD COOKIE NAME FOR REGULAR USER AND FOR ADMIN;
+        document.cookie = "adminAuth=; path=/adminOnly; expires = Thu, 01 Jan 1970 00:00:00 GMT"; //TO DO, ADD COOKIE NAME FOR REGULAR USER AND FOR ADMIN;
+        document.cookie = "authToken=; path=/;  expires = Thu, 01 Jan 1970 00:00:00 GMT"; //TO DO, ADD COOKIE NAME FOR REGULAR USER AND FOR ADMIN;
         changeAuth({
             loggedIn: false,
             adminVerify: false,
@@ -41,6 +41,7 @@ const App = (props) => {
                 side: ''
             }
         });
+        
     }
 
     const verifyA = () => {

@@ -6,7 +6,10 @@ import styles from './SmallButton.module.css';
 const SmallButton = ({ text, onClick }) => {
 
     return (
-        <button className={styles.myButton} onClick={onClick}>{text}</button>
+        <button className={styles.myButton} onClick={e => {
+            e.preventDefault();
+            onClick()
+        }}>{text}</button>
     )
 }
 

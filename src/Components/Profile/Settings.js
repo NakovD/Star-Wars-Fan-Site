@@ -6,6 +6,7 @@ import {
     changeProfileIMG
 } from '../../utils/changeUserDataUtils/changeUserData.js';
 import AuthContext from '../../Context.js';
+import widget from '../../utils/otherUtils/cloudinaryWidget.js';
 
 
 const Settings = ({ currentSide, changeMethod, userId }) => {
@@ -20,15 +21,6 @@ const Settings = ({ currentSide, changeMethod, userId }) => {
         return;
     }
     
-    const myWidget = window.cloudinary.createUploadWidget({
-        cloudName: 'dido98cloudinary',
-        uploadPreset: 'ekeew3n2'
-    }, (error, result) => {
-        if (!error && result && result.event === 'success') {
-            console.log('Done! Here is the image info:', result.info);
-            changeURL(result.info.secure_url);
-        }
-    });
     return (
         <div className={styles.settings}>
             <h4>Settings:</h4>
@@ -47,7 +39,7 @@ const Settings = ({ currentSide, changeMethod, userId }) => {
                 onChange={e => changeURL(e.target.value)}
                 usedFor='Image Link' />
             <p className={styles.or}>OR</p>
-            <button onClick={e => myWidget.open()} className={`${styles.primary} ${styles.ghost}`} >Upload your image</button>
+            <button onClick={e => widget(changeURL).open()} className={`${styles.primary} ${styles.ghost}`} >Upload your image</button>
             <button
                 onClick={e => changeProfileIMG(imgURL, userId, changeMethod, changeURL)}
                 className={styles.primary}>Change profile picture</button>

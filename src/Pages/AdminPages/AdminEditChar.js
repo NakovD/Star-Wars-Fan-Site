@@ -4,6 +4,7 @@ import CharFormBody from '../../Components/CharacterForm/CharFormBody.js';
 import InputField from '../../Components/Auth/InputField.js';
 import PopUp from '../../Components/PopUp/PopUp.js';
 import SelectComp from '../../Components/SelectComp/SelectComp.js';
+import UplIMG from '../../Components/CharacterForm/UploadImage.js';
 import ErrNotification from '../../Components/ErrorNot/ErrorNotification.js';
 import styles from './AdminEditChar.module.css';
 import serverRequests from '../../utils/back-end-service.js';
@@ -13,6 +14,7 @@ import {
 } from '../../utils/characterUtils/submitCharacterData.js';
 import species from '../../utils/otherUtils/speciesFactory.js';
 import { useDetails } from '../../utils/customHooks/customHooks.js';
+import widget from '../../utils/otherUtils/cloudinaryWidget.js';
 
 
 const AdminEditChar = () => {
@@ -60,6 +62,7 @@ const AdminEditChar = () => {
                 value={charDetails.imgURL}
                 onChange={e => changeDetails({ ...charDetails, imgURL: e.target.value })} />
             <PopUp text="Please provide picture in portrait orientation!" />
+            <UplIMG onClick={e => widget(changeDetails, charDetails).open()} />
             <textarea
                 name="description"
                 placeholder="Description"
